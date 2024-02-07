@@ -1,0 +1,345 @@
+{
+  "HOME_PAGE": {
+    "entrySectionAd": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceOne": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceTwo": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceThree": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceFour": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceFive": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceSix": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceSeven": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceEight": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceNine": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceTen": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceEleven": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "adSpaceTwelve": "0a32a68065c28340fead13bdd3313cde609cb2c784964060",
+    "featuredJobs": [],
+    "featuredMissedArticles": [],
+    "featuredRandomArticles": [],
+    "featuredArticles": [
+      "ba7b170d646e04e317acff05",
+      "ba7b170d646e04e317acff03"
+    ],
+    "featuredWriters": []
+  },
+  "CATEGORIES_PAGE": {
+    "featuredCategories": [
+      "cvsdfsdfsdfsdfsdf1",
+      "cvsdfsdfsdfsdfsdf2",
+      "cvsdfsdfsdfsdfsdf3",
+      "cvsdfsdfsdfsdfsdf4"
+    ]
+  },
+  "HEADER_TABS": [
+    {
+      "id": "a05685021712b94519ea3dade83cf7323cd9419b362af0cb",
+      "mode": "link",
+      "text": "home",
+      "redirect": "/"
+    },
+    {
+      "id": "a05685021712b94519ea3dade83cf7323cd9419b362af6cb",
+      "mode": "link",
+      "text": "agenda",
+      "redirect": "/agenda/"
+    },
+    {
+      "id": "a05685021712b94519ea3dade83cf7323cd9419b362af1cb",
+      "mode": "link",
+      "text": "aboutUs",
+      "redirect": "/about/"
+    },
+    {
+      "id": "a05685021712b94519ea3dade83cf7323cd9419b362af2cb",
+      "mode": "link",
+      "text": "articles",
+      "redirect": "/articles/"
+    },
+    {
+      "id": "a05685021712b94519ea3dade83cf7323cd9419b362af3cb",
+      "mode": "link",
+      "text": "careers",
+      "redirect": "/careers/"
+    },
+    {
+      "id": "a05685021712b94519ea3dade83cf7323cd9419b362af4cb",
+      "mode": "link",
+      "text": "categories",
+      "redirect": "/categories/"
+    },
+    {
+      "categoryId": "47198b142c81a4beeae85e6c",
+      "id": "47198b142c81a4beeae85e6c",
+      "href": "/categories/47198b142c81a4beeae85e6c/",
+      "mode": "category"
+    },
+    {
+      "classificationId": "1788ef9f6b6e66bf16f1513c",
+      "id": "1788ef9f6b6e66bf16f1513c",
+      "href": "/classifications/1788ef9f6b6e66bf16f1513c",
+      "mode": "classification"
+    },
+    {
+      "categoryId": "4a2d923721f0f2fa6ffe6856",
+      "id": "4a2d923721f0f2fa6ffe6856",
+      "href": "/categories/4a2d923721f0f2fa6ffe6856/",
+      "mode": "category"
+    },
+    {
+      "categoryId": "57fbc7e0b5c225b7b04af4a9",
+      "id": "57fbc7e0b5c225b7b04af4a9",
+      "href": "/categories/57fbc7e0b5c225b7b04af4a9/",
+      "mode": "category"
+    },
+    {
+      "categoryId": "d049484c64f28d76e9a2b694",
+      "id": "d049484c64f28d76e9a2b694",
+      "href": "/categories/d049484c64f28d76e9a2b694/",
+      "mode": "category"
+    },
+    {
+      "id": "a05685021712b94519ea3dade83cf7323cd9419b362af9cb",
+      "mode": "link",
+      "text": "courses",
+      "redirect": "/courses/"
+    }
+  ],
+  "CONTACT": {
+    "EMAIL": "info@skyelevatorseg.com",
+    "PHONE": "+20 112 916 4522",
+    "FACEBOOK": "https://www.facebook.com/novamindsagency/",
+    "INSTAGRAM": "https://www.instagram.com/novamindsagency/",
+    "LINKEDIN": "https://www.linkedin.com/novamindsagency/",
+    "TIKTOK": "https://www.tiktok.com/novamindsagency/",
+    "X-TWITTER": "htttps://www.x.com/novamindsagency/",
+    "FOUNDER_FACEBOOK": "https://www.facebook.com/novamindsagency/",
+    "FOUNDER_X-TWITTER": "https://www.x.com/novamindsagency/",
+    "FOUNDER_LINKEDIN": "https://www.linkedin.com/novamindsagency/"
+  },
+  "PLANS": {
+    "GEARED": {
+      "BLUE": {
+        "TITLE": {
+          "EN": "Sky Blue",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky Blue Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 500000,
+        "FEATURES": {
+          "EN": [
+                "Sicor Italy geared machine",
+                "Metal press Italy ropes",
+                "Ultima true controller",
+                "Schneider France inverter",
+                "SilcomItalyautomatic car doors",
+                "SilcomItalyautomatic landingdoors",
+                "Marazi Italycarandcw guides",
+                "BFPItalySpeedgovernor"
+          ],
+          "AR": []
+        }
+      },
+      "SILVER": {
+        "TITLE": {
+          "EN": "Sky Silver",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky Silver Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 1000000,
+        "FEATURES": {
+          "EN": [
+                "Sicor Italy geared machine",
+                "Metal press Italy ropes",
+                "Ultima true controller",
+                "Schneider inverter",
+                "FermatorSpainautomatic cardoors",
+                "FermatorSpainautomatic landingdoorsr",
+                "ChelikrayTurkey carandr cw guidesr",
+                "TTI TurkeySpeedgovernorr"
+          ],
+          "AR": []
+        }
+      },
+      "GOLD": {
+        "TITLE": {
+          "EN": "Sky Gold",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 1500000,
+        "FEATURES": {
+          "EN": [
+                "Sicor geared machine",
+                "Metal press Italy ropes",
+                "KAS2Scontroller",
+                "TTI TurkeySpeed governor",
+                "Door lifefoldingcarr doorr",
+                "Alphmattermanualr landingdoorsr",
+                "ChelikrayTurkey carr andcw guidesr"
+          ],
+          "AR": []
+        }
+      }
+    },
+    "GEARLESS": {
+      "BLUE": {
+        "TITLE": {
+          "EN": "Sky Line",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky Line Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 500000,
+        "FEATURES": {
+          "EN": [
+                "Sicor ITALY gearless machine",
+                "Metal press Italy ropes",
+                "Ultima true / KAScontroller",
+                "DeltaTAIWAN inverter",
+                "TTI TurkeySpeedgovernor",
+                "Door lifeTurkeyfoldingcar door",
+                "Door lifeTurkeymanual landingdoors",
+                "ChelikrayTurkeycarandcw guides"
+          ],
+          "AR": []
+        }
+      },
+      "SILVER": {
+        "TITLE": {
+          "EN": "Sky One",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky One Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 1000000,
+        "FEATURES": {
+          "EN": [
+              "Sicor ITALY gearless machine",
+              "Metal press Italy ropes",
+              "Ultima true controller",
+              "Schneider inverter",
+              "TTI TurkeySpeedgovernor",
+              "FermatorSpainautomatic cardoors",
+              "FermatorSpainautomatic landingdoors",
+              "ChelikrayTurkey carandcw guides"
+          ],
+          "AR": []
+        }
+      },
+      "GOLD": {
+        "TITLE": {
+          "EN": "Sky Premiere",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky Premiere Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 1500000,
+        "FEATURES": {
+          "EN": [
+                "Sicor ITALY gearless machine",
+                "Metal press Italy ropes",
+                "Ultimatrue controller",
+                "Schneider inverter",
+                "BFPItalySpeedgovernor",
+                "SilcomItalyautomatic car doors",
+                "SilcomItalyautomatic landing doors",
+                "Marazi Italycarandcw guides"
+          ],
+          "AR": []
+        }
+      }
+    },
+     "HOME_LIFTS": {
+      "BLUE": {
+        "TITLE": {
+          "EN": "Sky E",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky E Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 500000,
+        "FEATURES": {
+          "EN": [
+                "Metal press Italy ropes",
+                "Panoramic car",
+                "Super panorama landing doors",
+                "Turkey windingdrum machine",
+                "KAScontroller",
+                "Enovainverter",
+                "TTI TurkeySpeedgovernor",
+                "Decorativemetal structure",
+                "Squareshape100x100& 80x80"
+          ],
+          "AR": []
+        }
+      },
+      "SILVER": {
+        "TITLE": {
+          "EN": "Sky O",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky O Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 1000000,
+        "FEATURES": {
+          "EN": [
+             "Metal press Italy ropes",
+             "Panoramic car",
+             "Super panorama landing door",
+             "Sicor Italygear-less machine",
+             "Ultimatruecontroller",
+             "Schneider Franceinverter",
+             "BFPItalySpeedgovernor",
+             "Decorativemetal structure",
+             "Circular shape 100cm - 100cm"
+          ],
+          "AR": []
+        }
+      },
+      "GOLD": {
+        "TITLE": {
+          "EN": "Sky U",
+          "AR": ""
+        },
+        "DESC": {
+          "EN": "This is the Sky U Geared elevators' package.",
+          "AR": ""
+        },
+        "PRICE": 1500000,
+        "FEATURES": {
+          "EN": [
+                "Metal press Italy ropes",
+                "Panoramic car",
+                "Super panorama landing door",
+                "Sicor Italy gear-less machine",
+                "Ultima true controller",
+                "Schneider France inverter",
+                "BFP Italy Speed governor",
+                "Decorative metal structure",
+                "Squareshape100x100& 80x80"
+          ],
+          "AR": []
+        }
+      }
+    }
+  }
+}

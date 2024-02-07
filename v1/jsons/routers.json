@@ -1,0 +1,42 @@
+{
+    "WEBSITE_ROUTERS": {
+        "HOME_ROUTE": "/",
+        "INDEX_ROUTE": "/index/",
+        "MAIN_ROUTE": "/main/",
+        "MAIN_PAGE_ROUTE": "/mainPage/",
+        "BLOG_ROUTE": "/blog/",
+        "ARTICLE_ROUTE": "/blog/articles/<article_id>/",
+        "ASSET_ROUTE": "/assets/articles/covers/<article_id>/",
+        "PRODUCTS_IMAGE_ROUTE": "/assets/products/images/<product_image>/",
+        "USER_COVER_ROUTE": "/assets/users/covers/<user_id>/",
+        "USER_PROFILE_ROUTE": "/assets/users/profiles/<user_id>/",
+        "ARTICLE_SECTION_COVER_ROUTE": "/assets/articles/section/image/<section_id>/",
+        "ARTICLE_SECTION_AUDIO_ROUTE": "/assets/articles/section/audio/<section_id>/",
+        "ARTICLE_SECTION_VIDEO_ROUTE": "/assets/articles/section/video/<section_id>/",
+        "APPLICATION_CVS_ROUTE": "/assets/applications/cvs/<job_app_id>/",
+        "ADS_COVERS_ROUTE": "/assets/ads/covers/<ad_id>/",
+        "ARTICLES_PODCAST_ROUTE": "/assets/articles/podcast/<article_id>/",
+        "CATEGORIES_COVERS_ROUTE": "/assets/categories/covers/<category_id>/",
+        "CATEGORIES_ICONS_ROUTE": "/assets/categories/icons/<category_id>/",
+        "ARTICLE_COVER_ROUTE": "/assets/articles/covers/<article_id>/",
+        "CONTACT_ROUTE": "/contact/",
+        "CONTACT_US_ROUTE": "/contactUs/",
+        "MESSAGING_ROUTE": "/messeging/",
+        "MESSAGING_US_ROUTE": "/messegingUs/",
+        "REACHING_US_ROUTE": "/reachingUs/",
+        "WEBSITE_LOGIN_ROUTE": "/login/",
+        "WEBSITE_LOGOUT_ROUTE": "/logout/",
+        "WEBSITE_SIGNUP_ROUTE": "/signup/",
+        "WEBSITE_JOIN_ROUTE": "/join/",
+        "WEBSITE_PASSWORD_RESET": "/passwordReset/",
+        "WEBSITE_ABOUT_ROUTE": "/about/",
+        "WEBSITE_ABOUT_US_ROUTE": "/aboutUs/",
+        "WEBSITE_INSTALLATIONS_ROUTE": "/installations/",
+        "WEBSITE_SERVICES_INSTALLATIONS_ROUTE": "/services/installations/",
+        "WEBSITE_WHO_WE_ARE_ROUTE": "/whoWeAre/"
+    },
+    "ADMIN_ROUTERS": {},
+    "GLOBAL_ROUTERS":{
+        "CONFIG_HANDLER": "/config/"
+    }
+}

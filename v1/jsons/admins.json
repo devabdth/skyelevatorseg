@@ -1,0 +1,22 @@
+{
+  "csdfsdfsdfaca": {
+    "id": "csdfsdfsdfaca",
+    "username": "amrMostafa",
+    "name": "Amr Mostafa",
+    "email": "amrmostafa@cubersio.com",
+    "log": [],
+    "suspensed": false,
+    "password": "1234567890",
+    "accesses": ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+  },
+  "3aa6b73b10c1e9994770e56e": {
+    "username": "newAdmin",
+    "name": "New Admin",
+    "email": "newadmin@forexology.com",
+    "accesses": ["0", "1", "2", "3", "4", "5", "6"],
+    "id": "3aa6b73b10c1e9994770e56e",
+    "log": [],
+    "password": null,
+    "suspensed": false
+  }
+}
