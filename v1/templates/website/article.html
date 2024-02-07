@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+{% if lang == 'AR' %}
+  <html dir="RTL">
+    {% else %}
+    <html dir="LTR">
+{% endif %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static', filename='website/article/styles/computer.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='website/article/styles/mobile.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='website/article/styles/tablet.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/computer.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/mobile.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/tablet.css')}}"/>
+    <script src="{{url_for('static', filename='website/global/scripts/main.js')}}"></script>
+    <script src="{{url_for('static', filename='website/article/scripts/main.js')}}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='website/global/styles/images/favicon.ico')}}">
+    <title>{{content.global_[lang]["platformTitle"]}} - {{content.tabs[lang]['blog']}}</title>
+  </head>
+    <body>
+    {%if lang == 'AR'%}
+    <style>
+      :root {
+        --pff: 'Almarai';
+        --sff: 'Mondai';
+      }
+    </style>
+    {%else%}
+    <style>
+      :root {
+        --pff: 'Green Brooks';
+        --sff: 'Montserrat';
+      }
+    </style>
+    {%endif%}
+    <header>
+      <a href="/">{{content.global_[lang]["platformTitle"]}}</a>
+      <div id="nav">
+        <a href="/" class="header-nav-item active">{{content.tabs[lang]["home"]}}</a>
+        <a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
+        <a href="/spareParts/" class="header-nav-item">{{content.tabs[lang]["spareParts"]}}</a>
+        <a href="/monetization" class="header-nav-item">{{content.tabs[lang]["monetization"]}}</a>
+        <a href="/installations" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
+        <a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
+        <a href="/contact/" class="header-nav-item">{{content.tabs[lang]["contact"]}}</a>
+        <a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
+      </div>
+      <div id="options">
+        <div class="user header-dropdown">
+          <button class="main-icon-button" id="user"><i class="user"></i></button>
+          <div class="user header-dropdown-content">
+            <div id="dropdown-tabs">
+            {% if user_data %}
+              <button class="user shadow-button" onclick="window.open('/profile/', '_self');">{{content.tabs[lang]["profile"]}}</button>
+              <button class="user shadow-button" style="color: red" onclick="logout(this)">{{content.actions[lang]["logout"]}}</button>
+            {%else%}
+              <button class="user shadow-button" onclick="window.open('/login/', '_self');">{{content.actions[lang]["login"]}}</button>
+            {%endif%}
+            </div>
+          </div>
+        </div>        
+        <div class="lang header-dropdown">
+          <button class="main-icon-button" id="lang"><i class="lang"></i></button>
+          <div class="lang header-dropdown-content">
+            <div id="dropdown-tabs">
+            <button class="lang {%if lang == 'EN' %} active {%endif%} shadow-button" onclick="toggleLang(`{{lang}}`)">English</button>
+            <button class="lang {%if lang == 'AR' %} active {%endif%} shadow-button" onclick="toggleLang(`{{lang}}`)">العربية</button>
+            </div>
+          </div>
+        </div>			
+        <button class="main-icon-button" onclick="toggleTheme();"><i class="theme"></i></button>
+      </div>
+    </header>   
+    <section id="entry">
+      <div id="left-section">
+        <h1 id="title">{{article.title[lang]}}</h1>
+        <p id="subtitle">{{article.short_brief[lang]}}</p>
+        <div
+          id="cover"
+          style="background-image: url('/assets/articles/covers/{{article.id}}');"
+        ></div>
+        <p id="cover-attached-msg">{{article.cover_attached_msg[lang]}}</p>
+        <div id="after-cover">          
+          <div id="labelling-inforamtion">
+            <div>
+              <h3>
+                {{content.global_[lang]['classification']}}:
+                <span
+                  >{{db_helper.categories.get_parent_category_by_id(article.parent_category).name[lang]}}</span
+                >
+              </h3>
+              <h3>
+                {{content.global_[lang]['category']}}:
+                <span
+                  >{{db_helper.categories.get_category_by_id(article.category).name[lang]}}</span
+                >
+              </h3>
+            </div>
+            <div>
+            </div>
+          </div>
+          <div id="options">
+            <button class="option" enabled="{{article.record_available}}" onclick="openArticleDialogs('listen');"
+              {% if not article.record_available %}
+              style="pointer-events: none; opacity: 0.75;" 
+              {%endif%}
+             >
+              <div class="icon shadow-icon-button"><i class="listen"></i></div>
+              {% if article.record_available %}
+              <p>{{content.actions[lang]['listen']}}<br><span>{{content.global_[lang]['listenMsg']}}</p>
+              {% else %}
+              <p>{{content.global_[lang]['unavailable']}}<br><span>{{content.global_[lang]['unavailableMsg']}}</p>
+              {% endif %}
+            </button>
+            |
+            <button class="option" onclick="openArticleDialogs('share');">
+              <div class="icon shadow-icon-button"><i class="share"></i></div>
+              <p>{{content.actions[lang]['share']}}<br><span>{{content.global_[lang]['shareMsg']}}</p>
+            </button>
+            |
+            <button class="option" onclick='document.querySelector("section#commenting").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});'>
+              <div class="icon shadow-icon-button"><i class="comment"></i></div>
+              <p>{{content.actions[lang]['comment']}}<br><span>{{content.global_[lang]['commentMsg']}}</p>
+            </button>
+          </div>
+        </div>
+        
+      </div>
+      <div id="right-section">
+        {% for article in db_helper.articles.get_articles_by_category_and_parent_category(parent_category= article.parent_category, category= article.category, exception= [article.id])[:4] %}
+          <div class="right-blog-card" onclick="window.open('/blog/articles/{{article.id}}', '_self')">
+            <div class="cover" style="background-image: url(/assets/articles/covers/{{article.id}});"></div>
+            <div class="content">
+              <h2>{{article.title[lang][:100]}}</h2>
+              <p>{{article.short_brief[lang][:50]}}...</p>
+              <div class="information">
+                <div class="information-snippet" id="comments">
+                  <i class="fa fa-regular fa-comment"></i>
+                  <p>{{(article.comments | length) | format_numbers}}</p>
+                </div>
+                <div class="information-snippet" id="views">
+                  <i class="fa fa-regular fa-eye"></i>
+                  <p>{{article.views | format_numbers}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+      </div>
+    </section>
+    <section id="articles-sections">
+      <div id="left-section">
+        {% for section in article.sections%}
+          <div class="article-section" id="sec-{{section.id[:6]}}">
+            <h2>{{section.title[lang]}}</h2>
+            <p class="subtitle">{{section.subtitle[lang]}}</p>
+            <div class="attachment" id="sec-{{section.id[:6]}}"></div>
+            {% if article.mediaType == "cover" %}
+              <div class="cover" id="sec-{{section.id[:6]}}"></div>
+            {%endif%}
+            <p class="bio">{{section.bio[lang]}}</p>
+          </div>
+        {%endfor%}
+      </div>
+      <div id="right-section">
+        <div id="header">
+          <p id="current-tab-title"></p>
+          <p id="current-tab-subtitle"></p>
+          <p id="tabs-indicator"></p>
+        </div>
+        <div id="tabs-selector">
+          <div id="body">
+            {% for section in article.sections %}
+              <div class="tab" id="sec-{{section.id[:6]}}">
+                <p class="title">{{section.title[lang]}}</p>
+                <p class="subtitle">{{section.subtitle[lang]}}</p>
+              </div>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="navigation-actions">
+      <button class="shadow-button" id="previous"></button>
+      <div id="tabs">
+        {% for section in article.sections %}
+          <div class="article-section-tab" id="sec-{{section.id[:6]}}"></div>
+        {%endfor%}
+      </div>
+      <button class="shadow-button" id="next"></button>
+    </div>
+    <section id="commenting">
+      <h2>{{content.global_[lang]['comments']}}</h2>
+      <div id="header">
+        <input type="text" name="comment-field" class="single-line-field" id="comment-field" placeholder="{{content.placeholders[lang]['typeYourComment']}}">
+        <button class="main-button" id="comment-field-submission" onclick="publishNewComment('{%if not user_data%}Anonymous{%else%}{{user_data.id}}{%endif%}', '{%if not user_data%}Anonymous{%else%}{{user_data.name}}{%endif%}')">{{content.actions[lang]['comment']}}</button>
+      </div>
+      <div id="comments">
+        {% for comment in db_helper.articles.format_comments(article) %}
+          <div class="comment-row">
+            <div class="user-image" style="background-image: url(/assets/users/{{comment.commenter.id}});"></div>
+            <div class="comment">
+              <p class="comment">{{comment.comment}}</p>
+              <p class="user-name">{{comment.commenter.name}}</p>
+              <p class="date">{{comment.time | readable_time}}</p>
+            </div>
+          </div>
+        {%endfor%}
+      </div>
+    </section>
+    {% for writer in writers %}
+      <section class="writer-section">
+        <div class="left-section">
+          {#{% for article_ in db_helper.articles.multiple_articles_by_ids(db_helper.articles.get_article_by_writer_id(writer.id))[:4] %}
+                        <div class="search-dialog-article-card-border" onclick="window.open('/articles/{{article._id}}/', '_self')">
+
+              <div class="search-dialog-article-card">
+                <div class="cover-wrapper">
+                  <div
+                  class="cover"
+                  style="background-image: url(/assets/articles/covers/{{article_.id}});"
+                ></div>
+                </div>
+                <div class="content">
+                  <div class="classification">
+                  {% set parent_category=
+                  db_helper.categories.get_parent_category_by_id(article_.parent_category)
+                  %} {% if parent_category %}
+                  <h4>{{parent_category.name[lang]}}</h4>
+                  {%endif%} {% set category=
+                  db_helper.categories.get_category_by_id(article_.category)%} {%
+                  if category %}
+                  <h4>{{category.name[lang]}}</h4>
+                  {%endif%}
+
+                  </div>
+                  <h3>{{article_.title[lang]}}</h3>
+                  <p>{{article_.short_brief[lang]}}</p>
+                </div>
+              </div>
+            </div>
+          {%endfor%}#}
+        </div>
+        <div class="right-section">
+          <div class="writer-card">
+            <div class="cover" style="background-image: url(/assets/writers/{{writer.id}});"></div>
+            <div class="content">
+              <h3 class="writer-card-title">{{writer.name[lang]}}</h3>
+              <p class="writer-card-bio">{{writer.bio[lang][:200]}}</p>
+              <div class="social-media-link">
+                  {% if writer.social_media_links['FACEBOOK'] %}
+                  <button onclick="window.open(`{{writer.social_media_links['FACEBOOK']}}`);" class="main-icon-button">
+                    <i class="facebook"></i>
+                  </button>
+                  {% endif %}
+                  {% if writer.social_media_links['TWITTER'] %}
+                  <button onclick="window.open(`{{writer.social_media_links['TWITTER']}}`);" class="main-icon-button">
+                    <i class="twitter"></i>
+                  </button>
+                  {% endif %}
+                  {% if writer.social_media_links['INSTAGRAM'] %}
+                  <button onclick="window.open(`{{writer.social_media_links['INSTAGRAM']}}`);" class="main-icon-button">
+                    <i class="instagram"></i>
+                  </button>
+                  {% endif %}
+                  {% if writer.social_media_links['LINKEDIN'] %}
+                  <button onclick="window.open(`{{writer.social_media_links['LINKEDIN']}}`);" class="main-icon-button">
+                    <i class="linkedin"></i>
+                  </button>
+                  {% endif %}
+                  {% if writer.social_media_links['TIKTOK'] %}
+                  <button onclick="window.open(`{{writer.social_media_links['TIKTOK']}}`);" class="main-icon-button">
+                    <i class="tiktok"></i>
+                  </button>
+                  {% endif %}
+              </div>
+              <div class="options">
+                <a href="/writers/{{writer.id}}/" class="main-button">{{content.actions[lang]['seeAllArticles']}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endfor %}
+    <section id="missing-articles">
+      <h1>{{content.global_[lang]['incaseYouMissed']}}</h1>
+      <p>{{content.global_[lang]['incaseYouMissedMsg']}}</p>
+      <div id="cards">
+          {% for article_ in db_helper.articles.get_articles_by_category_and_parent_category(category= article.category, parent_category= article.parent_category, exception= [article.id])[:8] %}
+          <div class="blog-card">
+            <div class="cover" style="background-image: url(/assets/articles/covers/{{article_.id}});"></div>
+            <h2>{{article_.title[lang]}}</h2>
+            <p>{{article_.short_brief[lang][:100]}}...</p>
+            <div class="information">
+              <div class="information-snippet" id="comments">
+                <i class="fa fa-regular fa-comment"></i>
+                <p>{{(article_.comments | length) | format_numbers}}</p>
+              </div>
+              <div class="information-snippet" id="views">
+                <i class="fa fa-regular fa-eye"></i>
+                <p>{{article_.views | format_numbers}}</p>
+              </div>
+            </div>
+            <div class="actions">
+              <button id="action" onclick="window.open('/blog/articles/{{article_.id}}', '_self');">
+                <i class="fa fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+          {%endfor%}
+      </div>
+    </section>
+    <footer>
+      <div class="footer-column" id="column-one">
+        <img id="logo"></img>
+        <div id="footer-msg">
+          <h4>{{content.global_[lang]["footerMsg"]}}</h4>
+        </div>
+      </div>
+      <div class="footer-column" id="column-two">
+          <div id="tabs">
+            <a class="footer-tabs-item" href="/">{{content.tabs[lang]["home"]}}</a>
+            <a class="footer-tabs-item" href="/maintenance/">{{content.tabs[lang]["maintenance"]}}</a>
+            <a class="footer-tabs-item" href="/spareParts/">{{content.tabs[lang]["spareParts"]}}</a>
+            <a class="footer-tabs-item" href="/monetization">{{content.tabs[lang]["monetization"]}}</a>
+            <a class="footer-tabs-item" href="/installations">{{content.tabs[lang]["installations"]}}</a>
+            <a class="footer-tabs-item active" href="/blog/">{{content.tabs[lang]["blog"]}}</a>
+            <a class="footer-tabs-item" href="/contact/">{{content.tabs[lang]["contact"]}}</a>
+            <a class="footer-tabs-item" href="/aboutUs/">{{content.tabs[lang]["aboutUs"]}}</a>
+          </div>
+          <div id="contact">
+            <div id="links">
+              <a href="/privacyPolicy/">{{content.tabs[lang]['privacyPolicy']}}</a>
+              <a href="/shippingAndReturn//">{{content.tabs[lang]['shippingAndReturn']}}</a>
+              <a href="/termsAndConditions/">{{content.tabs[lang]['termsAndConditions']}}</a>
+            </div>
+            <div id="contact-info">
+              <div id="contact-info-snippet">
+                <i class="fa-solid fa-envelope"></i>
+                <p>{{layout.data['CONTACT']['PHONE']}}</p>
+              </div>
+              <div id="contact-info-snippet">
+                <i class="fa-solid fa-phone"></i>
+                <p>{{layout.data['CONTACT']['EMAIL']}}</p>
+              </div>
+            </div>
+            <div id="social-media">
+              <a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+              <a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+          </div>
+          <div id="copyright">
+            <p>{{content.global_[lang]["copyrightMsg"]}}</p>
+          </div>
+      </div>
+    </footer>
+    <div id="search-dialog-overlay" onclick="closeSearchDialog();"></div>
+    <div id="search-dialog" class="dialog">
+      <div id="overlay">
+        <div class="header">
+          <h3>{{content.global_[lang]['search']}}</h3>
+          <div id="sheach-dialog-close" onclick="closeSearchDialog();">x</div>
+        </div>
+        <div id="body">
+          <div id="search-options">
+            <div id="field-wrapper">
+              <input
+                class="single-line-field-awhite"
+                type="text"
+                name="token"
+                placeholder="{{content.placeholders[lang]['search']}}"
+              />
+              <button class="main-button">
+                {{content.global_[lang]['search']}}
+              </button>
+            </div>
+            <div id="search-dialog-categories">
+              {% for pcat in db_helper.categories.parent_cats %}
+              <div class="search-dialog-categories-column">
+                <a class="parent-cat" href="{{pcat.main_route}}"
+                  >{{pcat.name[lang]}}</a
+                >
+                <p>{{pcat.bio[lang][:50]}}...</p>
+                {% for cat in pcat.categories %}
+                <a class="inner-cat" href="/categories/{{cat.id}}/"
+                  >{{cat.name[lang]}}</a
+                >
+                {%endfor%}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div id="trending-articles">
+            <div class="header">
+              <h3>{{content.global_[lang]['trendingNow']}}</h3>
+              <button class="main-button">
+                {{content.actions[lang]['seeMore']}}
+              </button>
+            </div>
+            <div id="trending-articles-body">
+              {% for article in db_helper.articles.all_articles[:9] %}
+                          <div class="search-dialog-article-card-border" onclick="window.open('/articles/{{article._id}}/', '_self')">
+
+                <div class="search-dialog-article-card">
+                  <div
+                    class="cover"
+                    style="background-image: url(/assets/articles/covers/{{article.id}});"
+                  ></div>
+                  <div class="content">
+                    <div class="classification">
+                      <h4>
+                        {{db_helper.categories.get_parent_category_by_id(article.parent_category).name[lang]}}
+                      </h4>
+                      <h4>
+                        {{db_helper.categories.get_category_by_id(article.category).name[lang]}}
+                      </h4>
+                    </div>
+                    <h3>{{article.title[lang]}}</h3>
+                    <p>{{article.short_brief[lang][:100]}}</p>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="login-dialog-overlay" onclick="closeLoginDialog();"></div>
+    <div id="login-dialog" class="dialog">
+      <div id="overlay">
+        <div class="header">
+          <h3>{{content.actions[lang]['login']}}</h3>
+          <div id="sheach-dialog-close" onclick="closeLoginDialog();">x</div>
+        </div>
+        <div id="body">
+          <div id="form">
+            <h3>{{content.actions[lang]['login']}}</h3>
+            <div class="field-border">
+              <input
+                type="email"
+                name="email"
+                placeholder="{{content.placeholders[lang]['emailFieldPlaceholder']}}"
+                class="single-line-field-awhite"
+              />
+            </div>
+            <div class="field-border">
+              <input
+                type="password"
+                name="password"
+                placeholder="{{content.placeholders[lang]['passwordFieldPlaceholder']}}"
+                class="single-line-field-awhite"
+              />
+            </div>
+            <div id="options">
+              <div class="checkbox-container">
+                <label for="rememberMe">
+                  <input type="checkbox" name="rememberMe" id="rememberMe" />
+                  {{content.actions[lang]['rememberMe']}}
+                </label>
+              </div>
+              <a href="/passwordReset/" class="shadow-button"
+                >{{content.actions[lang]['forgetPassword']}}</a
+              >
+            </div>
+            <div id="actions">
+              <button onclick="loginDialogSubmit()" class="main-button">
+                {{content.actions[lang]['login']}}
+              </button>
+              <a href="/join/" class="shadow-button"
+                >{{content.global_[lang]['dontHaveAccount']}}</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="dialogs-overlay"></div>
+    <div class="article-dialogs" id="share-dialog">
+      <div class="article-dialogs-overlay">
+        <div class="header">
+          <h3>{{content.actions[lang]['share']}}<br><span>{{content.global_[lang]['shareMsg']}}</span></h3>
+          <div class="article-dialogs-close" onclick="closeArticleDialogs()">x</div>
+        </div>
+        <div class="body">
+          <p>{{content.actions[lang]['shareLinkVia']}}</p>
+          <div id="social-media-icons">
+            <button style="border-radius: 50%;" class="shadow-icon-button"><i class="facebook"></i></button>
+            <button style="border-radius: 50%;" class="shadow-icon-button"><i class="linkedin"></i></button>
+            <button style="border-radius: 50%;" class="shadow-icon-button"><i class="twitter"></i></button>
+            <button style="border-radius: 50%;" class="shadow-icon-button"><i class="whatsapp"></i></button>
+            <button style="border-radius: 50%;" class="shadow-icon-button"><i class="instagram"></i></button>
+            <button style="border-radius: 50%;" class="shadow-icon-button"><i class="tiktok"></i></button>
+          </div>
+          <p>{{content.actions[lang]['shareLink']}}</p>
+          <div id="link" dir="ltr">
+            <p></p>
+            <button class="shadow-icon-button"><i class="copy"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="article-dialogs" id="rate-dialog">
+      <div class="article-dialogs-overlay"></div>
+    </div>
+    <div class="article-dialogs" id="listen-dialog">
+      <div class="article-dialogs-overlay">
+        <div class="header">
+          <h3>{{content.actions[lang]['listen']}}<br><span>{{content.global_[lang]['listenMsg']}}</span></h3>
+          <div class="article-dialogs-close" onclick="closeArticleDialogs()">x</div>
+        </div>
+        <div class="body">
+          <audio id="player" src="/assets/articles/podcast/{{article.id}}/"></audio>
+          <div id="tabs">
+            {% for section in article.sections %}
+              <div class="listen-tab" id="{{section.audio_stop}}">
+                <strong>{{section.title[lang]}}</strong>
+                <p>{{section.subtitle[lang]}}</p>
+              </div>
+            {% endfor %}
+          </div>
+          <div id="progress-container">
+            <div id="indicators">
+              <p id="current-time"></p>
+              <p id="full-time"></p>
+            </div>
+            <div id="progress-parent">
+              <div id="progress"></div>
+            </div>
+          </div>
+          <div id="options">
+            <button class="shadow-icon-button" id="restart"><i class="restart"></i></button>
+            <button class="shadow-icon-button" id="back"><i class="seek-back"></i></button>
+            <button class="shadow-icon-button" id="pause"><i class="pause"></i></button>
+            <button class="shadow-icon-button" id="start"><i class="start"></i></button>
+            <button class="shadow-icon-button" id="forward"><i class="seek-forward"></i></button>
+            <button class="shadow-icon-button" id="repeat"><i class="repeat"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="article-dialogs" id="comments-dialog">
+      <div class="article-dialogs-overlay"></div>
+    </div>
+    <script type="text/javascript">
+      changeHeaderLogoOnScroll= false;
+      const init= ()=> {
+        lang= '{{lang}}';
+        articleId= '{{article.id}}';
+        var attachmentSection;
+        {% for section in article.sections %}
+           attachmentSection= document.querySelector('.attachment#sec-{{section.id[:6]}}')
+          switch('{{section.attachment_type}}') {
+            case 'image':
+              generateImageAttachment(attachmentSection, '#sec-{{section.id[:6]}}');
+              break;
+            case 'video':
+              generateVideoAttachment(attachmentSection, '#sec-{{section.id[:6]}}');
+              break;
+            case 'audio':
+              generateAudioAttachment(attachmentSection, '#sec-{{section.id[:6]}}');
+              break;
+            default:
+            case 'None':
+              break;
+          }
+
+        {%endfor%}
+        initializeSections({{utils.mutliple_to_dicts(article.sections) | safe}}, '{{lang}}');
+
+        document.querySelector('#share-dialog #link p').innerHTML= window.location.href;
+        document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}')
+
+
+      }
+
+      if (window.addEventListener) window.addEventListener('load', init);
+      else if (window.attachEvent) window.attachEvent('load', init);
+    </script>
+  </body>
+</html>

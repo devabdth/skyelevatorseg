@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html dir="{%if lang == 'AR'%} {{'rtl'}} {%else%} {{'ltr'}}{%endif%}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{url_for('static', filename='website/home/styles/computer.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/home/styles/mobile.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/home/styles/tablet.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/computer.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/mobile.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/tablet.css')}}"/>
+	<script src="{{url_for('static', filename='website/global/scripts/main.js')}}"></script>
+	<script src="{{url_for('static', filename='website/home/scripts/main.js')}}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='website/global/styles/images/favicon.ico')}}">
+	<title>{{content.global_[lang]["platformTitle"]}}</title>
+</head>
+<body>
+	{%if lang == 'AR'%}
+	<style>
+		:root {
+			--pff: 'Almarai';
+			--sff: 'Mondai';
+		}
+	</style>
+	{%else%}
+	<style>
+		:root {
+			--pff: 'Green Brooks';
+			--sff: 'Montserrat';
+		}
+	</style>
+	{%endif%}
+	<header>
+		<a href="/">{{content.global_[lang]["platformTitle"]}}</a>
+		<div id="nav">
+			<a href="/" class="header-nav-item active">{{content.tabs[lang]["home"]}}</a>
+			<a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
+			<a href="/spareParts/" class="header-nav-item">{{content.tabs[lang]["spareParts"]}}</a>
+			<a href="/monetization" class="header-nav-item">{{content.tabs[lang]["monetization"]}}</a>
+			<a href="/installations" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
+			<a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
+			<a href="/contact/" class="header-nav-item">{{content.tabs[lang]["contact"]}}</a>
+			<a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
+		</div>
+		<div id="options">
+			<div class="user header-dropdown">
+				<button class="main-icon-button" id="user"><i class="user"></i></button>
+				<div class="user header-dropdown-content">
+					<div id="dropdown-tabs">
+					{% if user_data %}
+						<button class="user shadow-button" onclick="window.open('/profile/', '_self');">{{content.tabs[lang]["profile"]}}</button>
+						<button class="user shadow-button" style="color: red" onclick="logout(this)">{{content.actions[lang]["logout"]}}</button>
+					{%else%}
+						<button class="user shadow-button" onclick="window.open('/login/', '_self');">{{content.actions[lang]["login"]}}</button>
+					{%endif%}
+					</div>
+				</div>
+		  </div>        
+			<div class="lang header-dropdown">
+				<button class="main-icon-button" id="lang"><i class="lang"></i></button>
+				<div class="lang header-dropdown-content">
+				  <div id="dropdown-tabs">
+					<button class="lang {%if lang == 'EN' %} active {%endif%} shadow-button" onclick="toggleLang(`{{lang}}`)">English</button>
+					<button class="lang {%if lang == 'AR' %} active {%endif%} shadow-button" onclick="toggleLang(`{{lang}}`)">العربية</button>
+				  </div>
+				</div>
+			</div>			
+			<button class="main-icon-button" onclick="toggleTheme();"><i class="theme"></i></button>
+		</div>
+	</header>
+	<section id="entry">
+		<div id="img">
+			<div id="overlay">
+				<div id="information">
+					<h1>
+						<span>{{content.global_[lang]['homeEntryMsg']}}</span><br>
+					{{content.global_[lang]['platformTitle']}}</h1>
+					<div id="options">
+						<button class="main-button">Show Portfolio</button>
+						<button class="shadow-button">Pick Quote</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="values">
+		<h2>{{content.global_[lang]["homeValuesSectionTitle"]}}</h2>
+		<p>{{content.global_[lang]["homeValuesSectionBio"]}}</p>
+		<div id="cards">
+			<div class="values-card">
+				<i class="fa fa-solid fa-chevron-up"></i>
+				<h5>{{content.global_[lang]["homeValuesSectionValesOne"]}}</h5>
+				<i class="fa fa-solid fa-chevron-down"></i>
+			</div>
+			<div class="values-card">
+				<i class="fa fa-solid fa-chevron-up"></i>
+				<h5>{{content.global_[lang]["homeValuesSectionValesTwo"]}}</h5>
+				<i class="fa fa-solid fa-chevron-down"></i>
+			</div>
+			<div class="values-card">
+				<i class="fa fa-solid fa-chevron-up"></i>
+				<h5>{{content.global_[lang]["homeValuesSectionValesThree"]}}</h5>
+				<i class="fa fa-solid fa-chevron-down"></i>
+			</div>
+		</div>
+	</section>	
+	<section id="services">
+		<h2>{{content.global_[lang]["homeServicesSectionTitle"]}}</h2>
+		<p>{{content.global_[lang]["homeServicesSectionBio"]}}</p>
+		<div id="img">
+			<div id="overlay">
+				<div id="cards">
+					<div class="service-card" id="maintainence">
+						<h3>{{content.global_[lang]["homeSerivceMaintainenceTitle"]}}</h3>
+						<p>{{content.global_[lang]["homeSerivceMaintainenceBio"]}}</p>
+						<a href="/maintainence/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
+					</div>
+					<div class="service-card" id="sparepuds">
+						<h3>{{content.global_[lang]["homeSerivceSparePartsTitle"]}}</h3>
+						<p>{{content.global_[lang]["homeSerivceSparePartsBio"]}}</p>
+						<a href="/sparepuds/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
+					</div>
+					<div class="service-card" id="monitizations">
+						<h3>{{content.global_[lang]["homeSerivceMonitizationsTitle"]}}</h3>
+						<p>{{content.global_[lang]["homeSerivceMonitizationsBio"]}}</p>
+						<a href="/monitizations/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
+					</div>
+					<div class="service-card" id="installments">
+						<h3>{{content.global_[lang]["homeSerivceInstallmentsTitle"]}}</h3>
+						<p>{{content.global_[lang]["homeSerivceInstallmentsBio"]}}</p>
+						<a href="/installments/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="blog">
+		<div id="side-bar">
+			<h3>{{content.global_[lang]["homeBlogSectionTitle"]}}</h3>
+			<button class="main-button">{{content.actions[lang]["seeMore"]}}</button>
+		</div>
+		<div id="cards">
+			{% for article in db_helper.articles.get_all_articles()[:4] %}
+			<div class="blog-card">
+				<div class="cover" style="background-image: url(/assets/articles/covers/{{article.id}});"></div>
+				<h2>{{article.title[lang]}}</h2>
+				<p>{{article.short_brief[lang][:100]}}...</p>
+				<div class="information">
+				  <div class="information-snippet" id="comments">
+					<i class="fa fa-regular fa-comment"></i>
+					<p>{{(article.comments | length) | format_numbers}}</p>
+				  </div>
+				  <div class="information-snippet" id="views">
+					<i class="fa fa-regular fa-eye"></i>
+					<p>{{article.views | format_numbers}}</p>
+				  </div>
+				</div>
+				<div class="actions">
+				  <button id="action" onclick="window.open('/blog/articles/{{article.id}}', '_self');">
+					<i class="fa fa-solid fa-chevron-right"></i>
+				  </button>
+				</div>
+			  </div>
+			{% endfor %}
+		</div>
+	</section>
+	<section id="testmonials">
+		<h2>{{content.global_[lang]["homeTestmonialsSectionTitle"]}}</h2>
+		<p>{{content.global_[lang]["homeTestmonialsSectionBio"]}}</p>
+		<div id="cards">
+			{% set testmonials= [{"msg": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lacinia ipsum ac leo mollis scelerisque a sed libero. Mauris purus turpis, consectetur in aliquam id, fermentum feugiat odio. Donec rhoncus metus in magna mattis interdum. Fusce blandit pharetra fringilla. Proin vitae placerat ipsum. Nam accumsan scelerisque nulla", "testmonial": "Amr Mostafa"},{"msg": "eget commodo magna commodo nec. Vestibulum ac ante suscipit sapien porttitor pellentesque. Donec quis leo ut lacus mollis bibendum at quis odio. In hac habitasse platea dictumst. Vivamus eget elit cursus, scelerisque metus quis, congue lectus. Praesent sodales nibh ex", "testmonial": "Amr Mostafa"},{"msg": "quis sagittis nisi accumsan at. Aenean tristique dignissim erat, vel sodales arcu egestas et. Duis pellentesque purus vitae tempus molestie. Morbi eu mi lacus. Suspendisse at magna odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos", "testmonial": "Amr Mostafa"},{"msg": "Nullam sit amet eleifend urna. Sed bibendum dolor eu ullamcorper finibus. Pellentesque imperdiet finibus leo, non vulputate nibh tincidunt nec.", "testmonial": "Amr Mostafa"},{"msg": "Donec id odio velit. Proin at est vehicula, mattis velit sit amet, sagittis augue. Phasellus elit elit, suscipit blandit dictum ut, dictum in augue. Nulla facilisi", "testmonial": "Amr Mostafa"},{"msg": "Pellentesque ex mauris, eleifend ac purus vel, mattis tincidunt dolor. Donec congue dui ac ante lacinia, id aliquam nisl tempor. Cras vulputate aliquam tortor ac dictum. Morbi euismod magna a condimentum aliquet.", "testmonial": "Amr Mostafa"},{"msg": "Maecenas nec cursus urna. Donec aliquet libero non ipsum mollis, vitae convallis quam eleifend. Nunc laoreet odio at justo mattis, ut dictum metus feugiat. Curabitur sed auctor risus. Ut porttitor nulla non arcu malesuada malesuada.", "testmonial": "Amr Mostafa"},{"msg": "Aenean tempus elit id odio placerat tincidunt. Ut nec gravida ipsum. Phasellus a nibh cursus, congue risus eu, accumsan nibh. Aliquam tristique dictum magna,", "testmonial": "Amr Mostafa"},{"msg": "et convallis odio semper tincidunt. Nulla facilisi. Vestibulum mattis dictum placerat. Sed auctor, nunc vel tempus venenatis, elit odio gravida urna, eget interdum ex odio sed tellus.", "testmonial": "Amr Mostafa"},{"msg": "Cras gravida, turpis vitae blandit eleifend, nulla justo luctus ex, a cursus felis velit id augue.", "testmonial": "Amr Mostafa"},{"msg": "In ut mauris aliquet, rutrum risus eget, lacinia enim. In blandit pretium urna sit amet facilisis. Nunc dolor ante, sollicitudin ut mattis sit amet, egestas ac ante. Aenean non tincidunt risus", "testmonial": "Amr Mostafa"},] %}
+			<button class="shadow-button backward">
+				<i class="fa fa-solid fa-chevron-left"></i>
+			</button>
+			{% for testmonial_list in (testmonials | chuncking_with_length(3)) %}
+			<div class="testmonials-fragment">
+				{% for testmonial_snippet in testmonial_list %}
+				<div class="testmonials-card">
+					<h4>{{testmonial_snippet["msg"] | format_text(125)}}</h4>
+					<p>{{testmonial_snippet["testmonial"]}}</p>
+				</div>
+				{%endfor%}
+			</div>
+			{%endfor%}
+			<button class="shadow-button active foreward">
+				<i class="fa fa-solid fa-chevron-right"></i>
+			</button>
+		</div>
+	</section>
+	<section id="counts">
+		<div class="count-property">
+			<h4><span>200+</span><br>Elevators Installed</h4>
+		</div>
+		<div class="count-property">
+			<h4><span>20+</span><br>Clients</h4>
+		</div>
+		<div class="count-property">
+			<h4><span>50+</span><br>Experienced Engineers</h4>
+		</div>
+		<div class="count-property">
+			<h4><span>15+</span><br>Products Available</h4>
+		</div>
+	</section>
+	<section id="free-visit">
+		<div id="img">
+			<div id="overlay">
+				<h2>{{content.global_[lang]["homeFreeVisitSectionTitle"] | safe}}</h2>
+				<p>{{content.global_[lang]["homeFreeVisitSectionBio"]}}</p>
+				<button class="main-button">{{content.actions[lang]["elevateYourExperience"]}}</button>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="footer-column" id="column-one">
+			<img id="logo"></img>
+			<div id="footer-msg">
+				<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+			</div>
+		</div>
+		<div class="footer-column" id="column-two">
+				<div id="tabs">
+					<a class="footer-tabs-item active" href="/">{{content.tabs[lang]["home"]}}</a>
+					<a class="footer-tabs-item" href="/maintenance/">{{content.tabs[lang]["maintenance"]}}</a>
+					<a class="footer-tabs-item" href="/spareParts/">{{content.tabs[lang]["spareParts"]}}</a>
+					<a class="footer-tabs-item" href="/monetization">{{content.tabs[lang]["monetization"]}}</a>
+					<a class="footer-tabs-item" href="/installations">{{content.tabs[lang]["installations"]}}</a>
+					<a class="footer-tabs-item" href="/blog/">{{content.tabs[lang]["blog"]}}</a>
+					<a class="footer-tabs-item" href="/contact/">{{content.tabs[lang]["contact"]}}</a>
+					<a class="footer-tabs-item" href="/aboutUs/">{{content.tabs[lang]["aboutUs"]}}</a>
+				</div>
+				<div id="contact">
+					<div id="links">
+						<a href="/privacyPolicy/">{{content.tabs[lang]['privacyPolicy']}}</a>
+						<a href="/shippingAndReturn//">{{content.tabs[lang]['shippingAndReturn']}}</a>
+						<a href="/termsAndConditions/">{{content.tabs[lang]['termsAndConditions']}}</a>
+					</div>
+					<div id="contact-info">
+						<div id="contact-info-snippet">
+							<i class="fa-solid fa-envelope"></i>
+							<p>{{layout.data['CONTACT']['PHONE']}}</p>
+						</div>
+						<div id="contact-info-snippet">
+							<i class="fa-solid fa-phone"></i>
+							<p>{{layout.data['CONTACT']['EMAIL']}}</p>
+						</div>
+					</div>
+					<div id="social-media">
+						<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+						<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+						<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+						<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+						<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+					</div>
+				</div>
+				<div id="copyright">
+					<p>{{content.global_[lang]["copyrightMsg"]}}</p>
+				</div>
+		</div>
+	</footer>
+	<script type="text/javascript">
+		const init= ()=> {
+			document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}');
+			currentMode= '{{mode}}';
+		}
+
+		if (window.addEventListener) window.addEventListener('load', init);
+		else if (window.attachEvent) window.attachEvent('onload', init);
+	</script>
+</body>
+</html>

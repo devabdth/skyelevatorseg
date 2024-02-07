@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html dir="{%if lang == 'AR'%} {{'rtl'}} {%else%} {{'ltr'}}{%endif%}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{url_for('static', filename='website/installations/styles/computer.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/installations/styles/mobile.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/installations/styles/tablet.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/computer.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/mobile.css')}}"/>
+	<link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/tablet.css')}}"/>
+	<script src="{{url_for('static', filename='website/global/scripts/main.js')}}"></script>
+	<script src="{{url_for('static', filename='website/installations/scripts/main.js')}}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='website/global/styles/images/favicon.ico')}}">
+	<title>{{content.global_[lang]["platformTitle"]}} - {{content.tabs[lang]["installations"]}}</title>
+</head>
+<body>
+	{%if lang == 'AR'%}
+	<style>
+		:root {
+			--pff: 'Almarai';
+			--sff: 'Mondai';
+		}
+	</style>
+	{%else%}
+	<style>
+		:root {
+			--pff: 'Green Brooks';
+			--sff: 'Montserrat';
+		}
+	</style>
+	{%endif%}
+	<header>
+		<a href="/">{{content.global_[lang]["platformTitle"]}}</a>
+		<div id="nav">
+			<a href="/" class="header-nav-item">{{content.tabs[lang]["home"]}}</a>
+			<a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
+			<a href="/spareParts/" class="header-nav-item">{{content.tabs[lang]["spareParts"]}}</a>
+			<a href="/monetization" class="header-nav-item">{{content.tabs[lang]["monetization"]}}</a>
+			<a href="/installations" class="header-nav-item  active">{{content.tabs[lang]["installations"]}}</a>
+			<a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
+			<a href="/contact/" class="header-nav-item">{{content.tabs[lang]["contact"]}}</a>
+			<a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
+		</div>
+		<div id="options">
+			<div class="user header-dropdown">
+				<button class="main-icon-button" id="user"><i class="user"></i></button>
+				<div class="user header-dropdown-content">
+					<div id="dropdown-tabs">
+					{% if user_data %}
+						<button class="user shadow-button" onclick="window.open('/profile/', '_self');">{{content.tabs[lang]["profile"]}}</button>
+						<button class="user shadow-button" style="color: red" onclick="logout(this)">{{content.actions[lang]["logout"]}}</button>
+					{%else%}
+						<button class="user shadow-button" onclick="window.open('/login/', '_self');">{{content.actions[lang]["login"]}}</button>
+					{%endif%}
+					</div>
+				</div>
+		  </div>        
+			<div class="lang header-dropdown">
+				<button class="main-icon-button" id="lang"><i class="lang"></i></button>
+				<div class="lang header-dropdown-content">
+				  <div id="dropdown-tabs">
+					<button class="lang {%if lang == 'EN' %} active {%endif%} shadow-button" onclick="toggleLang(`{{lang}}`)">English</button>
+					<button class="lang {%if lang == 'AR' %} active {%endif%} shadow-button" onclick="toggleLang(`{{lang}}`)">العربية</button>
+				  </div>
+				</div>
+			</div>			
+			<button class="main-icon-button" onclick="toggleTheme();"><i class="theme"></i></button>
+		</div>
+	</header>
+	<section id="entry">
+		<div id="container">
+			<img alt="A photorealistic image of a modern, sleek elevator interior featurin	g cutting-edge technology integrated within the control panel and walls. The elevator doors are open, revealing a stunning panoramic cityscape bathed in warm sunlight. The overall image conveys a sense of innovation, seamless integration, and breathtaking possibilities.">
+			<div id="overlay">
+				<h2>{{content.global_[lang]['installationsEntryTitle']}}</h2>
+				<p>{{content.global_[lang]['installationsEntrySubtitle']}}</p>
+			</div>
+		</div>
+	</section>
+	{% set packages= ["BLUE", "SILVER", "GOLD"] %}
+	<section class="installations-cards-container" id="geared-elevators">
+		<div class="title"> 
+			<div class="content">
+				<h3>{{content.global_[lang]['installationsGearedSectionTitle']}}</h3>
+				<p>{{content.global_[lang]['installationsGearedSectionSubtitle']}}</p>		
+			</div>
+			<div class="label">
+				<div class="label-snippet">
+					<i class="fa-solid fa-building"></i>
+					<p>{{content.global_[lang]['installationsGearedSectionStopsLabel']}}</p>
+				</div>
+				<div class="label-snippet">
+					<i class="fa-solid fa-person"></i>
+					<p>{{content.global_[lang]['installationsGearedSectionPeopleLabel']}}</p>
+				</div>
+				<div class="label-snippet">
+						<i class="fa-solid fa-stopwatch"></i>
+						<p>{{content.global_[lang]['installationsGearedSectionSpeedLabel']}}</p>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div id="cards">
+			{% for package in packages %}
+			<div class="installation-card {{package | lower}}">
+				<div class="glowing"></div>
+				<div class="content">
+					<div class="title">
+						<h3>{{layout.data['PLANS']['GEARED'][package]['TITLE'][lang]}}</h3>
+						<div class="badge">
+							<p>{{layout.data['PLANS']['GEARED'][package]['PRICE'] | format_price}}</p>
+						</div>
+					</div>
+					<p>{{layout.data['PLANS']['GEARED'][package]['DESC'][lang]}}</p>
+					<div class="features">
+						{% for feature in layout.data['PLANS']['GEARED'][package]['FEATURES'][lang] %}
+							<div class="feature-tile">
+								<i class="fa-solid fa-check-circle"></i>
+								<h5>{{feature}}</h5>
+							</div>
+						{%endfor%}
+					</div>
+					<div class="actions">
+						<button class="shadow-button" id="pick-plan" onclick="moreDetails(this)">{{content.actions[lang]['moreDetails']}}</button>
+						<button class="main-button" id="pick-plan" onclick="pickPlan(this)">{{content.actions[lang]['pickPlan']}}</button>
+					</div>
+				</div>
+			</div>
+			{%endfor%}
+		</div>
+	</section>
+	<section class="installations-cards-container" id="gearless-elevators">
+		<div class="title"> 
+			<div class="content">
+				<h3>{{content.global_[lang]['installationsGearlessSectionTitle']}}</h3>
+				<p>{{content.global_[lang]['installationsGearlessSectionSubtitle']}}</p>		
+			</div>
+			<div class="label">
+				<div class="label-snippet">
+					<i class="fa-solid fa-building"></i>
+					<p>{{content.global_[lang]['installationsGearlessSectionStopsLabel']}}</p>
+				</div>
+				<div class="label-snippet">
+					<i class="fa-solid fa-person"></i>
+					<p>{{content.global_[lang]['installationsGearlessSectionPeopleLabel']}}</p>
+				</div>
+				<div class="label-snippet">
+						<i class="fa-solid fa-stopwatch"></i>
+						<p>{{content.global_[lang]['installationsGearlessSectionSpeedLabel']}}</p>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div id="cards">
+			{% for package in packages %}
+			<div class="installation-card {{package | lower}}">
+				<div class="glowing"></div>
+				<div class="content">
+					<div class="title">
+						<h3>{{layout.data['PLANS']['GEARLESS'][package]['TITLE'][lang]}}</h3>
+						<div class="badge">
+							<p>{{layout.data['PLANS']['GEARLESS'][package]['PRICE'] | format_price}}</p>
+						</div>
+					</div>
+					<p>{{layout.data['PLANS']['GEARLESS'][package]['DESC'][lang]}}</p>
+					<div class="features">
+						{% for feature in layout.data['PLANS']['GEARLESS'][package]['FEATURES'][lang] %}
+							<div class="feature-tile">
+								<i class="fa-solid fa-check-circle"></i>
+								<h5>{{feature}}</h5>
+							</div>
+						{%endfor%}
+					</div>
+					<div class="actions">
+						<button class="shadow-button" id="pick-plan" onclick="moreDetails(this)">{{content.actions[lang]['moreDetails']}}</button>
+						<button class="main-button" id="pick-plan" onclick="pickPlan(this)">{{content.actions[lang]['pickPlan']}}</button>
+					</div>
+				</div>
+			</div>
+			{%endfor%}
+		</div>
+	</section>
+	<section class="installations-cards-container" id="home-lifts-elevators">
+		<div class="title"> 
+			<div class="content">
+				<h3>{{content.global_[lang]['installationsHomeLiftsSectionTitle']}}</h3>
+				<p>{{content.global_[lang]['installationsHomeLiftsSectionSubtitle']}}</p>		
+			</div>
+			<div class="label">
+				<div class="label-snippet">
+					<i class="fa-solid fa-building"></i>
+					<p>{{content.global_[lang]['installationsHomeLiftsSectionStopsLabel']}}</p>
+				</div>
+				<div class="label-snippet">
+					<i class="fa-solid fa-person"></i>
+					<p>{{content.global_[lang]['installationsHomeLiftsSectionPeopleLabel']}}</p>
+				</div>
+				<div class="label-snippet">
+						<i class="fa-solid fa-stopwatch"></i>
+						<p>{{content.global_[lang]['installationsHomeLiftsSectionSpeedLabel']}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="cards">
+			{% for package in packages %}
+			<div class="installation-card {{package | lower}}">
+				<div class="glowing"></div>
+				<div class="content">
+					<div class="title">
+						<h3>{{layout.data['PLANS']['HOME_LIFTS'][package]['TITLE'][lang]}}</h3>
+						<div class="badge">
+							<p>{{layout.data['PLANS']['HOME_LIFTS'][package]['PRICE'] | format_price}}</p>
+						</div>
+					</div>
+					<p>{{layout.data['PLANS']['HOME_LIFTS'][package]['DESC'][lang]}}</p>
+					<div class="features">
+						{% for feature in layout.data['PLANS']['HOME_LIFTS'][package]['FEATURES'][lang] %}
+							<div class="feature-tile">
+								<i class="fa-solid fa-check-circle"></i>
+								<h5>{{feature}}</h5>
+							</div>
+						{%endfor%}
+					</div>
+					<div class="actions">
+						<button class="shadow-button" id="pick-plan" onclick="moreDetails(this)">{{content.actions[lang]['moreDetails']}}</button>
+						<button class="main-button" id="pick-plan" onclick="pickPlan(this)">{{content.actions[lang]['pickPlan']}}</button>
+					</div>
+				</div>
+			</div>
+			{%endfor%}
+		</div>
+	</section>
+	<footer>
+		<div class="footer-column" id="column-one">
+			<img id="logo"></img>
+			<div id="footer-msg">
+				<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+			</div>
+		</div>
+		<div class="footer-column" id="column-two">
+				<div id="tabs">
+					<a class="footer-tabs-item" href="/">{{content.tabs[lang]["home"]}}</a>
+					<a class="footer-tabs-item" href="/maintenance/">{{content.tabs[lang]["maintenance"]}}</a>
+					<a class="footer-tabs-item" href="/spareParts/">{{content.tabs[lang]["spareParts"]}}</a>
+					<a class="footer-tabs-item" href="/monetization">{{content.tabs[lang]["monetization"]}}</a>
+					<a class="footer-tabs-item active" href="/installations">{{content.tabs[lang]["installations"]}}</a>
+					<a class="footer-tabs-item" href="/blog/">{{content.tabs[lang]["blog"]}}</a>
+					<a class="footer-tabs-item" href="/contact/">{{content.tabs[lang]["contact"]}}</a>
+					<a class="footer-tabs-item" href="/aboutUs/">{{content.tabs[lang]["aboutUs"]}}</a>
+				</div>
+				<div id="contact">
+					<div id="links">
+						<a href="/privacyPolicy/">{{content.tabs[lang]['privacyPolicy']}}</a>
+						<a href="/termsAndConditions/">{{content.tabs[lang]['termsAndConditions']}}</a>
+					</div>
+					<div id="contact-info">
+						<div id="contact-info-snippet">
+							<i class="fa-solid fa-envelope"></i>
+							<p>{{layout.data['CONTACT']['PHONE']}}</p>
+						</div>
+						<div id="contact-info-snippet">
+							<i class="fa-solid fa-phone"></i>
+							<p>{{layout.data['CONTACT']['EMAIL']}}</p>
+						</div>
+					</div>
+					<div id="social-media">
+						<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+						<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+						<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+						<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+						<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+					</div>
+				</div>
+				<div id="copyright">
+					<p>{{content.global_[lang]["copyrightMsg"]}}</p>
+				</div>
+		</div>
+	</footer>
+	<script type="text/javascript">
+		const init= ()=> {
+			document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}');
+			currentMode= '{{mode}}';
+		}
+
+		if (window.addEventListener) window.addEventListener('load', init);
+		else if (window.attachEvent) window.attachEvent('onload', init);
+	</script>
+</body>
+</html>
