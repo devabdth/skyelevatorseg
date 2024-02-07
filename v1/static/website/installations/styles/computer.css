@@ -1,0 +1,322 @@
+@media screen and (min-width: 1024px) {
+	section#entry {
+		width: 100%;
+		height: 40vw;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		background-color: var(--body-bg-color);
+		padding: 2.5vw 5%;
+	}
+
+	section#entry #container {
+		width: 100%;
+		height: 100%;
+		border-radius: 12px;
+		overflow: hidden;
+		position: relative;
+		display: flex;
+	}
+
+	section#entry #container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		position: absolute;
+		content: url(./images/entry.jpg);
+	}
+
+	section#entry #container #overlay {
+		width: 100%;
+		height: 100%;
+		background-color: rgb(0, 0, 0, 0.75);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 1vw;
+		position: absolute;
+	}
+
+
+	section#entry  #container #overlay h2 {
+		font-weight: 900;
+		font-size: 5vw;
+		color: var(--accentColor);
+		font-family: var(--pff);
+	}
+
+	section#entry  #container #overlay p {
+		font-weight: 300;
+		font-size: 1.5vw;
+		color: whitesmoke;
+		font-family: var(--sff);
+	}
+
+
+	section.installations-cards-container {
+		width: 100%;
+		height: 45vw;
+		display: flex;
+		align-items: start;
+		justify-content: start;
+		flex-direction: column;
+		padding: 2.5vw 5%;
+		background-color: var(--body-bg-color);
+	}
+
+	section.installations-cards-container > .title {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row;
+	}
+
+	section.installations-cards-container > .title .content h3 {
+		font-weight: 900;
+		font-size: 3vw;
+		color: var(--accentColor);
+		font-family: var(--pff);		
+	}
+
+	section.installations-cards-container > .title .content p {
+		font-weight: 300;
+		font-size: 1.5vw;
+		color: whitesmoke;
+		font-family: var(--sff);
+	}
+
+	section.installations-cards-container > .title .label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		column-gap: 1vw;
+		padding:1vw 2vw;
+		background-color: var(--bg-color);
+		border-radius: 12px;
+		filter: drop-shadow(0 0 4px var(--accentColor));
+		-webkit-filter: drop-shadow(0 0 4px var(--accentColor));
+		border: 1px var(--accentColor) solid;
+	}
+
+	section.installations-cards-container > .title .label .label-snippet {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		gap: 0.5vw;
+	}
+	section.installations-cards-container > .title .label .label-snippet i {
+		font-size: 1vw;
+		color: var(--accentColor);
+	}
+	section.installations-cards-container > .title .label .label-snippet p{
+		font-size: 1vw;
+		font-weight: 500;
+		font-family: var(--sff);
+		color: var(--primaryVarientColor);
+	}
+
+	section.installations-cards-container #cards {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		align-items: center;
+		align-self: center;
+		column-gap: 2vw;
+		margin-top: 2vw;
+	}
+
+	section.installations-cards-container #cards .installation-card {
+		width: 100%;
+		height: 100%;
+		background-color: var(--bg-color);
+		box-shadow: 0 0 30px 1px #111;
+		border-radius: 12px;
+		overflow: hidden;
+		position: relative;
+		transition: 500ms ease;
+	}
+	section.installations-cards-container #cards .installation-card .content{
+		width: 99%;
+		height: 99%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 10;
+		display: flex;
+		background-color: var(--bg-color);
+		border-radius: 12px;
+		padding:1vw 2vw;
+		display: flex;
+		align-items: start;
+		justify-content: center;
+		flex-direction: column;
+		gap:1vw;
+	}
+
+	section.installations-cards-container #cards .installation-card.blue .glowing {
+		background: linear-gradient(90deg, transparent, skyblue, skyblue, skyblue, skyblue, transparent);
+		animation: glow-rotation 15000ms infinite linear;
+
+	}
+	section.installations-cards-container #cards .installation-card.silver .glowing {
+		background: linear-gradient(90deg, transparent, silver, silver, silver, silver, transparent);
+		animation: glow-rotation 20000ms infinite linear;
+
+	}
+	section.installations-cards-container #cards .installation-card.gold .glowing {
+		background: linear-gradient(90deg, transparent, var(--accentColor), var(--accentColor), var(--accentColor), var(--accentColor), transparent);
+		animation: glow-rotation 25000ms infinite linear;
+	}
+
+	section.installations-cards-container #cards .installation-card .glowing {
+		height: 190%;
+		width: 100%;
+		position: absolute;
+		top: -50%;
+		left: 0;
+	}
+
+	section.installations-cards-container #cards .installation-card:hover {
+		transform: scale(1.1, 1.1);
+	}
+
+	section.installations-cards-container #cards .installation-card.blue:hover {
+		filter: drop-shadow(0 0 30px skyblue);
+		-webkit-filter: drop-shadow(0 0 30px skyblue);
+	}
+	section.installations-cards-container #cards .installation-card.silver:hover {
+		filter: drop-shadow(0 0 30px silver);
+		-webkit-filter: drop-shadow(0 0 30px silver);
+	}
+	section.installations-cards-container #cards .installation-card.gold:hover {
+		filter: drop-shadow(0 0 30px var(--accentColor));
+		-webkit-filter: drop-shadow(0 0 30px var(--accentColor));
+	}
+
+	section.installations-cards-container #cards:hover >  .installation-card:not(:hover) {
+		filter: blur(10px);
+		transform: scale(0.9, 0.9);
+	}
+
+	section.installations-cards-container #cards .installation-card .content .title {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row;
+	}
+
+	section.installations-cards-container #cards .installation-card .content .title .badge {
+		padding: 0.5vw 1vw;
+		border-radius: 50px;
+		color: var(--bg-color) !important;
+		font-weight: 700;
+		font-size: 0.75vw;
+		font-family: var(--sff);
+	}
+	section.installations-cards-container #cards .installation-card .content .title h3 {
+		font-weight: 900;
+		font-size: 2.5vw;
+		font-family: var(--pff);
+		color:var(--primaryColor);
+		transition: 500ms ease;
+	}
+
+	section.installations-cards-container #cards .installation-card .content > p {
+		font-weight: 300;
+		font-size: 1vw;
+		font-family: var(--sff);
+		color:var(--primaryVarientColor);
+	}
+
+	section.installations-cards-container #cards .installation-card .content  .features {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: start;
+		justify-content: space-between;
+		padding: 1.5vw 1vw;
+		flex-direction: column;
+	}
+
+	section.installations-cards-container #cards .installation-card .content  .features .feature-tile {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: start;
+		flex-direction: row;
+		column-gap: 1vw;
+	}
+
+	section.installations-cards-container #cards .installation-card .content  .features .feature-tile i {
+		font-size: 1vw;
+	}
+
+	section.installations-cards-container #cards .installation-card .content  .features .feature-tile h5 {
+		font-size: 0.9vw;
+		color: var(--primaryColor);
+		font-family: var(--sff);
+		font-weight: 700;
+	}
+
+
+	section.installations-cards-container #cards .installation-card.blue .badge {
+		background-color: skyblue;
+	}
+	section.installations-cards-container #cards .installation-card.blue .content  .features .feature-tile i,
+	section.installations-cards-container #cards .installation-card.blue:hover h3 {
+		color: skyblue;
+	}
+	section.installations-cards-container #cards .installation-card.silver .badge {
+		background-color: silver;
+	}
+	section.installations-cards-container #cards .installation-card.silver .content  .features .feature-tile i,
+	section.installations-cards-container #cards .installation-card.silver:hover h3 {
+		color: silver;
+	}
+	section.installations-cards-container #cards .installation-card.gold .badge {
+		background-color: var(--accentColor);
+	}
+	section.installations-cards-container #cards .installation-card.gold .content  .features .feature-tile i,
+	section.installations-cards-container #cards .installation-card.gold:hover h3 {
+		color: var(--accentColor);
+	}
+
+	section.installations-cards-container #cards .installation-card .actions {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		gap:1vw;
+		margin-top: 1vw;
+	}
+	section.installations-cards-container #cards .installation-card .actions .shadow-button {
+		white-space: nowrap;
+	}
+	section.installations-cards-container #cards .installation-card .actions .main-button{
+		width: 100%;
+		border-radius: 4px;
+	}
+
+
+
+
+	@keyframes glow-rotation {
+		0% {
+			transform: rotateZ(0deg);
+		}
+
+		0% {
+			transform: rotateZ(360deg);
+		}
+	}
+}
