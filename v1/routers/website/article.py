@@ -74,7 +74,7 @@ class ArticleRouter:
         @self.app.route(self.consts.article_route, methods=["GET"])
         def article_index(article_id):
             lang = session.get('LANG', 'EN')
-            mode = session.get('MODE', 'LIGHT')
+            mode = session.get('MODE', 'DARK')
             article = self.helper.articles.get_article_by_id(article_id)
             article.views= article.views +1
             article_= article.to_dict()

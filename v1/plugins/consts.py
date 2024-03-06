@@ -7,6 +7,12 @@ class Consts:
         self.covers_supported_extenstions: list = [
             'png', 'jpg', 'jpeg', 'gif', 'jfjf', 'webp'
         ]
+
+        self.memberships: dict= {
+            "n": {"EN": "Normal", "AR": "عادي"},
+            "p": {"EN": "Prime", "AR": "مميز"},
+            "g": {"EN": "Gold", "AR": "ذهبية"}
+        }
         self.audios_supported_extenstions: list= ['mp3', 'aac']
         self.videos_supported_extenstions: list= ['mp4', 'mpg', 'mpeg', 'flv', 'm2v']
         self.cvs_supported_extenstions: list = [
@@ -14,14 +20,10 @@ class Consts:
         ]
         self.admin_accesses= {
             "0": "Layout",
-            "1": "CRM",
-            "2": "Categories",
-            "3": "Careers",
-            "4": "Ads Spaces",
-            "5": "Writers",
-            "6": "Admins",
-            "7": "Courses",
-            "8": "Agenda",
+            "1": "Articles",
+            "2": "Tickets",
+            "3": "Admins",
+            "4": "Users"
         }
 
         self.header_fixed_tabs= [
@@ -99,6 +101,7 @@ class Consts:
             self.categories_covers= data["WEBSITE_ROUTERS"]["CATEGORIES_COVERS_ROUTE"]
             self.categories_icons= data["WEBSITE_ROUTERS"]["CATEGORIES_ICONS_ROUTE"]
             self.article_cover_route= data["WEBSITE_ROUTERS"]["ARTICLE_COVER_ROUTE"]
+            self.product_cover_route= data["WEBSITE_ROUTERS"]["PRODUCT_COVER_ROUTE"]
             self.article_route= data["WEBSITE_ROUTERS"]["ARTICLE_ROUTE"]
             self.contact_route= data["WEBSITE_ROUTERS"]["CONTACT_ROUTE"]
             self.contact_us_route= data["WEBSITE_ROUTERS"]["CONTACT_US_ROUTE"]
@@ -115,3 +118,27 @@ class Consts:
             self.who_we_are_route = data["WEBSITE_ROUTERS"]['WEBSITE_WHO_WE_ARE_ROUTE']
             self.installations_route = data["WEBSITE_ROUTERS"]['WEBSITE_INSTALLATIONS_ROUTE']
             self.services_installations_route = data["WEBSITE_ROUTERS"]['WEBSITE_SERVICES_INSTALLATIONS_ROUTE']
+            self.spare_parts_route = data["WEBSITE_ROUTERS"]['WEBSITE_SPARE_PARTS_ROUTE']
+            self.services_spare_parts_route = data["WEBSITE_ROUTERS"]['WEBSITE_SERVICES_SPARE_PARTS_ROUTE']
+            self.maintenance_route = data["WEBSITE_ROUTERS"]['WEBSITE_MAINTENANCE_ROUTE']
+            self.services_maintenance_route = data["WEBSITE_ROUTERS"]['WEBSITE_SERVICES_MAINTENANCE_ROUTE']
+            self.modernization_route = data["WEBSITE_ROUTERS"]['WEBSITE_MODERNIZATION_ROUTE']
+            self.services_modernization_route = data["WEBSITE_ROUTERS"]['WEBSITE_SERVICES_MODERNIZATION_ROUTE']
+            self.modernization_machines_covers_route = data["WEBSITE_ROUTERS"]['WEBSITE_MODERNIZATION_MACHINES_COVERS_ROUTE']
+            self.modernization_doors_covers_route = data["WEBSITE_ROUTERS"]['WEBSITE_MODERNIZATION_DOORS_COVERS_ROUTE']
+            self.modernization_controllers_covers_route = data["WEBSITE_ROUTERS"]['WEBSITE_MODERNIZATION_CONTROLLERS_COVERS_ROUTE']
+            self.modernization_decorations_covers_route = data["WEBSITE_ROUTERS"]['WEBSITE_MODERNIZATION_DECORATIONS_COVERS_ROUTE']
+
+
+
+            # Admin Routers
+            self.admin_login_route = data['ADMIN_ROUTERS']['LOGIN_ROUTE']
+            self.admin_logout_route = data['ADMIN_ROUTERS']['LOGOUT_ROUTE']
+            self.admin_layout_route = data['ADMIN_ROUTERS']['LAYOUT_ROUTE']
+            self.admin_main_page = data['ADMIN_ROUTERS']['MAIN_ROUTE']
+            self.admins_management_page = data['ADMIN_ROUTERS']['MANAGEMENT_ROUTE']
+            self.admin_articles_page = data['ADMIN_ROUTERS']['ARTICLES_ROUTE']
+            self.admin_users_page = data['ADMIN_ROUTERS']['USERS_ROUTE']
+            self.admin_tickets_page = data['ADMIN_ROUTERS']['TICKETS_ROUTE']
+
+

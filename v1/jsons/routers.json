@@ -19,6 +19,7 @@
         "CATEGORIES_COVERS_ROUTE": "/assets/categories/covers/<category_id>/",
         "CATEGORIES_ICONS_ROUTE": "/assets/categories/icons/<category_id>/",
         "ARTICLE_COVER_ROUTE": "/assets/articles/covers/<article_id>/",
+        "PRODUCT_COVER_ROUTE": "/assets/product/covers/<article_id>/",
         "CONTACT_ROUTE": "/contact/",
         "CONTACT_US_ROUTE": "/contactUs/",
         "MESSAGING_ROUTE": "/messeging/",
@@ -33,9 +34,28 @@
         "WEBSITE_ABOUT_US_ROUTE": "/aboutUs/",
         "WEBSITE_INSTALLATIONS_ROUTE": "/installations/",
         "WEBSITE_SERVICES_INSTALLATIONS_ROUTE": "/services/installations/",
-        "WEBSITE_WHO_WE_ARE_ROUTE": "/whoWeAre/"
+        "WEBSITE_SPARE_PARTS_ROUTE": "/spareParts/",
+        "WEBSITE_SERVICES_SPARE_PARTS_ROUTE": "/services/spareParts/",
+        "WEBSITE_MAINTENANCE_ROUTE": "/maintenance/",
+        "WEBSITE_SERVICES_MAINTENANCE_ROUTE": "/services/maintenance/",
+        "WEBSITE_MODERNIZATION_ROUTE": "/modernization/",
+        "WEBSITE_SERVICES_MODERNIZATION_ROUTE": "/services/modernization/",
+        "WEBSITE_WHO_WE_ARE_ROUTE": "/whoWeAre/",
+        "WEBSITE_MODERNIZATION_MACHINES_COVERS_ROUTE": "/assets/modernization/machines/<id>/",
+        "WEBSITE_MODERNIZATION_DOORS_COVERS_ROUTE": "/assets/modernization/doors/<id>/",
+        "WEBSITE_MODERNIZATION_CONTROLLERS_COVERS_ROUTE": "/assets/modernization/controllers/<id>/",
+        "WEBSITE_MODERNIZATION_DECORATIONS_COVERS_ROUTE": "/assets/modernization/decorations/<id>/"
     },
-    "ADMIN_ROUTERS": {},
+    "ADMIN_ROUTERS": {
+        "LOGIN_ROUTE": "/webapp/adminstration/login/",
+        "LOGOUT_ROUTE": "/webapp/adminstration/logout/",
+        "LAYOUT_ROUTE": "/webapp/adminstration/layout/",
+        "MAIN_ROUTE": "/webapp/adminstration/",
+        "MANAGEMENT_ROUTE": "/webapp/adminstration/admins/",
+        "ARTICLES_ROUTE": "/webapp/adminstration/articles/",
+        "USERS_ROUTE": "/webapp/adminstration/users/",
+        "TICKETS_ROUTE": "/webapp/adminstration/tickets/"
+    },
     "GLOBAL_ROUTERS":{
         "CONFIG_HANDLER": "/config/"
     }

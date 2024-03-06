@@ -1,0 +1,40 @@
+@media screen and (min-width: 1024px) {
+	section#entry {
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--body-bg-color);
+	}
+
+	#form {
+		width: 30vw;
+		height: 30vw;
+		border: 2px var(--accentColor) solid;
+		border-radius: 12px;
+		box-shadow: 0 0 30px 1px var(--accentColor);
+		background-color: var(--bg-color);
+		border-radius: 12px;
+		padding: 5vw 1vw;
+		align-items: center;
+		justify-content: space-between;
+		display: flex;
+		flex-direction: column;
+	}
+
+	#form h1 {
+		font-size: 3vw;
+		font-weight: 900;
+		color: var(--primaryColor);
+		font-family: var(--pff);
+	}
+
+	#form p#status {
+		font-family: var(--pff);
+		color: var(--primaryColor);
+		font-size: 1vw;
+		font-weight: 300;
+	}
+
+}

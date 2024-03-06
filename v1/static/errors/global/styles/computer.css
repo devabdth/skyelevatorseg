@@ -1,0 +1,54 @@
+@media screen and (min-width: 1024px) {
+  header div#logo {
+    background-image: var(--logo-256);
+  }
+
+  section.entry {
+    width: 100%;
+    padding: 2vw 5%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: var(--body-bg-color);
+  }
+
+  section.entry .header {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2vw;
+  }
+
+  section.entry h1 {
+    font-size: 6vw;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+  }
+
+  section.entry p {
+    font-size: 1.5vw;
+    font-family: var(--sff);
+    color: var(--primaryVarientColor);
+  }
+
+  section.entry .illustration {
+    width: 50%;
+    aspect-ratio: 1/1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  section.entry .illustration#not-found {
+    background-image: var(--not-found);
+  }
+  section.entry .illustration#internal-server-error {
+    background-size: contain;
+    background-image: var(--internal-server-error);
+  }
+}

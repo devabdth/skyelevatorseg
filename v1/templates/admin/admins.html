@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sky Elevators - Admins</title>
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='website/global/styles/images/symbol-512.ico')}}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='admin/admins/styles/computer.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='website/global/styles/computer.css')}}"
+    />
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='admin/admins/scripts/main.js')}}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='website/global/scripts/main.js')}}"
+    ></script>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='website/global/styles/images/favicon.ico')}}">    
+
+</head>
+  <body>
+    <style type="text/css">
+      :root {
+        --pff: "Montserrat";
+        --sff: "Montserrat";
+      }
+    </style>
+
+
+    <section class="admin">
+      <div id="left-section">
+        <div id="header">
+          <div id="logo"></div>
+          <p>{{admin_data['name']}}</p>
+        </div>
+        <div id="body">
+          <div
+            onclick="window.open(`/webapp/adminstration/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-home"></i></div>
+            <p>Home</p>
+          </div>
+          {% if "0" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/layout/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+            <p>Layout</p>
+          </div>
+          {%endif%} {% if "1" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/articles/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <p>Articles</p>
+          </div>
+          {%endif%} {% if "2" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/tickets/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-envelope"></i></div>
+            <p>Tickets</p>
+          </div>
+          {%endif%}{% if "4" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/users/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-user"></i></div>
+            <p>Users</p>
+          </div>
+          {%endif%}{% if "3" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/admins/`, '_self');"
+            class="active left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <p>Admins</p>
+          </div>
+          {%endif%}
+        </div>
+        <div id="footer">
+          <div onclick="adminLogout();" class="left-menu-tile">
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+            <p>Logout</p>
+          </div>
+        </div>
+      </div>
+      <div id="right-section">
+        <div class="body-card">
+          <div class="header">
+            <h1>Admins Management</h1>
+            <p>Manage admins that have access to edit website data!</p>
+            <div class="options">
+              <button
+                class="shadow-button"
+                onclick="openAdminsFormDialog('CREATE');"
+              >
+                Create
+              </button>
+            </div>
+          </div>
+          <div class="body">
+            <div id="cards">
+              {% for admin in db_helper.admins.admins %}
+              <div class="admin-card">
+                <h3><span>Name: </span>{{admin.name}}</h3>
+                <p><span>username: </span>{{admin.username}}</p>
+                <p><span>Email: </span>{{admin.email}}</p>
+                <p>
+                  <span>Status: </span>
+                  {%if admin.suspensed %} {{'Susupensed'}} {%else%} {{'Active'}}
+                  {%endif%}
+                </p>
+                <p><span>Accesses:</span></p>
+                <ul>
+                  {% for access in admin.accesses %}
+                  <li>{{consts.admin_accesses[access]}}</li>
+                  {%endfor%}
+                </ul>
+                <div class="options">
+                  <button
+                    onclick='openConfirmationDialog({mode: `delete`, admin: {{dumps(admin) | safe}}})'
+                    class="shadow-button"
+                    style="color: red"
+                  >
+                    Delete
+                  </button>
+                  {%if admin.suspensed %}
+                  <button
+                    class="shadow-button"
+                    onclick='openConfirmationDialog({mode: `activate`, admin: {{dumps(admin) | safe}}})'
+                  >
+                    Activate
+                  </button>
+                  | {%else%}
+                  <button
+                    class="shadow-button"
+                    onclick='openConfirmationDialog({mode: `suspense`, admin: {{dumps(admin) | safe}}})'
+                  >
+                    Suspense
+                  </button>
+                  | {%endif%}
+                  <button
+                    onclick='openAdminsFormDialog(`EDIT`, {{dumps(admin) | safe}})'
+                    class="shadow-button"
+                  >
+                    Edit
+                  </button>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="form-dialog-overlay" id="admins-from"></div>
+    <div class="form-dialog" id="admins-from">
+      <div class="header">
+        <h2></h2>
+        <div onclick="closeAdminFormDialog();">x</div>
+      </div>
+      <div class="body">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          class="single-line-field"
+        />
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+          class="single-line-field"
+        />
+        <label for="email">Email</label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email"
+          class="single-line-field"
+        />
+        <label for="accesses">Accesses</label>
+        <div id="accesses">
+          {%for access in consts.admin_accesses.keys()%}
+          <div class="access-tile" id="{{access}}">
+            {{consts.admin_accesses[access]}}
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+      <div class="options">
+        <button class="shadow-button" id="clear">Clear</button>
+        <button
+          class="shadow-button"
+          id="cancel"
+          onclick="closeAdminFormDialog();"
+        >
+          Cancel
+        </button>
+        <button class="main-button" id="submit">Submit</button>
+        <p id="status-msg"></p>
+      </div>
+    </div>
+    <div
+      class="confirmation-dialog-overlay"
+      id="confirmation-dialog-overlay"
+    ></div>
+    <div class="confirmation-dialog" id="confirmation-dialog">
+      <div class="header">
+        <h2>Confirm</h2>
+        <div onclick="closeConfirmationDialog();">x</div>
+      </div>
+      <div class="body">
+        <p></p>
+        <input
+          class="single-line-field"
+          type="password"
+          id="password"
+          placeholder="Password"
+        />
+      </div>
+      <div class="options">
+        <button
+          class="shadow-button"
+          id="cancel"
+          onclick="closeConfirmationDialog();"
+        >
+          Cancel
+        </button>
+        <button class="main-button" id="submit">Submit</button>
+        <p id="status-msg"></p>
+      </div>
+    </div>
+    <script type="text/javascript">
+      document.firstElementChild.setAttribute('data-theme', 'dark');      
+    </script>
+  </body>
+</html>

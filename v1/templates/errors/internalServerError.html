@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% if lang == 'AR' %}
+<html dir="RTL">
+  {% else %}
+  <html dir="LTR">
+    {% endif %}
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>
+        {{content.global_[lang]['platformTitle']}} -
+        {{content.errors[lang]['internalServerError']}}
+      </title>
+      <link
+        rel="icon"
+        type="image/x-icon"
+        href="{{url_for('static', filename='website/global/styles/images/symbol-512.ico')}}"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{url_for('static', filename='errors/global/styles/computer.css')}}"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{url_for('static', filename='errors/global/styles/largeTablets.css')}}"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{url_for('static', filename='errors/global/styles/smallTablets.css')}}"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{url_for('static', filename='errors/global/styles/mobile.css')}}"
+      />
+
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{url_for('static', filename='website/global/styles/computer.css')}}"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{url_for('static', filename='website/global/styles/largeTablets.css')}}"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{url_for('static', filename='website/global/styles/smallTablets.css')}}"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{url_for('static', filename='website/global/styles/mobile.css')}}"
+      />
+
+      <script
+        type="text/javascript"
+        src="{{url_for('static', filename='website/global/scripts/main.js')}}"
+      ></script>
+    </head>
+    <body>
+      <style type="text/css">
+        {% if lang == 'AR' %}
+        :root {
+          --pff: "IBM Plex Sans Arabic";
+          --sff: "Cairo";
+        }
+        {% else %}
+        :root {
+          --pff: "Raleway";
+          --sff: "Poppins";
+        }
+        {% endif %}
+      </style>
+      <header>
+        <div
+          onclick="window.open('{{consts.index_route}}', `_self`);"
+          id="logo"
+        ></div>
+      </header>
+      <section class="entry">
+        <div class="header">
+          <h1>{{content.errors[lang]["internalServerError"]}}</h1>
+          <p>{{content.errors[lang]["internalServerErrorMsg"]}}</p>
+          <div class="actions">
+            <a href="/" class="main-button"
+              >{{content.actions[lang]["goBack"]}}</a
+            >
+          </div>
+        </div>
+        <div class="illustration" id="internal-server-error"></div>
+      </section>
+    </body>
+  </html>
+</html>

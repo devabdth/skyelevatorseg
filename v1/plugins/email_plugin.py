@@ -104,3 +104,37 @@ class EmailPlugin:
 			server.quit()
 		except Exception as e:
 			print(e)
+
+	def send_notification_email(self, attachments: list= None, recipent: dict= None, subject: str= None, message: str= None):
+		if attachments is None or recipent is None or subject is None or message is None:
+			return False
+
+		try:
+			message_ =f'Hello {recipient["name"]}!\n\n{message}\n\nBest Wishes,\nSky Elevators.'
+			import smtplib
+			from email.mime.text import MIMEText
+			from email.mime.application import MIMEApplication
+
+			msg: MIMEText= MIMEText(template, "html")
+			msg['Subject']= subject
+			msg['To']= recipent['email']
+			msg['from']= self.cfg.email_model_email
+			for f in attachments or []:
+				with open(f, "rb") as fil:
+					part = MIMEApplication(
+						fil.read(),
+						Name=basename(f)
+					)
+				part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
+				msg.attach(part)
+
+			server= smtplib.SMTP_SSL("smtp.zoho.com", 465)
+			server.login(self.cfg.email_model_email, self.cfg.email_model_access_key)
+
+			server.sendmail(self.cfg.email_model_email, [recipent], msg.as_string())
+			server.quit()
+			return True
+
+		except Exception as e:
+			print(e)
+			return False

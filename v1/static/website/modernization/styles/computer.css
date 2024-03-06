@@ -1,0 +1,219 @@
+@media screen and (min-width: 1024px) {
+  section#entry {
+    width: 100%;
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--body-bg-color);
+    padding: 2.5vw 5%;
+  }
+
+  section#entry #container {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+  }
+
+  section#entry #container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    content: url(./images/entry.jpg);
+  }
+
+  section#entry #container #overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vw;
+    position: absolute;
+  }
+
+  section#entry #container #overlay h2 {
+    font-weight: 900;
+    font-size: 5vw;
+    color: var(--accentColor);
+    font-family: var(--pff);
+  }
+
+  section#entry #container #overlay p {
+    font-weight: 300;
+    font-size: 1.5vw;
+    color: whitesmoke;
+    font-family: var(--sff);
+  }
+
+  section.component {
+    background-color: var(--body-bg-color);
+    width: 100%;
+    max-height: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2vw 5%;
+    row-gap: 4vw;
+  }
+
+  section.component .header {
+    width: 100%;
+    max-height: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    flex-direction: row;
+    column-gap: 2vw;
+  }
+
+  section.component .header h3 {
+    font-weight: 900;
+    font-size: 4vw;
+    color: var(--accentColor);
+    font-family: var(--pff);
+    filter: drop-shadow(0 0 50px var(--accentColor));
+    white-space: nowrap;
+    line-height: 3vw;
+    text-align: justify;
+  }
+  section.component .header h3 span {
+    font-size: 1.5vw;
+  }
+
+  section.component .header p {
+    font-weight: 500;
+    font-size: 1vw;
+    font-family: var(--sff);
+    color: var(--primaryColor);
+  }
+
+  section.component .cards {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    row-gap: 2vw;
+    column-gap: 2vw;
+    align-items: center;
+  }
+
+  section.component#decorations .cards,
+  section.component#machines .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  section.component#controllers .cards,
+  section.component#doors .cards {
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
+  }
+
+  div.component-card {
+    width: 100%;
+    height: 20vw;
+    display: flex;
+    position: relative;
+    border: 12px;
+    transition: 500ms ease;
+  }
+
+  div.component-card:hover {
+    transform: scale(1.05);
+  }
+
+  section.component .cards:hover > div.component-card:not(:hover) {
+    transform: scale(0.95);
+    filter: blur(10px);
+  }
+
+  div.component-card .styling-border {
+    width: 100%;
+    height: 100%;
+    border: 2px var(--accentColor) solid;
+    position: absolute;
+    border-radius: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, -55%);
+    transition: 500ms ease;
+  }
+  div.component-card:hover .styling-border {
+    transform: translate(-50%, -50%);
+  }
+
+  div.component-card .content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  div.component-card .content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 500ms ease;
+  }
+
+  div.component-card:hover .content img {
+    filter: none;
+    -webkit-filter: none;
+  }
+
+  div.component-card .content .information {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    transform: translate(-50%, -50%);
+    padding: 1vw 2vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.75);
+  }
+
+  div.component-card .content .information h4 {
+    font-weight: 900;
+    font-size: 2vw;
+    font-family: var(--sff);
+    color: #f9f9fa;
+    transform: 500ms ease;
+  }
+
+  div.component-card:hover .content .information h4 {
+    color: var(--accentColor);
+  }
+
+  div.component-card .content .information p {
+    font-weight: 500;
+    font-size: 0.85vw;
+    font-family: var(--sff);
+    color: #f9fafa;
+    max-width: 60vw;
+  }
+}

@@ -32,6 +32,7 @@ class Layout:
 			self.home_ad_space_eleven: str= self.data['HOME_PAGE']['adSpaceEleven']
 			self.home_ad_space_twelve: str= self.data['HOME_PAGE']['adSpaceTwelve']
 			self.header_tabs: list= self.data['HEADER_TABS']
+			self.modernization= self.data['MODERNIZATION']
 
 			self.categories_featured_categories: list= self.data['CATEGORIES_PAGE']['featuredCategories']
 

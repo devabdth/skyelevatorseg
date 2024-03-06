@@ -4,8 +4,8 @@ from plugins.utils import Utils
 from plugins.consts import Consts
 from plugins.content import Content
 from plugins.config import Config
-from flask import Flask, session, render_template, url_for
-from json import dumps
+from flask import Flask, session, render_template, url_for, request
+from json import dumps, loads
 from sys import path
 path.insert(0, '../')
 path.insert(1, '../../')
@@ -23,6 +23,19 @@ class InstallationsRouter:
 
     def setup(self):
         self.assign_installations_index()
+        self.assign_create_installations_ticket()
+        
+    def assign_create_installations_ticket(self):
+        @self.app.route(self.consts.installations_route, methods=["POST"])
+        @self.app.route(self.consts.services_installations_route, methods=["POST"])
+        def create_installations_ticket():
+            try:
+                body= loads(request.data)
+                res: bool= self.helper.tickets.create_installation_ticket(body)
+                return self.app.response_class(status= 201 if res else 500)
+            except Exception as e:
+                print(e)
+                return self.app.response_class(status= 500)
 
     def assign_installations_index(self):
         @self.app.route(self.consts.installations_route, methods=["GET"])

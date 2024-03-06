@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sky Elevators - Adminstration</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static', filename='website/global/styles/images/symbol-512.ico')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='admin/home/styles/computer.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='website/global/styles/computer.css')}}"
+    />
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='admin/home/scripts/main.js')}}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='website/global/scripts/main.js')}}"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='website/global/styles/images/favicon.ico')}}">    
+  </head>
+  <body>
+    <style type="text/css">
+      :root {
+        --pff: "Montserrat";
+        --sff: "Montserrat";
+      }
+    </style>
+
+    <section class="admin">
+      <div id="left-section">
+        <div id="header">
+          <div id="logo"></div>
+          <p>{{admin_data['name']}}</p>
+        </div>
+        <div id="body">
+          <div
+            onclick="window.open(`/webapp/adminstration/`, '_self');"
+            class="active left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-home"></i></div>
+            <p>Home</p>
+          </div>
+          {% if "0" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/layout/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+            <p>Layout</p>
+          </div>
+          {%endif%} {% if "1" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/articles/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <p>Articles</p>
+          </div>
+          {%endif%} {% if "2" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/tickets/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-envelope"></i></div>
+            <p>Tickets</p>
+          </div>
+          {%endif%}{% if "4" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/users/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-user"></i></div>
+            <p>Users</p>
+          </div>
+          {%endif%}{% if "3" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/admins/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <p>Admins</p>
+          </div>
+          {%endif%}
+        </div>
+        <div id="footer">
+          <div onclick="adminLogout();" class="left-menu-tile">
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+            <p>Logout</p>
+          </div>
+        </div>
+      </div>
+      <div id="right-section">
+        <h1>Welcome Back, <br /><span>{{admin_data['name']}}</span></h1>
+        <div class="card" id="entry">
+          <div id="icon"><div></div></div>
+          <div id="information">
+            <div class="information-row">
+              <p class="title">Name:</p>
+              <p class="value">{{admin_data['name']}}</p>
+            </div>
+            <div class="divider"></div>
+            <div class="information-row">
+              <p class="title">Username:</p>
+              <p class="value">{{admin_data['username']}}</p>
+            </div>
+            <div class="divider"></div>
+            <div class="information-row">
+              <p class="title">Email:</p>
+              <p class="value">{{admin_data['email']}}</p>
+            </div>
+            <div class="divider"></div>
+            <div class="information-row">
+              <p class="title">Access</p>
+              <p class="value">
+                {% for access in admin_data['accesses'] %} &nbsp;-
+                {{consts.admin_accesses[access]}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {%endfor%}
+              </p>
+            </div>
+          </div>
+        </div>
+        {% if "0" in admin_data['accesses'] %}
+        <div class="card">
+          <div class="header">
+            <h3>Layout</h3>
+            <p>Edit the apperance that users see!</p>
+          </div>
+          <div class="body">
+            <div class="actions-cards">
+              <div class="action-card green">
+                <div class="icon">
+                  <i class="fa-solid fa-keyboard"></i>
+                </div>
+                <p>Edit Content</p>
+              </div>
+              <div class="action-card darkgrey">
+                <div class="icon">
+                  <i class="fa-solid fa-laptop"></i>
+                </div>
+                <p>Edit Header</p>
+              </div>
+              <div class="action-card lawngreen">
+                <div class="icon">
+                  <i class="fa-regular fa-newspaper"></i>
+                </div>
+                <p>Edit Featured Articles</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endif%}{% if "1" in admin_data['accesses'] %}
+        <div class="card">
+          <div class="header">
+            <h3>Articles</h3>
+            <p>Create Article, Remove Article, Edit Drafts</p>
+          </div>
+          <div class="body">
+            <div class="actions-cards">
+              <div class="action-card darkorange">
+                <div class="icon">
+                  <i class="fa-solid fa-newspaper"></i>
+                </div>
+                <p>Create Article</p>
+              </div>
+              <div class="action-card maroon">
+                <div class="icon">
+                  <i class="fa-solid fa-file-pen"></i>
+                </div>
+                <p>Edit Articles</p>
+              </div>
+              <div class="action-card purple">
+                <div class="icon">
+                  <i class="fa-solid fa-archive"></i>
+                </div>
+                <p>Manage Drafts</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endif%}{% if "2" in admin_data['accesses'] %}
+        <div class="card">
+          <div class="header">
+            <h3>Tickets</h3>
+            <p>Review Tickets, Manage Tickets, Response to Requests</p>
+          </div>
+          <div class="body">
+            <div class="actions-cards">
+              <div class="action-card darkblue">
+                <div class="icon">
+                  <i class="fa-solid fa-ticket"></i>
+                </div>
+                <p>Review Tickets</p>
+              </div>
+              <div class="action-card yellow">
+                <div class="icon">
+                  <i class="fa-solid fa-chart-simple"></i>
+                </div>
+                <p>Tickets Report</p>
+              </div>
+              <div class="action-card green">
+                <div class="icon">
+                  <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+                <p>Manage Tickets</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endif%} {% if "3" in admin_data['accesses'] %}
+        <div class="card">
+          <div class="header">
+            <h3>Admins</h3>
+            <p>
+              Create, Edit, Suspense, Delete admins that have access to edit
+              website content !
+            </p>
+          </div>
+          <div class="body">
+            <div class="actions-cards">
+              <div class="action-card maroon">
+                <div class="icon">
+                  <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <p>Create Admin</p>
+              </div>
+              <div class="action-card darkolivegreen">
+                <div class="icon">
+                  <i class="fa-solid fa-hammer"></i>
+                </div>
+                <p>Manage Admins</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endif%}
+      </div>
+    </section>
+    <script type="text/javascript">
+      document.firstElementChild.setAttribute('data-theme', 'dark');      
+    </script>
+  </body>
+</html>

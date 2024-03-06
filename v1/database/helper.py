@@ -10,7 +10,7 @@ from .admins import AdminsDatabaseHelper
 from .articles import ArticlesDatabaseHelper
 from .ads import AdsDatabaseHelper
 from .tickets import TicketsDatabaseHelper
-from .products import Products
+from .products import ProductsDatabaseHelper
 
 class DatabaseHelper:
     def __init__(self):
@@ -21,3 +21,4 @@ class DatabaseHelper:
         self.articles= ArticlesDatabaseHelper(self.client)
         self.tickets= TicketsDatabaseHelper(self.client)
         self.users= UsersDatabaseHelper(self.client)
+        self.products= ProductsDatabaseHelper(self.client)

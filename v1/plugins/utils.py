@@ -1,9 +1,8 @@
 from database.helper import DatabaseHelper
-from models.category import ParentCategory
 
 class Utils:
 	def mutliple_to_dicts(self, input_: list, params: dict= None):
-		return [i.to_dict(without_cats= True) if type(i) is ParentCategory else i.to_dict() for i in input_]
+		return [ i.to_dict() for i in input_]
 
 	def format_date(self, date, show_hour: bool = False):
 		if show_hour:

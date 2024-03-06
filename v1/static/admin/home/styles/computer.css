@@ -1,0 +1,210 @@
+@media screen and (min-width: 1024px) {
+  section {
+    background-color: var(--body-bg-color);
+  }
+
+  #right-section {
+    row-gap: 2vw;
+    overflow-y: auto;
+  }
+
+  #right-section h1 {
+    font-size: 2vw;
+    font-family: var(--sff);
+    color: var(--accentColor);
+    font-weight: 300;
+    margin: 2vw 0;
+  }
+
+  #right-section h1 span {
+    font-size: 4vw;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+    font-weight: 900;
+  }
+
+  #right-section .card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: var(--bg-color);
+    padding: 1vw 2vw;
+    gap: 2vw;
+  }
+  #right-section .card#entry {
+    flex-direction: row;
+  }
+
+  #right-section #entry #icon {
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 1vw var(--accentColor) solid;
+    display: flex;
+    padding: 2vw;
+  }
+
+  #right-section #entry #icon div {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: var(--symbol-512);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #right-section #entry #information {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vw;
+  }
+
+  .information-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    gap: 1vw;
+  }
+
+  .information-row .title {
+    font-size: 1vw;
+    font-weight: 500;
+    font-family: var(--pff);
+    color: var(--accentColor);
+  }
+
+  .information-row .value {
+    font-size: 1.25vw;
+    font-weight: 700;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+  }
+
+  #right-section .card .divider {
+    width: 100%;
+    height: 0.05vw;
+    background-color: #999;
+    border-radius: 50%;
+  }
+
+  #right-section .card .header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-bottom: 1vw;
+  }
+
+  #right-section .card .header h3 {
+    font-weight: 500;
+    font-size: 1.5vw;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+  }
+
+  #right-section .card .header p {
+    font-weight: 300;
+    font-size: 1vw;
+    font-family: var(--sff);
+    color: var(--primaryVarientColor);
+  }
+
+  #right-section .card .body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  #right-section .card .actions-cards {
+    width: 100%;
+    height: 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 2vw;
+  }
+
+  #right-section .card .actions-cards .action-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1vw 2vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1vw;
+    border-radius: 12px;
+    transition: 500ms ease;
+    cursor: pointer;
+  }
+
+  #right-section .card .actions-cards .action-card .icon {
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+  }
+  #right-section .card .actions-cards .action-card .icon i {
+    color: var(--primaryColor);
+    font-size: 3vw;
+  }
+
+  #right-section .card .actions-cards .action-card p {
+    font-size: 1vw;
+    font-family: var(--sff);
+    color: var(--primaryColor);
+    font-weight: 500;
+    text-align: start;
+  }
+
+  #right-section .card .actions-cards .action-card:hover {
+    transform: scale(1.1);
+  }
+
+  #right-section .card .actions-cards .action-card.yellow {
+    background-color: darkgoldenrod;
+  }
+
+  #right-section .card .actions-cards .action-card.green {
+    background-color: green;
+  }
+
+  #right-section .card .actions-cards .action-card.maroon {
+    background-color: maroon;
+  }
+
+  #right-section .card .actions-cards .action-card.darkolivegreen {
+    background-color: darkolivegreen;
+  }
+
+  #right-section .card .actions-cards .action-card.lawngreen {
+    background-color: lawngreen;
+  }
+
+  #right-section .card .actions-cards .action-card.purple {
+    background-color: purple;
+  }
+
+  #right-section .card .actions-cards .action-card.darkorange {
+    background-color: darkorange;
+  }
+
+  #right-section .card .actions-cards .action-card.darkgrey {
+    background-color: darkgrey;
+  }
+
+  #right-section .card .actions-cards .action-card.darkblue {
+    background-color: darkblue;
+  }
+}

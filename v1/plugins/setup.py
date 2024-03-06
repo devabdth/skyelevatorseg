@@ -56,6 +56,15 @@ class Setup:
 		def format_price(price):
 			return '{:20,.2f} L.E.'.format(price)
 
+		@self.app.template_filter('format_date')
+		def format_date(date):
+			value= ""
+			value+= date.split(" ")[0].replace("-", "/").replace("-", "/").replace("-", "/")
+			value+= " "
+
+			value+= date.split(" ")[1].split(".")[0]
+			return value
+
 	def assign_generate_threads(self):
 		import time
 
@@ -86,6 +95,11 @@ class Setup:
 			"../assets/articles/covers/",
 			"../assets/products/",
 			"../assets/products/images/",
+			"../assets/modernization/",
+			"../assets/modernization/machines/",
+			"../assets/modernization/doors/",
+			"../assets/modernization/controllers/",
+			"../assets/modernization/decorations/",
 		]
 		files= [
 			{
@@ -133,7 +147,23 @@ class Setup:
 
 
 	def setup_adminstration_webapp_routes(self):
-		pass
+		from routers.admin.admin import AdminRouter
+		AdminRouter(self.app).setup()
+
+		from routers.admin.home import HomeAdminRouter
+		HomeAdminRouter(self.app).setup()
+
+		from routers.admin.users import UsersAdminRouter
+		UsersAdminRouter(self.app).setup()
+
+		from routers.admin.admins import AdminsManagemnetAdminRouter
+		AdminsManagemnetAdminRouter(self.app).setup()
+
+		from routers.admin.articles import ArticlesAdminRouter
+		ArticlesAdminRouter(self.app).setup()
+
+		from routers.admin.tickets import TicketsAdminRouter
+		TicketsAdminRouter(self.app).setup()
 
 	def setup_global_routers(self):
 		from routers.globals.config import ConfigRouter
@@ -163,4 +193,13 @@ class Setup:
 
 		from routers.website.installations import InstallationsRouter
 		InstallationsRouter(self.app).setup()
+
+		from routers.website.modernization import ModernizationRouter
+		ModernizationRouter(self.app).setup()
+
+		from routers.website.maintenance import MaintenanceRouter
+		MaintenanceRouter(self.app).setup()
+
+		from routers.website.spare_parts import SparePartsRouter
+		SparePartsRouter(self.app).setup()
 

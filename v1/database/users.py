@@ -41,15 +41,14 @@ class UsersDatabaseHelper:
 					"phone_number": kwargs["phone_number"],
 					"password": kwargs["password"],
 					"joined_in": str(datetime.now()),
-					"prefered_categories": [],
-					"prefered_parent_categories": [],
 					"saves": [],
 					"comments": [],
 					"likes": [],
 					"last_log_in": str(datetime.now()),
 					"current_reading_article": "",
 					"current_reading_section": "",
-					"recent_read": []
+					"recent_read": [],
+					"membership": kwargs["membership"]
 				}
 			)
 

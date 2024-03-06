@@ -26,7 +26,7 @@
 	{%else%}
 	<style>
 		:root {
-			--pff: 'Green Brooks';
+			--pff: 'Playfair Display';
 			--sff: 'Montserrat';
 		}
 	</style>
@@ -37,38 +37,64 @@
 			<a href="/" class="header-nav-item">{{content.tabs[lang]["home"]}}</a>
 			<a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
 			<a href="/spareParts/" class="header-nav-item">{{content.tabs[lang]["spareParts"]}}</a>
-			<a href="/monetization" class="header-nav-item">{{content.tabs[lang]["monetization"]}}</a>
-			<a href="/installations" class="header-nav-item  active">{{content.tabs[lang]["installations"]}}</a>
+			<a href="/modernization" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
+			<a href="/installations" class="header-nav-item active">{{content.tabs[lang]["installations"]}}</a>
 			<a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
 			<a href="/contact/" class="header-nav-item">{{content.tabs[lang]["contact"]}}</a>
 			<a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
 		</div>
 		<div id="options">
-			<div class="user header-dropdown">
-				<button class="main-icon-button" id="user"><i class="user"></i></button>
-				<div class="user header-dropdown-content">
-					<div id="dropdown-tabs">
+			<div class="drawer-btn" onclick="openDrawer();"><label class="hamburger">
+				<input type="checkbox">
+				<svg viewBox="0 0 32 32">
+					<path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+					<path class="line" d="M7 16 27 16"></path>
+				</svg>
+			</label>
+		</div>
+		<div class="user header-dropdown">
+			<button class="main-icon-button" id="user"><i class="user"></i></button>
+			<div class="user header-dropdown-content">
+				<div id="dropdown-tabs">
 					{% if user_data %}
-						<button class="user shadow-button" onclick="window.open('/profile/', '_self');">{{content.tabs[lang]["profile"]}}</button>
-						<button class="user shadow-button" style="color: red" onclick="logout(this)">{{content.actions[lang]["logout"]}}</button>
+					<button class="user shadow-button" onclick="window.open('/profile/', '_self');">{{content.tabs[lang]["profile"]}}</button>
+					<button class="user shadow-button" style="color: red" onclick="logout(this)">{{content.actions[lang]["logout"]}}</button>
 					{%else%}
-						<button class="user shadow-button" onclick="window.open('/login/', '_self');">{{content.actions[lang]["login"]}}</button>
+					<button class="user shadow-button" onclick="window.open('/login/', '_self');">{{content.actions[lang]["login"]}}</button>
 					{%endif%}
-					</div>
 				</div>
-		  </div>        
-			<div class="lang header-dropdown">
-				<button class="main-icon-button" id="lang"><i class="lang"></i></button>
-				<div class="lang header-dropdown-content">
-				  <div id="dropdown-tabs">
+			</div>
+		</div>        
+		<div class="lang header-dropdown">
+			<button class="main-icon-button" id="lang"><i class="lang"></i></button>
+			<div class="lang header-dropdown-content">
+				<div id="dropdown-tabs">
 					<button class="lang {%if lang == 'EN' %} active {%endif%} shadow-button" onclick="toggleLang(`{{lang}}`)">English</button>
 					<button class="lang {%if lang == 'AR' %} active {%endif%} shadow-button" onclick="toggleLang(`{{lang}}`)">العربية</button>
-				  </div>
 				</div>
-			</div>			
-			<button class="main-icon-button" onclick="toggleTheme();"><i class="theme"></i></button>
+			</div>
+		</div>			
+		<div class="theme-controller">
+			<label for="theme" class="theme">
+				<span class="theme__toggle-wrap">
+					<input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
+					<span class="theme__fill"></span>
+					<span class="theme__icon">
+						<span class="theme__icon-part"></span>
+						<span class="theme__icon-part"></span>
+						<span class="theme__icon-part"></span>
+						<span class="theme__icon-part"></span>
+						<span class="theme__icon-part"></span>
+						<span class="theme__icon-part"></span>
+						<span class="theme__icon-part"></span>
+						<span class="theme__icon-part"></span>
+						<span class="theme__icon-part"></span>
+					</span>
+				</span>
+			</label>
 		</div>
-	</header>
+	</div>
+</header>
 	<section id="entry">
 		<div id="container">
 			<img alt="A photorealistic image of a modern, sleek elevator interior featurin	g cutting-edge technology integrated within the control panel and walls. The elevator doors are open, revealing a stunning panoramic cityscape bathed in warm sunlight. The overall image conveys a sense of innovation, seamless integration, and breathtaking possibilities.">
@@ -108,9 +134,6 @@
 				<div class="content">
 					<div class="title">
 						<h3>{{layout.data['PLANS']['GEARED'][package]['TITLE'][lang]}}</h3>
-						<div class="badge">
-							<p>{{layout.data['PLANS']['GEARED'][package]['PRICE'] | format_price}}</p>
-						</div>
 					</div>
 					<p>{{layout.data['PLANS']['GEARED'][package]['DESC'][lang]}}</p>
 					<div class="features">
@@ -122,8 +145,8 @@
 						{%endfor%}
 					</div>
 					<div class="actions">
-						<button class="shadow-button" id="pick-plan" onclick="moreDetails(this)">{{content.actions[lang]['moreDetails']}}</button>
-						<button class="main-button" id="pick-plan" onclick="pickPlan(this)">{{content.actions[lang]['pickPlan']}}</button>
+						<button class="shadow-button" id="more-details" onclick="window.open('/contact/', '_blank')">{{content.actions[lang]['moreDetails']}}</button>
+						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('GEARED', package)">{{content.actions[lang]['pickPlan']}}</button>
 					</div>
 				</div>
 			</div>
@@ -159,9 +182,6 @@
 				<div class="content">
 					<div class="title">
 						<h3>{{layout.data['PLANS']['GEARLESS'][package]['TITLE'][lang]}}</h3>
-						<div class="badge">
-							<p>{{layout.data['PLANS']['GEARLESS'][package]['PRICE'] | format_price}}</p>
-						</div>
 					</div>
 					<p>{{layout.data['PLANS']['GEARLESS'][package]['DESC'][lang]}}</p>
 					<div class="features">
@@ -173,8 +193,8 @@
 						{%endfor%}
 					</div>
 					<div class="actions">
-						<button class="shadow-button" id="pick-plan" onclick="moreDetails(this)">{{content.actions[lang]['moreDetails']}}</button>
-						<button class="main-button" id="pick-plan" onclick="pickPlan(this)">{{content.actions[lang]['pickPlan']}}</button>
+						<button class="shadow-button" id="more-details" onclick="window.open('/contact/', '_blank')">{{content.actions[lang]['moreDetails']}}</button>
+						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('GEARLESS', 'BLUE')">{{content.actions[lang]['pickPlan']}}</button>
 					</div>
 				</div>
 			</div>
@@ -210,9 +230,6 @@
 				<div class="content">
 					<div class="title">
 						<h3>{{layout.data['PLANS']['HOME_LIFTS'][package]['TITLE'][lang]}}</h3>
-						<div class="badge">
-							<p>{{layout.data['PLANS']['HOME_LIFTS'][package]['PRICE'] | format_price}}</p>
-						</div>
 					</div>
 					<p>{{layout.data['PLANS']['HOME_LIFTS'][package]['DESC'][lang]}}</p>
 					<div class="features">
@@ -224,8 +241,8 @@
 						{%endfor%}
 					</div>
 					<div class="actions">
-						<button class="shadow-button" id="pick-plan" onclick="moreDetails(this)">{{content.actions[lang]['moreDetails']}}</button>
-						<button class="main-button" id="pick-plan" onclick="pickPlan(this)">{{content.actions[lang]['pickPlan']}}</button>
+						<button class="shadow-button" id="more-details" onclick="window.open('/contact/', '_blank')">{{content.actions[lang]['moreDetails']}}</button>
+						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('HOME_LIFTS', 'BLUE')">{{content.actions[lang]['pickPlan']}}</button>
 					</div>
 				</div>
 			</div>
@@ -233,55 +250,167 @@
 		</div>
 	</section>
 	<footer>
-		<div class="footer-column" id="column-one">
-			<img id="logo"></img>
-			<div id="footer-msg">
-				<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+	<div class="footer-column" id="column-one">
+		<img id="logo"></img>
+		<div id="footer-msg">
+			<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+		</div>
+	</div>
+	<div class="footer-column" id="column-two">
+		<div id="tabs">
+			<a class="footer-tabs-item" href="/">{{content.tabs[lang]["home"]}}</a>
+			<a class="footer-tabs-item" href="/maintenance/">{{content.tabs[lang]["maintenance"]}}</a>
+			<a class="footer-tabs-item" href="/spareParts/">{{content.tabs[lang]["spareParts"]}}</a>
+			<a class="footer-tabs-item" href="/modernization">{{content.tabs[lang]["modernization"]}}</a>
+			<a class="footer-tabs-item active" href="/installations">{{content.tabs[lang]["installations"]}}</a>
+			<a class="footer-tabs-item" href="/blog/">{{content.tabs[lang]["blog"]}}</a>
+			<a class="footer-tabs-item" href="/contact/">{{content.tabs[lang]["contact"]}}</a>
+			<a class="footer-tabs-item" href="/aboutUs/">{{content.tabs[lang]["aboutUs"]}}</a>
+		</div>
+		<div id="contact">
+			<div id="links">
+				<a href="/privacyPolicy/">{{content.tabs[lang]['privacyPolicy']}}</a>
+				<a href="/termsAndConditions/">{{content.tabs[lang]['termsAndConditions']}}</a>
+			</div>
+			<div id="contact-info">
+				<div id="contact-info-snippet">
+					<i class="fa-solid fa-phone"></i>
+					<p>{{layout.data['CONTACT']['PHONE']}}</p>
+				</div>
+				<div id="contact-info-snippet">
+					<i class="fa-solid fa-envelope"></i>
+					<p>{{layout.data['CONTACT']['EMAIL']}}</p>
+				</div>
+			</div>
+			<div id="social-media">
+				<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+				<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+				<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+				<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+				<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
 			</div>
 		</div>
-		<div class="footer-column" id="column-two">
-				<div id="tabs">
-					<a class="footer-tabs-item" href="/">{{content.tabs[lang]["home"]}}</a>
-					<a class="footer-tabs-item" href="/maintenance/">{{content.tabs[lang]["maintenance"]}}</a>
-					<a class="footer-tabs-item" href="/spareParts/">{{content.tabs[lang]["spareParts"]}}</a>
-					<a class="footer-tabs-item" href="/monetization">{{content.tabs[lang]["monetization"]}}</a>
-					<a class="footer-tabs-item active" href="/installations">{{content.tabs[lang]["installations"]}}</a>
-					<a class="footer-tabs-item" href="/blog/">{{content.tabs[lang]["blog"]}}</a>
-					<a class="footer-tabs-item" href="/contact/">{{content.tabs[lang]["contact"]}}</a>
-					<a class="footer-tabs-item" href="/aboutUs/">{{content.tabs[lang]["aboutUs"]}}</a>
-				</div>
-				<div id="contact">
-					<div id="links">
-						<a href="/privacyPolicy/">{{content.tabs[lang]['privacyPolicy']}}</a>
-						<a href="/termsAndConditions/">{{content.tabs[lang]['termsAndConditions']}}</a>
-					</div>
-					<div id="contact-info">
-						<div id="contact-info-snippet">
-							<i class="fa-solid fa-envelope"></i>
-							<p>{{layout.data['CONTACT']['PHONE']}}</p>
-						</div>
-						<div id="contact-info-snippet">
-							<i class="fa-solid fa-phone"></i>
-							<p>{{layout.data['CONTACT']['EMAIL']}}</p>
-						</div>
-					</div>
-					<div id="social-media">
-						<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
-						<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
-						<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
-						<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
-						<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
-					</div>
-				</div>
-				<div id="copyright">
-					<p>{{content.global_[lang]["copyrightMsg"]}}</p>
-				</div>
+		<div id="copyright">
+			<p>{{content.global_[lang]["copyrightMsg"]}}</p>
 		</div>
-	</footer>
+	</div>
+</footer>
+	<div class="overlay" id="overlay"></div>
+	<div class="form" id="pick-plan-form">
+		<div class="rotating-glow" onclick="closePickPlanForm()"></div>
+		<div class="content">
+			<div class="header">
+				<h3>{{content.actions[lang]['pickPlan']}}</h3>
+				<div onclick="closePickPlanForm()"><i class="fa-solid fa-close"></i></div>
+			</div>
+			<div class="body">
+				<div class="row-fields">
+					<label>{{content.forms[lang]['firstName']}}</label>
+					<label>{{content.forms[lang]['lastName']}}</label>
+				</div>
+				<div class="row-fields">
+					<input type="name" placeholder="{{content.forms[lang]['firstName']}}" class="single-line-field" id="first-name">
+					<input type="name" placeholder="{{content.forms[lang]['lastName']}}" class="single-line-field" id="last-name">
+				</div>
+				<label>{{content.forms[lang]['email']}}</label>
+				<input type="email" placeholder="{{content.forms[lang]['email']}}" class="single-line-field" id="email">
+				<label>{{content.forms[lang]['phone']}}</label>
+				<input type="tel" placeholder="{{content.forms[lang]['phone']}}" class="single-line-field" id="phone" pattern="^01[0-2]\s\d{1,8}$">
+				<label>{{content.forms[lang]['model']}}</label>
+				<div class="row-fields" id="options">
+					<div class="select-menu" id="model-option-menu">
+						<div class="select-btn">
+						<span class="sBtn-text">{{content.forms[lang]['model']}}</span>
+						<i class="bx bx-chevron-down"></i>
+					</div>
+					<ul class="options">
+						<div>
+							<li class="option" id="GEARED">
+								<i class="fa fa-solid fa-headset"></i>
+								<span class="option-text">{{content.forms[lang]['geared']}}</span>
+						</li>
+						<li class="option" id="GEARLESS">
+							<i class="fa fa-solid fa-face-frown"></i>
+							<span class="option-text">{{content.forms[lang]['gearless']}}</span>
+						</li>
+						<li class="option" id="HOME-LIFTS">
+							<i class="fa fa-solid fa-comment-dots"></i>
+							<span class="option-text">{{content.forms[lang]['homeLift']}}</span>
+						</li>
+						<li class="option" id="hydrolic">
+							<i class="fa fa-solid fa-comment-dots"></i>
+							<span class="option-text">{{content.forms[lang]['hydrolic']}}</span>
+						</li>
+						</div>
+					</ul>
+				</div>
+			</div>
+				<label>{{content.forms[lang]['plan']}}</label>
+				<div class="row-fields" id="options">
+					<div class="select-menu" id="plan-option-menu">
+						<div class="select-btn">
+						<span class="sBtn-text">{{content.forms[lang]['plan']}}</span>
+						<i class="bx bx-chevron-down"></i>
+					</div>
+					<ul class="options">
+						<div><p>{{content.errors[lang]['selectModelFirst']}}</p>
+					</div>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fields">
+				<label>{{content.forms[lang]['address']}}</label>
+				<label>{{content.forms[lang]['area']}}</label>
+			</div>
+			<div class="row-fields" id="address-fields">
+				<input type="address" placeholder="{{content.forms[lang]['address']}}" class="single-line-field" id="address">
+				<input type="govern" placeholder="{{content.forms[lang]['area']}}" class="single-line-field" id="area">
+			</div>
+
+				<label>{{content.forms[lang]['govern']}}</label>
+				<div class="row-fields" id="options">
+					<div class="select-menu" id="govern-option-menu">
+						<div class="select-btn">
+						<span class="sBtn-text">{{content.forms[lang]['govern']}}</span>
+						<i class="bx bx-chevron-down"></i>
+					</div>
+					<ul class="options">
+						<div>
+							{%for city in content.cities[lang].keys() %}
+								<li class="option" id="city-{{city}}">
+									<span class="option-text">{{content.cities[lang][city]}}</span>
+								</li>
+							{%endfor%}
+						</div>
+					</ul>
+				</div>
+				</div>
+			</div>
+			<div class="actions">
+						<button class="shadow-button" id="cancel" onclick="closePickPlanForm()">{{content.actions[lang]['cancel']}}</button>
+						<button class="main-button" id="submit">{{content.actions[lang]['submit']}}</button>				<p class="status-msg">This is a Status Message!</p>
+			</div>
+		</div>
+	</div>
+	<div class="dialog" id="confirmation-dialog">
+		<div class="glowing"></div>
+		<div class="content">
+			<div id="icon"></div>
+			<p></p>
+			<button class="main-button" id="confirmation-dialog-submission" onclick="closeConfirmationDialog()">{{content.actions[lang]['submit']}}</button>
+		</div>
+	</div>
 	<script type="text/javascript">
 		const init= ()=> {
 			document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}');
 			currentMode= '{{mode}}';
+			pageInit({
+				plans: {{dumps(layout.data['PLANS']) | safe}},
+				errorsContent: {{dumps(content.errors) | safe}},
+				formsContent: {{dumps(content.forms) | safe}},
+				actionsContent: {{dumps(content.actions) | safe}},
+				lang: '{{lang}}'
+			});
 		}
 
 		if (window.addEventListener) window.addEventListener('load', init);

@@ -110,6 +110,32 @@ class Content:
                 "installationsHomeLiftsSectionSpeedLabel":"1 m/sec0.63 m/sec",
                 "installationsHydrolicElevatorsSectionTitle":"Strengthful & Adaptable",
                 "installationsHydrolicElevatorsSectionSubtitle":"Powerful lifting, versatile for any space and load",
+                "modernizationEntryTitle": "Revamp, Upgrade, Elevate",
+                "modernizationEntrySubtitle": "Transforming Outdated Elevators into High-Performance, Efficient, and Safe Systems",
+                "modernizationMachinesTitle": "Machines",
+                "modernizationMachinesSubtitle": "Outdated single-speed or two-speed elevator machines might be nearing retirement. Modernize your building with a sleek, multi-speed replacement. Enjoy smoother, quieter rides, reduced energy consumption, and improved efficiency. Invest in the future of your building's comfort and value.",
+                "modernizationDoorsTitle": "Doors",
+                "modernizationDoorsSubtitle": "Upgrading your entryway? Decide between automatic doors' effortless access and modern look, or manual doors' budget-friendly charm and design flexibility. Consider traffic flow, budget, aesthetics, and energy efficiency for the perfect fit!",
+                "modernizationControllersTitle": "<span>Controllers &</span><br>inverters",
+                "modernizationControllersSubtitle": "Is your elevator feeling sluggish or outdated? Consider a revitalizing replacement of its controllers and drives. This upgrade unlocks smoother rides, improved efficiency, and potentially lower energy costs. Plus, modern controllers often offer enhanced safety features and remote monitoring. Invest in a revamped elevator experience that benefits both riders and building management.",
+                "modernizationDecorationsTitle": "<span>Decorations &</span><br>fixtures",
+                "modernizationDecorationsSubtitle": "Stuck in a stale elevator ride? Breathe life into your building with creative decor! Mirror panels open up the space, while textured wallpapers add visual interest. Nature murals invite relaxation, and digital displays keep riders entertained. Consider lighting: warm tones for coziness, cool tones for modernity. Remember, accessibility reigns supreme – choose clear signage and easy-to-reach buttons. Elevate your elevator experience, floor by floor!",
+                "maintenanceEntryTitle": "Elevated Care",
+                "maintenanceEntrySubtitle": "Maximize uptime, minimize stress",
+                "maintenanceSerivcesSectionTitle": "Happy Elevators, Happy Passengers",
+                "maintenanceSerivcesSectionSubtitle": "Ensuring smooth rides and positive experiences",
+                "maintenanceServicesCardOneTitle": "Extend Equipment Life",
+                "maintenanceServicesCardOneBio": "Our professional systems and highly trained mechanics ensure comprehensive and efficient elevator maintenance. This proactive approach minimizes wear and tear, extending the lifespan of your valuable equipment and saving you money in the long run.",
+                "maintenanceServicesCardTwoTitle": "Unmatched Expertise",
+                "maintenanceServicesCardTwoBio": "Our team of qualified mechanics undergoes rigorous training to stay up-to-date on the latest industry standards and technologies. This ensures your elevator receives the specialized care it deserves, guaranteeing smooth operation and passenger safety.",
+                "maintenanceServicesCardThreeTitle": "Customer Satisfaction Guaranteed",
+                "maintenanceServicesCardThreeBio": "Our primary objective is your complete satisfaction. We achieve this by providing exceptional service, clear communication, and a dedication to keeping your elevator running flawlessly. With our commitment to excellence, you can rest assured that your passengers will always have a positive and reliable experience.",
+                "maintenancePreventingMaintenanceTitle": "<span>Prevent Downtime, <br></span>Extend Lifespan!",
+                "maintenancePreventingMaintenanceParagraph": "Why wait for your elevator to break down when you can prevent problems before they start? Our professional preventive and predictive maintenance programs are designed to identify and address potential issues before they escalate into major repairs or even complete elevator replacement. This proactive approach not only saves you money in the long run but also ensures smooth and reliable operation, keeping your passengers happy and your building running efficiently.",
+                "maintenanceSafetyTitle": "<span>Uncompromising Safety and Quality<br></span>Your Peace of Mind!",
+                "maintenanceSafetyParagraph": "Maintaining passenger safety and the optimal performance of your elevator are our top priorities. We conduct thorough and periodic safety and quality inspections, adhering to the highest industry standards. Our inspections address key components and systems, ensuring everything functions flawlessly and adheres to all regulatory requirements. This proactive approach gives you peace of mind knowing your elevator operates safely and reliably, day in and day out.",
+                "sparePartsEntryTitle": "Elevator Parts",
+                "sparePartsEntrySubtitle": "Keep Your Lifts Running Smoothly",
                 "search": "Search",
                 "trendingNow": "Trending Now",
                 "dontHaveAccount": "Don't have an account? Join us now!",
@@ -267,7 +293,7 @@ class Content:
                 "home": "Home",
                 "maintenance": "Maintenance",
                 "spareParts": "Spare Parts",
-                "monetization": "Monetization",
+                "modernization": "Modernization",
                 "installations": "Installations",
                 "blog": "Blog",
                 "articles": "Articles",
@@ -340,6 +366,12 @@ class Content:
                 "logout": "Logout",
                 "pickPlan": "Pick Plan",
                 "moreDetails": "More Details",
+                "formClearedSuccessfully": "Form Cleared Successfully!",
+                "ticketPlaced": "Your Ticket was Placed Successfully!",
+                "bookNow": "Book Now",
+                "bookMaintenance": "Book Maintenance",
+                "sendInquery": "Send Inquery",
+                "moreInfo": "More Info",
             },
             "AR": {
                 "login": "تسجيل الدخول",
@@ -376,6 +408,25 @@ class Content:
 
             }
         }
+        
+        self.forms: dict= {
+            "EN": {
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "email": "Email Adress",
+                "phone": "Phone Number",
+                "model": "Model",
+                "plan": "Plan",
+                "govern": "Govern",
+                "area": "Area",
+                "address": "Address",
+                "geared": "Geared Elevators",
+                "gearless": "Gearless Elevators",
+                "homeLift": "Home Lift",
+                "hydrolic": "Hydrolic Elevators",
+                
+            }
+        }
 
         self.placeholders: dict = {
             "EN": {
@@ -385,6 +436,7 @@ class Content:
                 "nameFieldPlaceholder": "Name",
                 "passwordFieldPlaceholder": "Enter your Password!",
                 "phoneFieldPlaceholder": "Enter your Phone Number!",
+                "addressFieldPlaceholder": "Enter your Address!",
                 "repasswordFieldPlaceholder": "Re-enter your Password!",
                 "typeYourComment": "Type your comment...!",
                 "messageFieldPlaceholder": "Type your message...!",
@@ -439,11 +491,22 @@ class Content:
                 "notFoundMsg": "We didn't found the page or data you're searching for!",
                 "internalServerError": "Internal Server Error",
                 "internalServerErrorMsg": "There is an error. Try again later!",
-                "notValidName": "Please, Enter a valid name!",
+                "notValidFirstName": "Please, Enter a valid First Name!",
+                "notValidLastName": "Please, Enter a valid Last Name!",
                 "notValidEmail": "Please, Enter a valid email!",
+                "notValidAddress": "Please, Enter a valid address!",
+                "notValidArea": "Please, Enter a valid area!",
+                "notValidModel": "Please, Select the Elevators Model!",
+                "notValidPlan": "Please, Select the Plan!",
+                "notValidGovern": "Please, Select your Govern!",
                 "notValidphoneNumber": "Please, Enter a valid phone number!",
                 "notValidMessage": "Please, Make your message more detailed!",
                 "notMessageOptionSelected": "Please, Select the request option!",
+                "selectModelFirst": "Please, Select the Model First!",
+                "formNotCompleted": "Please, Complete the form first!",
+                "loading": "Loading...",
+                "failed": "Failed!",
+                "tryAgainLater": "Try again later!"
             },
             "AR": {
                 "notFound": "غير موجود",
@@ -523,3 +586,78 @@ class Content:
                 "tryAgainLater": "Try again later!",
             }
         }
+        
+        self.cities = {
+            "EN": {
+                0: 'Alex',
+                1: 'Aswan',
+                2: 'Asyut',
+                3: 'Behira',
+                4: 'Beni Suef',
+                5: 'Cairo',
+                6: 'Dakahlia',
+                7: 'Damietta',
+                8: 'Faiyum',
+                9: 'Gharbia',
+                10: 'Giza',
+                11: 'Ismailia',
+                12: 'Kafr Sheikh',
+                13: 'Luxor',
+                14: 'Matruh',
+                15: 'Minya',
+                16: 'Monufia',
+                17: 'Wadi Geded',
+                18: 'North Sinai',
+                19: 'Port Said',
+                20: 'Qalyubia',
+                21: 'Qena',
+                22: 'Red Sea',
+                23: 'Sharqia',
+                24: 'Sohag',
+                25: 'South Sinai',
+                26: 'Suez',
+            },
+            "AR": {
+                0: "الاسكندرية",
+                1: "أسوان",
+                2: "أسيوط",
+                3: "البحيرة",
+                4: "بني سويف",
+                5: "القاهرة",
+                6: "الدقهلية",
+                7: "دمياط",
+                8: "الفيوم",
+                9: "الغربية",
+                10: "الجيزة",
+                11: "الاسماعيلية",
+                12: "كفر الشيخ",
+                13: "الأقصر",
+                14: "مرسى مطروح",
+                15: "المنيا",
+                16: "المنوفية",
+                17: "الوادي الجديد",
+                18: "شمال سيناء",
+                19: "بور سعيد ",
+                20: "القليوبية",
+                21: "قنا",
+                22: "البحر الأحمر",
+                23: "الشرقية",
+                24: "سوهاج",
+                25: "جنوب سيناء",
+                26: "السويس"
+            }
+        }
+
+        self.genders = {
+            "en": {
+                0: "Male",
+                1: "Female",
+                2: "Prefer not to say!",
+            },
+            "ar": {
+                0: "ذكر",
+                1: "أنثى",
+                2: "تفضل ألا تقول"
+            }
+        }
+

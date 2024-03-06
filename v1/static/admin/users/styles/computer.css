@@ -1,0 +1,392 @@
+@media screen and (min-width: 1024px) {
+  section {
+    background-color: var(--body-bg-color);
+  }
+
+  #right-section {
+    row-gap: 2vw;
+    overflow-y: auto;
+  }
+
+  #right-section h1 {
+    font-size: 2vw;
+    font-family: var(--sff);
+    color: var(--accentColor);
+    font-weight: 300;
+    margin: 2vw 0;
+  }
+
+  #right-section h1 span {
+    font-size: 4vw;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+    font-weight: 900;
+  }
+
+  #right-section .card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: var(--bg-color);
+    padding: 1vw 2vw;
+    gap: 2vw;
+  }
+
+  #right-section .card .header {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  #right-section .card .header h3 {
+    font-weight: 500;
+    font-size: 1.5vw;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+  }
+
+  #right-section .card .header p {
+    font-weight: 300;
+    font-size: 1vw;
+    font-family: var(--sff);
+    color: var(--primaryVarientColor);
+  }
+
+  #right-section .card .header .options {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    gap: 2vw;
+    margin-top: 2vw;
+  }
+
+  div#table {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    row-gap: 0.5vw;
+    border-radius: 12px;
+  }
+
+
+  .user-row {
+    transition: 250ms ease;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    background-color: var(--body-bg-color);
+    gap: 0.5;
+    border-radius: 12px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .user-row-header {
+    border-radius: 12px;
+    transition: 250ms ease;
+    padding: 0 0.5vw;
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    gap: 0.5vw;
+  }
+  .user-row-header#header {
+    max-height: 5vh;
+  }
+
+  .user-row-cover {
+    min-width: 64px;
+    min-height: 64px;
+    display: flex;
+    border-radius: 12px;
+    background-color: var(--bg-color);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #header .user-row-cover {
+    opacity: 0;
+  }
+
+  .user-row-id {
+    min-width: 15%;
+    max-width: 15%;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: start;
+    text-align: start;
+    font-weight: 300;
+    font-size: 0.9em;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+  }
+
+  .user-row-name {
+    min-width: 30%;
+    max-width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-align: start;
+    font-weight: 300;
+    font-size: 0.9em;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+    flex-direction: row;
+
+  }
+
+  .user-row-membership{
+    min-width: 15%;
+    max-width: 15%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    text-align: start;
+    font-weight: 300;
+    font-size: 0.9em;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+  }
+
+  .user-row-phone,
+  .user-row-email {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    text-align: start;
+    font-weight: 300;
+    font-size: 0.9em;
+    font-family: var(--pff);
+    color: var(--primaryColor);
+    min-width: 20%;
+    max-width: 20%;
+  }
+
+  .user-row-importance {
+    min-width: 15%;
+    max-width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25vw;
+    flex-direction: row;
+    gap: 0.5vw;
+  }
+
+  .user-row-currency div {
+    width: 1.5vw;
+    aspect-ratio: 2/1;
+
+  }
+
+  .user-row-importance div {
+    width: 1.5vw;
+    height: 1.5vw;
+  }
+
+  .user-row-collapsable-importance i,
+  .user-row-collapsable-cover i,
+  .user-row-currency i,
+  .user-row-importance i {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .user-row-collapsable > * {
+    display: none;
+  }
+
+  .user-row-collapsable {
+    width: 100%;
+    height: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    transition: 250ms ease;
+    max-height: 200vh;
+  }
+
+  .user-row-collapsable-body {
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 32px 1vw;
+  }
+
+  .user-row-collapsable.active {
+    height: 40vh;
+    overflow-y: auto;
+  }
+
+  .user-row-collapsable.active * {
+    display: flex;
+  }
+
+  .user-row-collapsable-column {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    row-gap: 1vw;
+  }
+  .user-row-collapsable-cover {
+    min-width: 8vw;
+    min-height: 8vw;
+    display: flex;
+    background-color: var(--bg-color);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 12px;
+    padding: 0.5vw 1vw;
+  }
+
+  .user-row-collapsable-cover div {
+    width: 100%;
+    aspect-ratio: 2/1;
+  }
+
+  .user-row-collapsable-column-tile {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 0.2vw;
+  }
+
+  .user-row-collapsable-importance {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    flex-direction: row;
+  }
+
+  .user-row-collapsable-importance div {
+    width: 2vw;
+    height: 2vw;
+  }
+
+  .user-row-collapsable-column-tile > label {
+    font-weight: 300;
+    font-size: 0.7vw;
+    color: var(--primaryColor);
+    font-family: var(--pff);
+  }
+
+  .user-row-collapsable-column-tile > h3 {
+    font-weight: 700;
+    font-size: 1vw;
+    color: var(--primaryColor);
+    font-family: var(--pff);
+  }
+
+  .user-row-collapsable-column-tile > button {
+    font-weight: 500;
+    font-size: 0.5vw !important;
+    z-index: 5;
+    font-family: var(--pff);
+    color: #111;
+    text-decoration: underline;
+    /* padding-right: 4px; */
+    padding: 4px;
+  }
+
+  .form-dialog textarea.mutli-line-field#message-field {
+    height: 30vw;
+    min-height: 30vw;
+  }
+
+  div.form-dialog div#attachments,
+  div.form-dialog div#recipients {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  div.form-dialog div.attachment-row,
+  div.form-dialog div.recipient-row {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 33% !important;
+    padding: 0.5vw 2vw;
+  }
+
+  div.form-dialog label#attachments-count,
+  div.form-dialog label#recipients-count {
+    padding: 0.5vw 2vw;
+}
+
+  div.form-dialog div.attachment-row p,
+  div.form-dialog div.recipient-row p {
+    font-weight: 900;
+    font-size: 1.25vw;
+    color: var(--primaryColor);
+    font-family: var(--pff);
+  }
+
+  div.form-dialog div.attachment-row p span,
+  div.form-dialog div.recipient-row p span {
+    color: var(--primaryVarientColor);
+    font-weight: 500;
+    font-size: 1vw;
+  }
+
+  div.form-dialog div.attachment-row div.action,
+  div.form-dialog div.recipient-row div.action {
+    color: red;
+    cursor: pointer;
+  }
+
+  div.form-dialog div.header div.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  div.form-dialog div.body > label {
+    padding: 0 1vw;
+  }
+
+  div.form-dialog div.body div.header label {
+    font-size: 1.25vw;
+  }
+
+}

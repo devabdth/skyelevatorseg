@@ -128,16 +128,17 @@
           "AR": ""
         },
         "PRICE": 500000,
+        "BUILD_DURATION": "50",
         "FEATURES": {
           "EN": [
-                "Sicor Italy geared machine",
-                "Metal press Italy ropes",
-                "Ultima true controller",
-                "Schneider France inverter",
-                "SilcomItalyautomatic car doors",
-                "SilcomItalyautomatic landingdoors",
-                "Marazi Italycarandcw guides",
-                "BFPItalySpeedgovernor"
+            "Sicor Italy geared machine",
+            "Metal press Italy ropes",
+            "Ultima true controller",
+            "Schneider France inverter",
+            "SilcomItalyautomatic car doors",
+            "SilcomItalyautomatic landingdoors",
+            "Marazi Italycarandcw guides",
+            "BFPItalySpeedgovernor"
           ],
           "AR": []
         }
@@ -152,16 +153,17 @@
           "AR": ""
         },
         "PRICE": 1000000,
+        "BUILD_DURATION": "100",
         "FEATURES": {
           "EN": [
-                "Sicor Italy geared machine",
-                "Metal press Italy ropes",
-                "Ultima true controller",
-                "Schneider inverter",
-                "FermatorSpainautomatic cardoors",
-                "FermatorSpainautomatic landingdoorsr",
-                "ChelikrayTurkey carandr cw guidesr",
-                "TTI TurkeySpeedgovernorr"
+            "Sicor Italy geared machine",
+            "Metal press Italy ropes",
+            "Ultima true controller",
+            "Schneider inverter",
+            "FermatorSpainautomatic cardoors",
+            "FermatorSpainautomatic landingdoorsr",
+            "ChelikrayTurkey carandr cw guidesr",
+            "TTI TurkeySpeedgovernorr"
           ],
           "AR": []
         }
@@ -176,15 +178,16 @@
           "AR": ""
         },
         "PRICE": 1500000,
+        "BUILD_DURATION": "150",
         "FEATURES": {
           "EN": [
-                "Sicor geared machine",
-                "Metal press Italy ropes",
-                "KAS2Scontroller",
-                "TTI TurkeySpeed governor",
-                "Door lifefoldingcarr doorr",
-                "Alphmattermanualr landingdoorsr",
-                "ChelikrayTurkey carr andcw guidesr"
+            "Sicor geared machine",
+            "Metal press Italy ropes",
+            "KAS2Scontroller",
+            "TTI TurkeySpeed governor",
+            "Door lifefoldingcarr doorr",
+            "Alphmattermanualr landingdoorsr",
+            "ChelikrayTurkey carr andcw guidesr"
           ],
           "AR": []
         }
@@ -201,16 +204,17 @@
           "AR": ""
         },
         "PRICE": 500000,
+        "BUILD_DURATION": "50",
         "FEATURES": {
           "EN": [
-                "Sicor ITALY gearless machine",
-                "Metal press Italy ropes",
-                "Ultima true / KAScontroller",
-                "DeltaTAIWAN inverter",
-                "TTI TurkeySpeedgovernor",
-                "Door lifeTurkeyfoldingcar door",
-                "Door lifeTurkeymanual landingdoors",
-                "ChelikrayTurkeycarandcw guides"
+            "Sicor ITALY gearless machine",
+            "Metal press Italy ropes",
+            "Ultima true / KAScontroller",
+            "DeltaTAIWAN inverter",
+            "TTI TurkeySpeedgovernor",
+            "Door lifeTurkeyfoldingcar door",
+            "Door lifeTurkeymanual landingdoors",
+            "ChelikrayTurkeycarandcw guides"
           ],
           "AR": []
         }
@@ -225,16 +229,17 @@
           "AR": ""
         },
         "PRICE": 1000000,
+        "BUILD_DURATION": "100",
         "FEATURES": {
           "EN": [
-              "Sicor ITALY gearless machine",
-              "Metal press Italy ropes",
-              "Ultima true controller",
-              "Schneider inverter",
-              "TTI TurkeySpeedgovernor",
-              "FermatorSpainautomatic cardoors",
-              "FermatorSpainautomatic landingdoors",
-              "ChelikrayTurkey carandcw guides"
+            "Sicor ITALY gearless machine",
+            "Metal press Italy ropes",
+            "Ultima true controller",
+            "Schneider inverter",
+            "TTI TurkeySpeedgovernor",
+            "FermatorSpainautomatic cardoors",
+            "FermatorSpainautomatic landingdoors",
+            "ChelikrayTurkey carandcw guides"
           ],
           "AR": []
         }
@@ -249,22 +254,23 @@
           "AR": ""
         },
         "PRICE": 1500000,
+        "BUILD_DURATION": "150",
         "FEATURES": {
           "EN": [
-                "Sicor ITALY gearless machine",
-                "Metal press Italy ropes",
-                "Ultimatrue controller",
-                "Schneider inverter",
-                "BFPItalySpeedgovernor",
-                "SilcomItalyautomatic car doors",
-                "SilcomItalyautomatic landing doors",
-                "Marazi Italycarandcw guides"
+            "Sicor ITALY gearless machine",
+            "Metal press Italy ropes",
+            "Ultimatrue controller",
+            "Schneider inverter",
+            "BFPItalySpeedgovernor",
+            "SilcomItalyautomatic car doors",
+            "SilcomItalyautomatic landing doors",
+            "Marazi Italycarandcw guides"
           ],
           "AR": []
         }
       }
     },
-     "HOME_LIFTS": {
+    "HOME_LIFTS": {
       "BLUE": {
         "TITLE": {
           "EN": "Sky E",
@@ -275,17 +281,18 @@
           "AR": ""
         },
         "PRICE": 500000,
+        "BUILD_DURATION": "50",
         "FEATURES": {
           "EN": [
-                "Metal press Italy ropes",
-                "Panoramic car",
-                "Super panorama landing doors",
-                "Turkey windingdrum machine",
-                "KAScontroller",
-                "Enovainverter",
-                "TTI TurkeySpeedgovernor",
-                "Decorativemetal structure",
-                "Squareshape100x100& 80x80"
+            "Metal press Italy ropes",
+            "Panoramic car",
+            "Super panorama landing doors",
+            "Turkey windingdrum machine",
+            "KAScontroller",
+            "Enovainverter",
+            "TTI TurkeySpeedgovernor",
+            "Decorativemetal structure",
+            "Squareshape100x100& 80x80"
           ],
           "AR": []
         }
@@ -300,17 +307,18 @@
           "AR": ""
         },
         "PRICE": 1000000,
+        "BUILD_DURATION": "100",
         "FEATURES": {
           "EN": [
-             "Metal press Italy ropes",
-             "Panoramic car",
-             "Super panorama landing door",
-             "Sicor Italygear-less machine",
-             "Ultimatruecontroller",
-             "Schneider Franceinverter",
-             "BFPItalySpeedgovernor",
-             "Decorativemetal structure",
-             "Circular shape 100cm - 100cm"
+            "Metal press Italy ropes",
+            "Panoramic car",
+            "Super panorama landing door",
+            "Sicor Italygear-less machine",
+            "Ultimatruecontroller",
+            "Schneider Franceinverter",
+            "BFPItalySpeedgovernor",
+            "Decorativemetal structure",
+            "Circular shape 100cm - 100cm"
           ],
           "AR": []
         }
@@ -325,19 +333,306 @@
           "AR": ""
         },
         "PRICE": 1500000,
+        "BUILD_DURATION": "150",
         "FEATURES": {
           "EN": [
-                "Metal press Italy ropes",
-                "Panoramic car",
-                "Super panorama landing door",
-                "Sicor Italy gear-less machine",
-                "Ultima true controller",
-                "Schneider France inverter",
-                "BFP Italy Speed governor",
-                "Decorative metal structure",
-                "Squareshape100x100& 80x80"
+            "Metal press Italy ropes",
+            "Panoramic car",
+            "Super panorama landing door",
+            "Sicor Italy gear-less machine",
+            "Ultima true controller",
+            "Schneider France inverter",
+            "BFP Italy Speed governor",
+            "Decorative metal structure",
+            "Squareshape100x100& 80x80"
           ],
           "AR": []
+        }
+      }
+    }
+  },
+  "MODERNIZATION": {
+    "MACHINES": {
+      "bb9103097e8cf58b": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Thyssen Germany",
+          "AR": ""
+        },
+        "id": "bb9103097e8cf58b",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "770f2ff3c9f3ed48": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Zeihl Abegg Germany",
+          "AR": ""
+        },
+        "id": "770f2ff3c9f3ed48",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "e5161a0f58157bf8": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Montinary Italy",
+          "AR": ""
+        },
+        "id": "e5161a0f58157bf8",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "922a80ddb26fc63e": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Sicor Italy",
+          "AR": ""
+        },
+        "id": "922a80ddb26fc63e",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "cc9a7ad9608795bf": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Alberto sassi Italy",
+          "AR": ""
+        },
+        "id": "cc9a7ad9608795bf",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "60b2753cc266f425": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Italy gear Italy",
+          "AR": ""
+        },
+        "id": "60b2753cc266f425",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      }
+    },
+    "DOORS": {
+      "ab6497792e52b2a4": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Selcom Italy automatic doors",
+          "AR": ""
+        },
+        "id": "ab6497792e52b2a4",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "4f277293bc860601": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Fermator Spain automatic doors",
+          "AR": ""
+        },
+        "id": "4f277293bc860601",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "f31d89516250fbdb": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "HAS Turkey automatic doors",
+          "AR": ""
+        },
+        "id": "f31d89516250fbdb",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "b0badc8f5299d9da": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "HAS Turkey manual doors",
+          "AR": ""
+        },
+        "id": "b0badc8f5299d9da",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "9ef6ba2f03875781": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Eltouny manual doors",
+          "AR": ""
+        },
+        "id": "9ef6ba2f03875781",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "e176269ce6cc6179": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Alpha matter manual doors",
+          "AR": ""
+        },
+        "id": "e176269ce6cc6179",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "f901cd74606d36e5": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "TEMECO manual door",
+          "AR": ""
+        },
+        "id": "f901cd74606d36e5",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      }
+    },
+    "CONTROLLERS": {
+      "dc6a026a95b12197": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Ultimatrue controllers",
+          "AR": ""
+        },
+        "id": "dc6a026a95b12197",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "1321f1e50d2e3285": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "SMS Italy controller",
+          "AR": ""
+        },
+        "id": "1321f1e50d2e3285",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "390317607fe41540": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "KAS controllers",
+          "AR": ""
+        },
+        "id": "390317607fe41540",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "5194b1a4496e53c5": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Gefran Italy inverter",
+          "AR": ""
+        },
+        "id": "5194b1a4496e53c5",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "7704be02efd4b4a2": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Yaskawa Japan inverter",
+          "AR": ""
+        },
+        "id": "7704be02efd4b4a2",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "d1182e2903bf72b3": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Schneider inverters",
+          "AR": ""
+        },
+        "id": "d1182e2903bf72b3",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "9fd93b1f885eedd0": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Enova China inverter",
+          "AR": ""
+        },
+        "id": "9fd93b1f885eedd0",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      }
+    },
+    "DECORATIONS": {
+      "585d5725b744f82a": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "Ultimatrue controllers",
+          "AR": ""
+        },
+        "id": "585d5725b744f82a",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "8b4cdac67bfdd49a": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "SMS Italy controller",
+          "AR": ""
+        },
+        "id": "8b4cdac67bfdd49a",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
+        }
+      },
+      "b51483334645d306": {
+        "alt": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "title": {
+          "EN": "KAS controllers",
+          "AR": ""
+        },
+        "id": "b51483334645d306",
+        "desc": {
+          "EN": "This is the Sky Gold Geared elevators' package.",
+          "AR": "This is the Sky Gold Geared elevators' package."
         }
       }
     }

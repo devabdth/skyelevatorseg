@@ -13,7 +13,7 @@ class ArticlesDatabaseHelper:
     def __init__(self, client: pymongo.MongoClient):
         self.consts: Consts= Consts()
         self.client: pymongo.MongoClient = client
-        self.database = self.client["forexology"]
+        self.database = self.client["skyElevators"]
         self.articles_collection = self.database["articles"]
         self.users_collection = self.database["users"]
 
@@ -25,7 +25,8 @@ class ArticlesDatabaseHelper:
 
     def refresh_all_articles(self):
         try:
-            self.all_articles = [Article(article) for article in list(self.articles_collection.find())]
+            self.all_articles = [Article(article) for article in list(self.articles_collection.find({ "mode": 1,}))]
+            self.all_drafts = [Article(article) for article in list(self.articles_collection.find({ "mode": 0,}))]
         except Exception as e:
             print(e)
 
@@ -66,14 +67,8 @@ class ArticlesDatabaseHelper:
         return [Article(dict(article)) for article in list(articles)]
 
 
-    def get_articles_by_category_and_parent_category(self, category, parent_category, exception= []):
-        if category is None and not parent_category is None:
-            articles = self.articles_collection.find({'parent_category': parent_category, 'id': {'$nin': exception}})
-        if not category is None and parent_category is None:
-            articles = self.articles_collection.find({'category': category, 'id': {'$nin': exception}})
-        else:
-            articles = self.articles_collection.find({'category': category, 'parent_category': parent_category, 'id': {'$nin': exception}})
-        
+    def get_articles(self, exception= []):
+        articles = self.articles_collection.find({'id': {'$nin': exception}})
         return [Article(article) for article in articles]
 
     def get_articles_by_category(self, category_id):
@@ -95,7 +90,7 @@ class ArticlesDatabaseHelper:
             print(e)
             return False
 
-    def create_article(self, payload, media, publisher, cover):
+    def create_article(self, payload, media, cover):
         try:
             sections= []
             images= []
@@ -125,7 +120,6 @@ class ArticlesDatabaseHelper:
             payload['attached_ad']= ""
             payload['id']= str(secrets.token_hex(12))
             payload["published_in"]= str(datetime.now())
-            payload["published_by"]= [publisher]
             payload["saves"]= 0
             payload["mode"]= 1
             payload["views"]= 1

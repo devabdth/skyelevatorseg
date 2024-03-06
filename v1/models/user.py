@@ -5,8 +5,6 @@ class User:
 			name: str
 			bio: str
 			joined_in: str
-			prefered_categories: list
-			prefered_parent_categories: list
 			saved_articles: list
 			followed_articles: list
 			last_log_in: str
@@ -19,15 +17,14 @@ class User:
 			{"name": "email", "type": str},
 			{"name": "password", "type": str},
 			{"name": "joined_in", "type": str},
-			{"name": "prefered_categories", "type": list},
-			{"name": "prefered_parent_categories", "type": list},
 			{"name": "saves", "type": list},
 			{"name": "comments", "type": list},
 			{"name": "likes", "type": list},
 			{"name": "last_log_in", "type": str},
 			{"name": "current_reading_article", "type": str},
 			{"name": "current_reading_section", "type": str},
-			{"name": "recent_read", "type": list}
+			{"name": "recent_read", "type": list},
+			{"name": "membership", "type": str}
 		]
 
 
@@ -53,8 +50,6 @@ class User:
 			"email": self.email,
 			"password": self.password,
 			"joined_in": self.joined_in,
-			"prefered_categories": self.prefered_categories,
-			"prefered_parent_categories": self.prefered_parent_categories,
 			"saves": self.saves,
 			"comments": self.comments,
 			"likes": self.likes,
@@ -62,4 +57,5 @@ class User:
 			"current_reading_article": self.current_reading_article,
 			"current_reading_section": self.current_reading_section,
 			"recent_read": self.recent_read,
+			"membership": self.membership,
 		}

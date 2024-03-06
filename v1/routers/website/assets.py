@@ -1,8 +1,10 @@
 import sys
 sys.path.insert(0, '../')
 
-from flask import Flask, send_file
+from flask import Flask, send_file, request, make_response
 from os.path import abspath, dirname, join, exists
+from os import mkdir
+
 
 from plugins.config import Config
 from plugins.consts import Consts
@@ -16,6 +18,7 @@ class AssetsRouter:
 
 	def setup(self):
 		self.assign_categories_icons()
+		self.assign_products_covers()
 		self.assign_articles_covers()
 		self.assign_categories_covers()
 		self.assign_user_cover()
@@ -27,6 +30,108 @@ class AssetsRouter:
 		self.assign_article_section_audio()
 		self.assign_article_section_video()
 		self.assign_get_course_section_video()
+		self.assign_modernization_machines_covers()
+		self.assign_modernization_doors_covers()
+		self.assign_modernization_controllers_covers()
+		self.assign_modernization_decorations_covers()
+		self.assign_product_name()
+	def assign_product_name(self):
+		@self.app.route('/assets/products/name/<prod_name>/', methods=["GET"])
+		def product_by_name_index(prod_name):
+			path_= abspath(join(dirname(__file__), '../../assets/products/images/{}'.format(prod_name)))
+			return send_file(path_)
+
+		
+	def assign_modernization_decorations_covers(self):
+		@self.app.route(self.consts.modernization_decorations_covers_route, methods=["GET"])
+		def modernization_decorations_covers(id):
+			try:
+				covers_path: str= abspath(join(dirname(__file__), '../../assets/modernization/decorations/'))
+				if not exists(covers_path):
+					mkdir(covers_path)
+					return self.app.response_class(status=404)
+
+				for ext in self.consts.covers_supported_extenstions:
+					cover_path= join(covers_path, '{}.{}'.format(id, ext))
+					if exists(cover_path):
+						return send_file(cover_path, mimetype='image/{}'.format(ext))
+
+				return self.app.response_class(status=404)
+
+				
+				return self.app.response_class(status= 500)
+			except Exception as e:
+				print(e)
+				return self.app.response_class(status= 500)
+		
+		
+	def assign_modernization_controllers_covers(self):
+		@self.app.route(self.consts.modernization_controllers_covers_route, methods=["GET"])
+		def modernization_controllers_covers(id):
+			try:
+				covers_path: str= abspath(join(dirname(__file__), '../../assets/modernization/controllers/'))
+				if not exists(covers_path):
+					mkdir(covers_path)
+					return self.app.response_class(status=404)
+
+				for ext in self.consts.covers_supported_extenstions:
+					cover_path= join(covers_path, '{}.{}'.format(id, ext))
+					if exists(cover_path):
+						return send_file(cover_path, mimetype='image/{}'.format(ext))
+
+				return self.app.response_class(status=404)
+
+				
+				return self.app.response_class(status= 500)
+			except Exception as e:
+				print(e)
+				return self.app.response_class(status= 500)
+		
+		
+	def assign_modernization_doors_covers(self):
+		@self.app.route(self.consts.modernization_doors_covers_route, methods=["GET"])
+		def modernization_doors_covers(id):
+			try:
+				covers_path: str= abspath(join(dirname(__file__), '../../assets/modernization/doors/'))
+				if not exists(covers_path):
+					mkdir(covers_path)
+					return self.app.response_class(status=404)
+
+				for ext in self.consts.covers_supported_extenstions:
+					cover_path= join(covers_path, '{}.{}'.format(id, ext))
+					if exists(cover_path):
+						return send_file(cover_path, mimetype='image/{}'.format(ext))
+
+				return self.app.response_class(status=404)
+
+				
+				return self.app.response_class(status= 500)
+			except Exception as e:
+				print(e)
+				return self.app.response_class(status= 500)
+		
+		
+	def assign_modernization_machines_covers(self):
+		@self.app.route(self.consts.modernization_machines_covers_route, methods=["GET"])
+		def modernization_machines_covers(id):
+			try:
+				covers_path: str= abspath(join(dirname(__file__), '../../assets/modernization/machines/'))
+				if not exists(covers_path):
+					mkdir(covers_path)
+					return self.app.response_class(status=404)
+
+				for ext in self.consts.covers_supported_extenstions:
+					cover_path= join(covers_path, '{}.{}'.format(id, ext))
+					if exists(cover_path):
+						return send_file(cover_path, mimetype='image/{}'.format(ext))
+
+				return self.app.response_class(status=404)
+
+				
+				return self.app.response_class(status= 500)
+			except Exception as e:
+				print(e)
+				return self.app.response_class(status= 500)
 		
 	def assign_user_cover(self):
 		@self.app.route(self.consts.user_cover_route, methods=["GET"])
@@ -83,8 +188,8 @@ class AssetsRouter:
 					path_= f'../../assets/courses/sessions/{course_id}/{session_id}.{ext}'
 					print(abspath(join(dirname(__file__), path_)))
 					if (exists(abspath(join(dirname(__file__), path_)))):
-						 res= make_response(send_file(abspath(join(dirname(__file__), path_))))
-						 return res
+						res= make_response(send_file(abspath(join(dirname(__file__), path_))))
+						return res
 
 				return self.app.response_class(status= 404)
 			except Exception as e:
@@ -137,6 +242,22 @@ class AssetsRouter:
 		@self.app.route(self.consts.article_cover_route, methods=["GET"])
 		def articles_covers(article_id):
 			covers_path: str= abspath(join(dirname(__file__), '../../assets/covers/articles/'))
+			if not exists(covers_path):
+				mkdir(covers_path)
+				return self.app.response_class(status=404)
+
+
+			for ext in self.consts.covers_supported_extenstions:
+				cover_path= join(covers_path, '{}.{}'.format(article_id, ext))
+				if exists(cover_path):
+					return send_file(cover_path, mimetype='image/{}'.format(ext))
+
+			return self.app.response_class(status=404)
+
+	def assign_products_covers(self):
+		@self.app.route(self.consts.product_cover_route, methods=["GET"])
+		def products_covers(article_id):
+			covers_path: str= abspath(join(dirname(__file__), '../../assets/covers/products/'))
 			if not exists(covers_path):
 				mkdir(covers_path)
 				return self.app.response_class(status=404)
