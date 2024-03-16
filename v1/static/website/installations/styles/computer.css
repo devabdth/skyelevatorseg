@@ -282,7 +282,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     column-gap: 0.5vw;
     border-radius: 12px;
@@ -291,11 +291,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 1vw 2vw;
+    padding: 5vw 20vw;
+    flex-wrap: wrap;
   }
 
   section#all-installations .all-installations-snippet {
-    width: 100%;
+    width: 15vw;
     display: flex;
     align-items: start;
     justify-content: center;
@@ -304,7 +305,6 @@
     background-color: var(--bg-color);
     border-radius: 12px;
     transition: 500ms ease;
-    min-width: 15vw;
   }
 
   section#all-installations .all-installations-snippet:hover {
