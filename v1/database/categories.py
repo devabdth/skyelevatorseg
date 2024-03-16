@@ -50,7 +50,7 @@ class CategoriesDatabaseHelper:
 
 		return result
 
-	def create_category(self, data, icon, cover):
+	def create_category(self, data, icon):
 		try:
 			cid= str(secrets.token_hex(12))
 
@@ -64,13 +64,13 @@ class CategoriesDatabaseHelper:
 					'EN': data['enBio'],
 					'AR': data['arBio'],
 				},
-				'tags': list(data['tags'])
+				'tags': list(data['tags']),
+				'alt': data['alt']
 			})
 			self.categories.append(cat)
 			res= self.write_data()
 			if res:
 				icon.save(join(self.icons_dir, f'{cid}.{icon.filename.split(".")[-1]}'))
-				cover.save(join(self.covers_dir, f'{cid}.{cover.filename.split(".")[-1]}'))
 				return True
 			return False
 		except Exception as e:
@@ -94,7 +94,7 @@ class CategoriesDatabaseHelper:
 			print(e)
 			return False
 
-	def update_category(self, payload, icon, cover):
+	def update_category(self, payload, icon):
 		try:
 			cat_id= payload['id']
 			del payload['id']
@@ -118,11 +118,6 @@ class CategoriesDatabaseHelper:
 						remove_file(join(self.icons_dir, f'{cat_id}.{ext}'))
 				icon.save(join(self.icons_dir, f'{cat_id}.{icon.filename.split(".")[-1]}'))
 
-			if not cover == None:
-				for ext in self.consts.covers_supported_extenstions:
-					if exists(join(self.covers_dir, f'{cat_id}.{ext}')):
-						remove_file(join(self.covers_dir, f'{cat_id}.{ext}'))				
-				cover.save(join(self.covers_dir, f'{cat_id}.{cover.filename.split(".")[-1]}'))
 			for cat in self.categories:
 				if cat.id == cat_id:
 					for key in payload.keys():

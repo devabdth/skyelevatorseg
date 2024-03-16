@@ -72,7 +72,7 @@ const initUI = (customArticles, customDrafts) => {
                     <h3 class="article-row-collapsable-article">${new Date(article.published_in).toLocaleString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</h3>
                 </div>
                 <div class="article-row-collapsable-column-tile">
-                    <label>Tags</label>
+                    <label>Tags / Keywords</label>
                     <h3 class="article-row-collapsable-article">${article.tags.toString()}</h3>
                 </div>
                 <div class="article-row-collapsable-column-tile">
@@ -166,7 +166,7 @@ const initUI = (customArticles, customDrafts) => {
             </div>
             <div class="article-row-collapsable-column">
                 <div class="article-row-collapsable-column-tile">
-                    <label>Tags</label>
+                    <label>Tags / Keywords</label>
                     <h3 class="article-row-collapsable-article">${article.tags.toString()}</h3>
                 </div>
                 <div class="article-row-collapsable-column-tile">

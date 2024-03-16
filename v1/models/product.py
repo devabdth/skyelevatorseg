@@ -5,9 +5,10 @@ class Product:
             {'name': 'name', 'type': dict},
             {'name': 'bio', 'type': dict},
             {'name': 'assets', 'type': list},
+            {'name': 'tags', 'type': list},
             {'name': 'category', 'type': str},
-            {'name': 'code', 'type': str},
             {'name': 'specs', 'type': dict},
+            {'name': 'alt', 'type': str},
         ]
 
         for param in self.params:
@@ -27,6 +28,7 @@ class Product:
             'bio': self.bio,
             'assets': self.assets,
             'category': self.category,
-            'code': self.code,
             'specs': self.specs,
+            'alt': self.alt,
+            "tags": self.tags,
         }

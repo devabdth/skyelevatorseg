@@ -150,6 +150,47 @@
 		box-shadow: 0 0 30px 1px var(--accentColor);
 	}
 
+	section#services #cards .service-card > div {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap:  0.5vw;
+		flex-direction: row;
+	}
+
+	section#services #cards .service-card .icon {
+		width: 2vw;
+		height: 2vw;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	section#services #cards .service-card .icon i {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 100%;
+		height: 100%;
+		display: flex;
+	}
+
+	section#services #cards .service-card .icon i.modernization {
+		background-image: url(./images/modernizations.png);
+	}
+
+	section#services #cards .service-card .icon i.maintenance {
+		background-image: url(./images/maintenance.png);
+	}
+
+	section#services #cards .service-card .icon i.installations {
+		background-image: url(./images/installations.png);
+	}
+
+	section#services #cards .service-card .icon i.spareParts {
+		background-image: url(./images/spareParts.png);
+	}
 	section#services #cards .service-card h3 {
 		font-weight: 700;
 		font-size: 1.5vw;
@@ -487,11 +528,11 @@
 	}
 
 	section#free-visit #overlay h2 {
-		font-size: 5vw;
+		font-size: 8vw;
 		font-weight: 900;
 		color: rgba(255, 255, 255, 1);
 		color: var(--accentColor);
-		line-height: 3vw;
+		line-height: 7vw;
 		text-align: center;
 		text-shadow: 0 0 30px  var(--accentColor);
 		font-family: var(--pff);
@@ -499,7 +540,7 @@
 
 	section#free-visit #overlay h2 span {
 		color: rgba(255, 255, 255, 0.8);
-		font-size: 2vw;
+		font-size: 0.75vw;
 		font-family: var(--sff);
 		font-weight: 500;
 		line-height: 4vw;
@@ -509,6 +550,7 @@
 	section#free-visit #overlay p {
 		color: whitesmoke;
 		font-size: 0.75vw;
+		padding: 0 10vw;
 		font-family: var(--sff);
 		font-weight: 500;
 		text-align: justify;

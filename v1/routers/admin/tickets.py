@@ -26,6 +26,8 @@ class TicketsAdminRouter:
 
 	def setup(self):
 		self.assign_index()
+		self.assign_archived_tickets_index()
+		self.assign_archive_ticket()
 
 	def assign_archive_ticket(self):
 		@self.app.route(self.consts.admin_tickets_page, methods=["PATCH"])
@@ -36,19 +38,19 @@ class TicketsAdminRouter:
 					return self.app.response_class(status= 403)
 
 				if body['mode'] == 'MAINTENANCE':
-					return self.self.app.response_class(status= 200 if self.helper.tickets.archive_maintenance_ticket(body['ticketId']) == 1 else 500)
+					return self.app.response_class(status= 200 if self.helper.tickets.archive_maintenance_ticket(body['ticket']) == 1 else 500)
 
 				if body['mode'] == 'INSTALLATIONS':
-					return self.self.app.response_class(status= 200 if self.helper.tickets.archive_installations_ticket(body['ticketId']) == 1 else 500)
+					return self.app.response_class(status= 200 if self.helper.tickets.archive_installations_ticket(body['ticket']) == 1 else 500)
 
 				if body['mode'] == 'SPARE_PARTS':
-					return self.self.app.response_class(status= 200 if self.helper.tickets.archive_spare_parts_ticket(body['ticketId']) == 1 else 500)
+					return self.app.response_class(status= 200 if self.helper.tickets.archive_spare_parts_ticket(body['ticket']) == 1 else 500)
 
 				if body['mode'] == 'MODERNIZATION':
-					return self.self.app.response_class(status= 200 if self.helper.tickets.archive_modernization_ticket(body['ticketId']) == 1 else 500)
+					return self.app.response_class(status= 200 if self.helper.tickets.archive_modernization_ticket(body['ticket']) == 1 else 500)
 
 				if body['mode'] == 'GLOBAL':
-					return self.self.app.response_class(status= 200 if self.helper.tickets.archive_global_ticket(body['ticketId']) == 1 else 500)
+					return self.app.response_class(status= 200 if self.helper.tickets.archive_global_ticket(body['ticket']) == 1 else 500)
 
 				return self.app.response_class(status= 500)
 			except Exception as e:
@@ -62,6 +64,11 @@ class TicketsAdminRouter:
 			aid= session.get('ADMIN_ID')
 			if  aid == None:
 				return redirect(self.consts.admin_login_route)
+
+			admin_data= self.helper.admins.get_admin_by_username(aid)
+			if '2' not in admin_data['accesses']:
+				return redirect(self.consts.admin_main_page)
+
 			self.layout.load()
 			self.helper.admins.load_admins()
 			self.helper.tickets.refresh_all_tickets()
@@ -78,5 +85,35 @@ class TicketsAdminRouter:
 				utils= self.utils,
 				layout= self.layout,
 				dumps= dumps,
-				admin_data= self.helper.admins.get_admin_by_username(aid)
+				admin_data= admin_data
+			)
+
+	def assign_archived_tickets_index(self):
+		@self.app.route(f'{self.consts.admin_tickets_page}/archived/', methods=["GET"])
+		def admin_archived_tickets_index():
+			aid= session.get('ADMIN_ID')
+			if  aid == None:
+				return redirect(self.consts.admin_login_route)
+
+			admin_data= self.helper.admins.get_admin_by_username(aid)
+			if '2' not in admin_data['accesses']:
+				return redirect(self.consts.admin_main_page)
+
+			self.layout.load()
+			self.helper.admins.load_admins()
+			self.helper.tickets.refresh_all_tickets()
+			lang= session.get('LANG', 'EN')
+			mode= session.get('MODE', 'DARK')
+			return render_template(
+				'/admin/archived_tickets.html',
+				content= self.content,
+				cfg= self.cfg,
+				consts= self.consts,
+				lang= lang,
+				mode= mode,
+				db_helper= self.helper,
+				utils= self.utils,
+				layout= self.layout,
+				dumps= dumps,
+				admin_data= admin_data
 			)

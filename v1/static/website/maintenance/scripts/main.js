@@ -19,7 +19,7 @@ const pageInit= (props)=> {
 		option.addEventListener("click", () => {
 			let selectedOption = option.querySelector(".option-text");
 			sBtn_text.innerText = selectedOption.innerHTML;
-			currentSelectedGovern = selectedOption.parentElement.id.split('-')[0];
+			currentSelectedGovern = selectedOption.parentElement.id.split('-')[1];
 
 			governOptionMenu.classList.remove("active");
 		});

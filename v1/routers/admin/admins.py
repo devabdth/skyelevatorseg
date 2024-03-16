@@ -146,6 +146,11 @@ class AdminsManagemnetAdminRouter:
 			aid= session.get('ADMIN_ID')
 			if  aid == None:
 				return redirect(self.consts.admin_login_route)
+
+			admin_data= self.helper.admins.get_admin_by_username(aid)
+			if '3' not in admin_data['accesses']:
+				return redirect(self.consts.admin_main_page)
+				
 			self.layout.load()
 			self.helper.admins.load_admins()
 			lang= session.get('LANG', 'EN')
@@ -161,5 +166,6 @@ class AdminsManagemnetAdminRouter:
 				utils= self.utils,
 				layout= self.layout,
 				dumps= dumps,
-				admin_data= self.helper.admins.get_admin_by_username(aid)
+				admin_data= admin_data
+				
 			)

@@ -4,12 +4,29 @@ const toggleUserRow = (element) => {
     collapse.classList.toggle('active');
 }
 
-const openUserNotificationDialog= (allUsers) => {
+const openUserNotificationDialog= (allUsers, customRecipent) => {
     notificationRecipients= [];
     attachments= [];
     document.querySelector('.form-dialog#user-notification-dialog').style.display= 'flex';
     document.querySelector('.form-dialog-overlay#user-notification-dialog').style.display= 'flex';
 
+    if (customRecipent !== undefined) {
+        document.querySelector('div.form-dialog#user-notification-dialog').querySelector('button.main-button#recipients-dropdown').style.display= 'none'
+        const rows= document.querySelector('div.form-dialog div.body #recipients');
+
+        const row= document.createElement('div');
+        row.classList.add('recipient-row');
+        row.setAttribute('id', `rr-${customRecipent.id.substring(0, 4)}${customRecipent.id.substring(customRecipent.id.length-4, customRecipent.id.length)}`);
+        console.log(customRecipent)
+        row.innerHTML= `
+        <p class='recipient-data'>${customRecipent.name === undefined ? (customRecipent.fname + ' ' + customRecipent.lname) : customRecipent.name} <span>(${customRecipent.email}, ${customRecipent.phone_number})</span></p>
+        `;
+
+        notificationRecipients.push(customRecipent)
+        rows.appendChild(row);
+        updateRecipientsCount();
+        
+    };
     document.querySelector('.form-dialog#user-notification-dialog div.body div.actions button.shadow-button#clear-reciepeints-data').onclick= clearRecipeintsList;
     document.querySelector('.form-dialog#user-notification-dialog div.body div.actions button.shadow-button#select-all-reciepeints').onclick= () => { selectAllRecipeints(allUsers) };
     updateRecipientsCount();    

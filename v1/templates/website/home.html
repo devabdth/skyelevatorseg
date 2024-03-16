@@ -2,6 +2,7 @@
 <html dir="{%if lang == 'AR'%} {{'rtl'}} {%else%} {{'ltr'}}{%endif%}">
 <head>
 	<meta charset="utf-8">
+<meta name="description" content="{{content.global_[lang]['shortDescription']}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{url_for('static', filename='website/home/styles/computer.css')}}"/>
 	<link rel="stylesheet" href="{{url_for('static', filename='website/home/styles/mobile.css')}}"/>
@@ -35,10 +36,10 @@
 		<a href="/">{{content.global_[lang]["platformTitle"]}}</a>
 		<div id="nav">
 			<a href="/" class="header-nav-item active">{{content.tabs[lang]["home"]}}</a>
+			<a href="/installations" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
+			<a href="/modernization" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
 			<a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
 			<a href="/spareParts/" class="header-nav-item">{{content.tabs[lang]["spareParts"]}}</a>
-			<a href="/modernization" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
-			<a href="/installations" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
 			<a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
 			<a href="/contact/" class="header-nav-item">{{content.tabs[lang]["contact"]}}</a>
 			<a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
@@ -103,8 +104,8 @@
 					<span>{{content.global_[lang]['homeEntryMsg']}}</span><br>
 				{{content.global_[lang]['platformTitle']}}</h1>
 				<div id="options">
-					<button class="main-button">Show Portfolio</button>
-					<button class="shadow-button">Pick Quote</button>
+					<button class="main-button" onclick="window.open('/aboutUs/', '_self')">{{content.tabs[lang]['aboutUs']}}</button>
+					<button class="shadow-button">{{content.actions[lang]['requestSiteVisit']}}</button>
 				</div>
 			</div>
 		</div>
@@ -137,25 +138,37 @@
 	<div id="img">
 		<div id="overlay">
 			<div id="cards">
-				<div class="service-card" id="maintainence">
-					<h3>{{content.global_[lang]["homeSerivceMaintainenceTitle"]}}</h3>
-					<p>{{content.global_[lang]["homeSerivceMaintainenceBio"]}}</p>
-					<a href="/maintainence/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
+				<div class="service-card" id="installations">
+					<div>
+						<div class="icon"><i class="installations"></i></div>
+						<h3>{{content.global_[lang]["homeSerivceInstallationsTitle"]}}</h3>
+					</div>
+					<p>{{content.global_[lang]["homeSerivceInstallationsBio"]}}</p>
+					<a href="/installations/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
 				</div>
-				<div class="service-card" id="sparepuds">
-					<h3>{{content.global_[lang]["homeSerivceSparePartsTitle"]}}</h3>
+				<div class="service-card" id="modernization">
+					<div>
+						<div class="icon"><i class="modernization"></i></div>
+						<h3>{{content.global_[lang]["homeSerivceModernizationTitle"]}}</h3>
+					</div>
+					<p>{{content.global_[lang]["homeSerivceModernizationBio"]}}</p>
+					<a href="/modernization/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
+				</div>
+				<div class="service-card" id="maintenance">
+					<div>
+						<div class="icon"><i class="maintenance"></i></div>
+						<h3>{{content.global_[lang]["homeSerivceMaintenanceTitle"]}}</h3>
+					</div>
+					<p>{{content.global_[lang]["homeSerivceMaintenanceBio"]}}</p>
+					<a href="/maintenance/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
+				</div>
+				<div class="service-card" id="spareParts">
+					<div>
+						<div class="icon"><i class="spareParts"></i></div>
+						<h3>{{content.global_[lang]["homeSerivceSparePartsTitle"]}}</h3>
+					</div>
 					<p>{{content.global_[lang]["homeSerivceSparePartsBio"]}}</p>
-					<a href="/sparepuds/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
-				</div>
-				<div class="service-card" id="monitizations">
-					<h3>{{content.global_[lang]["homeSerivceMonitizationsTitle"]}}</h3>
-					<p>{{content.global_[lang]["homeSerivceMonitizationsBio"]}}</p>
-					<a href="/monitizations/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
-				</div>
-				<div class="service-card" id="installments">
-					<h3>{{content.global_[lang]["homeSerivceInstallmentsTitle"]}}</h3>
-					<p>{{content.global_[lang]["homeSerivceInstallmentsBio"]}}</p>
-					<a href="/installments/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
+					<a href="/spareParts/" class="main-button">{{content.actions[lang]["seeMore"]}}</a>
 				</div>
 			</div>
 		</div>
@@ -191,7 +204,7 @@
 		{% endfor %}
 	</div>
 </section>
-<section id="testmonials">
+<!-- <section id="testmonials">
 	<h2>{{content.global_[lang]["homeTestmonialsSectionTitle"]}}</h2>
 	<p>{{content.global_[lang]["homeTestmonialsSectionBio"]}}</p>
 	<div id="cards">
@@ -214,7 +227,7 @@
 		</button>
 	</div>
 </section>
-<section id="counts">
+ --><section id="counts">
 	<div class="count-property">
 		<h4><span>200+</span><br>Elevators Installed</h4>
 	</div>
@@ -231,17 +244,17 @@
 <section id="free-visit">
 	<div id="img">
 		<div id="overlay">
-			<h2>{{content.global_[lang]["homeFreeVisitSectionTitle"] | safe}}</h2>
-			<p>{{content.global_[lang]["homeFreeVisitSectionBio"]}}</p>
-			<button class="main-button">{{content.actions[lang]["elevateYourExperience"]}}</button>
+			<h2>{{content.global_[lang]["homeProjectManagementSectionTitle"] | safe}}</h2>
+			<p>{{content.global_[lang]["homeProjectManagementSectionBio"]}}</p>
+			<button class="main-button" onclick="window.open('/installations/', '_self');">{{content.actions[lang]["pickPlan"]}}</button>
 		</div>
 	</div>
 </section>
 <footer>
 	<div class="footer-column" id="column-one">
-		<img id="logo"></img>
+		<img id="logo" alt="Sky Elevators {{content.global_[lang]['shortDescription']}}" />
 		<div id="footer-msg">
-			<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+			<h4>{{content.global_[lang]["shortDescription"]}}</h4>
 		</div>
 	</div>
 	<div class="footer-column" id="column-two">
@@ -271,11 +284,21 @@
 				</div>
 			</div>
 			<div id="social-media">
-				<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
-				<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
-				<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
-				<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{% if layout.data['CONTACT']['FACEBOOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['LINKEDIN'] != "" %}
+					<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['INSTAGRAM'] != "" %}
+					<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['TIKTOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['X-TWITTER'] != "" %}
+					<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{%endif%}
 			</div>
 		</div>
 		<div id="copyright">
@@ -287,6 +310,7 @@
 	const init= ()=> {
 		document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}');
 		currentMode= '{{mode}}';
+if (currentMode === 'DARK') document.querySelector('input#theme').checked= true;
 	}
 
 	if (window.addEventListener) window.addEventListener('load', init);

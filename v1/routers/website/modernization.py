@@ -31,7 +31,7 @@ class ModernizationRouter:
         def create_modernization_ticket():
             try:
                 body= loads(request.data)
-                res: bool= self.helper.tickets.create_installation_ticket(body)
+                res: bool= self.helper.tickets.create_modernization_ticket(body)
                 return self.app.response_class(status= 201 if res else 500)
             except Exception as e:
                 print(e)

@@ -21,10 +21,10 @@ const initializeFragments = (articles, lang, categories, actionsContent) => {
 		labellingSection.classList.add('labelling');
 
 		const dateLabel = document.createElement('p'), categoryLabel = document.createElement('p');
-		categoryLabel.classList.add('category');
-		let category = categories.filter(cat => cat['id'] == article['category'])[0];
-		categoryLabel.innerText = category['name'][lang];
-		labellingSection.appendChild(categoryLabel);
+		// categoryLabel.classList.add('category');
+		// let category = categories.filter(cat => cat['id'] == article['category'])[0];
+		// categoryLabel.innerText = category['name'][lang];
+		// labellingSection.appendChild(categoryLabel);
 
 		dateLabel.classList.add('date');
 		const date = Date(article['published_in']);
@@ -32,16 +32,16 @@ const initializeFragments = (articles, lang, categories, actionsContent) => {
 		
 		const actions = document.createElement('div');
 		actions.classList.add('actions')
+		// <button class='shadow-button' >${actionsContent[lang]['seeRelativeArticles']}</button>
 		actions.innerHTML = `
-		<button class='shadow-button' >${actionsContent[lang]['seeRelativeArticles']}</button>
 		<button class='main-button'>${actionsContent[lang]['readArticle']}</button>
 		`
 		actions.querySelector('.main-button').onclick = () => {
 			window.open(`/blog/articles/${article['id']}`, '_self');
 		}
-		actions.querySelector('.shadow-button').onclick = () => {
-			window.open(`/blog/categories/${article['category']}`, '_self')
-		}
+		// actions.querySelector('.shadow-button').onclick = () => {
+		// 	window.open(`/blog/categories/${article['category']}`, '_self')
+		// }
 
 
 

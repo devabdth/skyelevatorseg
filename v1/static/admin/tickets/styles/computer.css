@@ -84,7 +84,7 @@
   }
 
   div#fragments-controllers div.fragment-controller {
-    padding: 0.5vw 2vw;
+    padding: 0.5vw 1vw;
     font-weight: 300;
     font-size: 1vw;
     font-family: var(--pff);
@@ -198,18 +198,37 @@
     font-family: "Poppins";
   }
 
-  .ticket-row-sender-phone,
+  .ticket-row-section,
+  .ticket-row-sender-govern,
+  .ticket-row-sender-plan,
+  .ticket-row-sender-model {
+    min-width: 6.5%;
+    max-width: 6.5%;
+  }
+
+  .ticket-row-sender-phone {
+    min-width: 12%;
+    max-width: 12%;
+  }
+
+  .ticket-row-sender-category,
+  .ticket-row-sender-spare-part {
+    min-width: 25%;
+    max-width: 25%;
+  }
   .ticket-row-sender-email,
   .ticket-row-sender {
-    min-width: 22%;
-    max-width: 22%;
+    min-width: 20%;
+    max-width: 20%;
   }
 
-  .ticket-row-time {
-    min-width: 9%;
-    max-width: 9%;
-  }
-
+  .ticket-row-sender-category,
+  .ticket-row-sender-spare-part,
+  .ticket-row-sender-time,
+  .ticket-row-sender-plan,
+  .ticket-row-sender-model,
+  .ticket-row-section,
+  .ticket-row-sender-govern,
   .ticket-row-time,
   .ticket-row-sender-phone,
   .ticket-row-sender-email,
@@ -265,7 +284,7 @@
     height: 100%;
     display: none;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     flex-direction: row;
     padding: 32px 1vw;
   }
@@ -282,7 +301,7 @@
   .ticket-row-collapsable-column {
     display: flex;
     align-items: start;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
     width: 20%;
     height: 100%;

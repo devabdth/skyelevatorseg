@@ -58,6 +58,9 @@ class Setup:
 
 		@self.app.template_filter('format_date')
 		def format_date(date):
+			import numpy as np
+			if isinstance(date, (int, np.integer)):
+				date= f'{datetime.datetime.fromtimestamp(date/1000.0)}'
 			value= ""
 			value+= date.split(" ")[0].replace("-", "/").replace("-", "/").replace("-", "/")
 			value+= " "
@@ -155,6 +158,15 @@ class Setup:
 
 		from routers.admin.users import UsersAdminRouter
 		UsersAdminRouter(self.app).setup()
+
+		from routers.admin.layout import LayoutAdminRouter
+		LayoutAdminRouter(self.app).setup()
+
+		from routers.admin.categories import CategoriesAdminRouter
+		CategoriesAdminRouter(self.app).setup()
+
+		from routers.admin.spare_parts import SparePartsAdminRouter
+		SparePartsAdminRouter(self.app).setup()
 
 		from routers.admin.admins import AdminsManagemnetAdminRouter
 		AdminsManagemnetAdminRouter(self.app).setup()

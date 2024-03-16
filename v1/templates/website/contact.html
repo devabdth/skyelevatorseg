@@ -2,6 +2,7 @@
 <html dir="{%if lang == 'AR'%} {{'rtl'}} {%else%} {{'ltr'}}{%endif%}">
 <head>
 	<meta charset="utf-8">
+<meta name="description" content="{{content.global_[lang]['shortDescription']}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{url_for('static', filename='website/contact/styles/computer.css')}}"/>
 	<link rel="stylesheet" href="{{url_for('static', filename='website/contact/styles/mobile.css')}}"/>
@@ -41,10 +42,10 @@
 		<a href="/">{{content.global_[lang]["platformTitle"]}}</a>
 		<div id="nav">
 			<a href="/" class="header-nav-item">{{content.tabs[lang]["home"]}}</a>
+			<a href="/installations" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
+			<a href="/modernization" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
 			<a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
 			<a href="/spareParts/" class="header-nav-item">{{content.tabs[lang]["spareParts"]}}</a>
-			<a href="/modernization" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
-			<a href="/installations" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
 			<a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
 			<a href="/contact/" class="header-nav-item active">{{content.tabs[lang]["contact"]}}</a>
 			<a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
@@ -150,9 +151,9 @@
 	<!-- Apply for free visit section -->
 	<footer>
 	<div class="footer-column" id="column-one">
-		<img id="logo"></img>
+		<img id="logo" alt="Sky Elevators {{content.global_[lang]['shortDescription']}}" />
 		<div id="footer-msg">
-			<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+			<h4>{{content.global_[lang]["shortDescription"]}}</h4>
 		</div>
 	</div>
 	<div class="footer-column" id="column-two">
@@ -182,11 +183,21 @@
 				</div>
 			</div>
 			<div id="social-media">
-				<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
-				<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
-				<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
-				<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{% if layout.data['CONTACT']['FACEBOOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['LINKEDIN'] != "" %}
+					<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['INSTAGRAM'] != "" %}
+					<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['TIKTOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['X-TWITTER'] != "" %}
+					<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{%endif%}
 			</div>
 		</div>
 		<div id="copyright">
@@ -198,6 +209,7 @@
 		const init= ()=> {
 			document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}');
 			currentMode= '{{mode}}';
+if (currentMode === 'DARK') document.querySelector('input#theme').checked= true;
 			initContent({{content.actions[lang] | safe}}, {{content.errors[lang] | safe}}, {{content.status[lang] | safe}});
 		}
 

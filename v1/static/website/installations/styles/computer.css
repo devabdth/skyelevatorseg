@@ -54,6 +54,300 @@
     font-family: var(--sff);
   }
 
+  section#we-serve {
+    width: 100%;
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 2.5vw 5%;
+    background-color: var(--bg-color);
+  }
+
+  section#we-serve > #content {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  section#we-serve > #content h3{
+    font-weight: 900;
+    font-size: 3vw;
+    font-family: var(--pff);
+    color: var(--accentColor);
+  }
+
+  section#we-serve > #content p{
+    font-weight: 300;
+    font-size: 1vw;
+    font-family: var(--sff);
+    color: var(--primaryColor);
+  }
+
+  section#we-serve > #cards {
+    width: 70%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2vw;
+    column-gap: 4vw;
+  }
+
+  div.we-serve-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    border-radius: 12px;
+    transition: 500ms ease;
+  }
+
+  div.we-serve-card#residential-buildings img {
+    content: url(./images/residentialBuildings.jpg);
+  }
+
+  div.we-serve-card#shopping-malls img {
+    content: url(./images/shoppingMalls.jpg);
+  }
+
+  div.we-serve-card#hotels img {
+    content: url(./images/hotels.jpg);
+  }
+
+  div.we-serve-card#office-buildings img {
+    content: url(./images/officeBuildings.jpg);
+  }
+
+  div.we-serve-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px 1px var(--accentColor);
+  }
+
+  div.we-serve-card:hover img {
+    filter: grayscale(0);
+    -webkit-filter: grayscale(0);
+  }
+
+  div.we-serve-card img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    object-position: cover;
+    filter: grayscale(100%);
+    -webkit-filter: greyscale(100%);
+    transition: 500ms ease;
+    border-radius: 12px;
+  }
+
+  div.we-serve-card .styling-border {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border: 2px var(--accentColor) solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-53%, -53%);
+    border-radius: 12px;
+    transition: 500ms ease;
+  }
+
+  div.we-serve-card:hover .styling-border {
+    transform: translate(-50%, -50%);
+  }  
+
+  div.we-serve-card .content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    padding: 1vw 2vw;
+  }
+
+
+  div.we-serve-card .content h3 {
+    font-weight: 900;
+    font-size: 2vw;
+    font-family: var(--pff);
+    color: rgba(255, 255, 255, 1.0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 500ms ease;
+    white-space: nowrap;
+  }
+
+  div.we-serve-card:hover .content h3 {
+    color: var(--accentColor);
+    transform: translate(-50%, -200%);
+  }
+
+  div.we-serve-card .content p {
+    font-weight: 500;
+    font-size: 1vw;
+    font-family: var(--sff);
+    color: rgba(255, 255, 255, 0.75);
+    text-align: justify;
+    text-justify: inter-cluster;
+    position: absolute;
+    width: 70%;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 150%);
+    transition: 500ms ease;
+    opacity: 0;
+  }
+
+  div.we-serve-card:hover .content p {
+    transform: translate(-50%, -10%);
+    animation: fadeInAnimation ease 1500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  section#all-installations {
+    width: 100%;
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    flex-direction: column;
+    padding: 2.5vw 5%;
+  }
+
+  section#all-installations > h3 {
+    font-weight: 900;
+    font-size: 4vw;
+    font-family: var(--pff);
+    color: var(--accentColor);
+  }
+
+  section#all-installations > p {
+    font-weight: 300;
+    font-size: 2vw;
+    font-family: var(--sff);
+    color: var(--primaryColor);
+  }
+
+  section#all-installations #main-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    border-radius: 12px;
+    border: 2px var(--accentColor) solid;
+    overflow: hidden;
+    margin-top: 2vw;
+    box-shadow: 0 0 30px 1px var(--accentColor);
+  }
+
+  section#all-installations #main-section > img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: url(./images/all-installations.jpg);
+    object-fit: cover;
+    object-position: center;
+
+  }
+
+  section#all-installations #content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    column-gap: 0.5vw;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1vw 2vw;
+  }
+
+  section#all-installations .all-installations-snippet {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1vw 2vw;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    transition: 500ms ease;
+    min-width: 15vw;
+  }
+
+  section#all-installations .all-installations-snippet:hover {
+    transform: scale(1.1);
+    border: 2px var(--accentColor) solid;
+    box-shadow: 0 0 30px 1px var(--accentColor);
+  }
+
+
+  section#all-installations #content > div > i {
+    font-size: 1.5vw;
+    color: var(--accentColor);
+  }
+
+  div.all-installations-snippet .title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    column-gap: 0.5vw;
+  }
+
+  div.all-installations-snippet .title h4 {
+    font-weight: 700;
+    font-size: 1.5vw;
+    font-family: var(--pff);
+    color: var(--accentColor);
+  }
+
+  div.all-installations-snippet .title i {
+    color: var(--accentColor);
+    font-size: 1.25vw;
+  }
+
+  div.all-installations-snippet p {
+    font-weight: 300;
+    font-size: 1vw;
+    font-family: var(--sff);
+    color: var(--primaryVarientColor);
+    text-align: justify;
+  }
+
   section.installations-cards-container {
     width: 100%;
     height: 45vw;
@@ -322,10 +616,19 @@
     .feature-tile
     h5 {
     font-size: 0.9vw;
-    color: var(--primaryColor);
+    color: var(--primaryVarientColor);
     font-family: var(--sff);
-    font-weight: 700;
+    font-weight: 500;
   }
+   section.installations-cards-container
+    #cards
+    .content
+    .features
+    .feature-tile
+    h5.highlighted {
+      font-weight: 900;
+
+    }
 
   section.installations-cards-container #cards .installation-card.blue .badge {
     background-color: skyblue;
@@ -337,6 +640,13 @@
     .features
     .feature-tile
     i,
+    section.installations-cards-container
+    #cards
+    .installation-card.blue
+    .content
+    .features
+    .feature-tile
+    h5.highlighted,
   section.installations-cards-container
     #cards
     .installation-card.blue:hover
@@ -356,6 +666,13 @@
     .features
     .feature-tile
     i,
+    section.installations-cards-container
+    #cards
+    .installation-card.silver
+    .content
+    .features
+    .feature-tile
+    h5.highlighted,
   section.installations-cards-container
     #cards
     .installation-card.silver:hover
@@ -372,6 +689,13 @@
     .features
     .feature-tile
     i,
+    section.installations-cards-container
+    #cards
+    .installation-card.gold
+    .content
+    .features
+    .feature-tile
+    h5.highlighted,
   section.installations-cards-container
     #cards
     .installation-card.gold:hover
@@ -560,7 +884,111 @@
   div.form .content .body .row-fields#address-fields input#address {
     flex: 3;
   }
-/*  @keyframes glow-rotation {
+
+  #toast {
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 50%;
+    border: 2px var(--accentColor) solid;
+    position: fixed;
+    bottom: 2vw;
+    right: 2vw;
+    background-color: var(--accentColor);
+    z-index: 500;
+    box-shadow: 0 0 30px 1px var(--accentColor);
+    transition: 500ms ease;
+    cursor: pointer;
+  }
+
+  #toast.active {
+    width: 24vw;
+    height: 16vw;
+    display: flex;
+    border-radius: 12px;
+    backdrop-filter:  blur(12px);
+    z-index: 500;
+    box-shadow: 0 0 30px 1px var(--accentColor);
+    background-color: transparent;
+    cursor: auto;
+  }
+
+  #toast #header,
+  #toast #content  {
+    display: none;
+  }
+
+
+  #toast.active #header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    padding: 1vw 2vw;
+    transition: 500ms ease;
+  }
+
+  #toast.active #header div {
+    color:  var(--primaryColor);
+    cursor: pointer;
+  }
+
+#toast.active #content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  padding: 1vw 2vw;
+  gap:  1vw;
+  transition: 500ms ease;
+}
+
+#toast #content h3 {
+  font-weight: 700;
+  font-size: 1vw;
+  font-family: var(--sff);
+  color:  var(--primaryColor);
+  text-align: center;
+  transform: 1s ease;
+}
+
+#toast #toast-icon {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--primaryColor);
+  font-size: 2vw;
+  transition: 500ms ease;
+  opacity: 0;
+}
+
+#toast #toast-icon i {
+  font-size: 1.5vw;
+}
+
+#toast.active #toast-icon {
+  display: none;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+  @keyframes glow-rotation {
     0%{
       transform: rotateZ(0deg);
     }
@@ -568,5 +996,5 @@
     0% {
       transform: rotateZ(360deg);
     }
-  }*/
+  }
 }

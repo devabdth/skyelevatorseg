@@ -81,6 +81,13 @@
             <div class="left-menu-tile-icon"><i class="fa-solid fa-envelope"></i></div>
             <p>Tickets</p>
           </div>
+          <div
+            onclick="window.open(`/webapp/adminstration/tickets/archived/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-envelope"></i></div>
+            <p>Archived Tickets</p>
+          </div>
           {%endif%}{% if "4" in admin_data['accesses'] %}
           <div
             onclick="window.open(`/webapp/adminstration/users/`, '_self');"
@@ -88,6 +95,22 @@
           >
             <div class="left-menu-tile-icon"><i class="fa-solid fa-user"></i></div>
             <p>Users</p>
+          </div>
+          {%endif%}{% if "5" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/spareParts/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-gear"></i></div>
+            <p>Spare Parts</p>
+          </div>
+          {%endif%}{% if "6" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/categories/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <p>Categories</p>
           </div>
           {%endif%}{% if "3" in admin_data['accesses'] %}
           <div

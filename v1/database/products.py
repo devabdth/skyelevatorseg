@@ -50,74 +50,52 @@ class ProductsDatabaseHelper:
     def get_products_similer_to(self, similers: list):
         return self.all_products
 
-    def update_product(self, product_: dict, files) -> bool:
+    def update_product(self, product_: dict) -> bool:
         try:
-            product: Product = self.get_product_by_id(product_["id"])
-            for asset in product.assets:
-                if asset not in product_["assets"]:
-                    path_ = os.path.abspath(os.path.join(os.path.dirname(
-                        __file__), '../routers/assets/products/{}-{}'.format(product_["id"], asset)))
-                    if asset in product_["assets"]:
-                        product_["assets"].remove(asset)
-                    if os.path.exists(path_):
-                        os.remove(path_)
+            product_['name']= {
+                'EN': product_['enName'],
+                'AR': product_['arName'],
+            }
+            del product_['enName']
+            del product_['arName']
 
-            newAssetsNames = []
-            for file_ in files.values():
-                newAssetsNames.append("{}.{}".format(
-                    list(files.values()).index(file_), file_.filename.split('.')[-1]))
-                file_.save(os.path.abspath(os.path.join(os.path.dirname(__file__), '../routers/assets/products/{}-{}.{}'.format(
-                    product.id, list(files.values()).index(file_), file_.filename.split('.')[-1]))))
-                product_["assets"].remove(file_.filename)
+            product_['bio']= {
+                'EN': product_['enBio'],
+                'AR': product_['arBio'],
+            }
+            del product_['enBio']
+            del product_['arBio']
 
-            product.code = product_["code"]
-            product.name = product_["name"]
-            product.bio = product_["bio"]
-            product.specs = product_["specs"]
-            product.pricing = product_["pricing"]
-            product.vat = product_["vat"]
-            assets_ = list(set(list(newAssetsNames + product_["assets"])))
-            product.assets = ["{}.{}".format(assets_.index(
-                asset_name), asset_name.split('.')[-1]) for asset_name in assets_]
-            product.category = product_["category"]
-            product.sub_category = int(product_["subCategory"])
-            product.colors = product_['colors']
-            product.sizes = product_['sizes']
-            product.inventory = product_['inventory']
-            self.products_collection.find_one_and_update(
-                {'_id': ObjectId(product.id)}, {'$set': product.to_dict()})
+            self.products_collection.find_one_and_update({'id': product_['id']}, {'$set': product_})
             self.refresh_all_products()
 
             return True
+
         except Exception as e:
             print(e)
             return False
 
+
     def create_product(self, product_: dict, files) -> bool:
         try:
-
-            product: Product = Product(
-                id="fsdfsd",
-                code=product_["code"],
-                name=product_["name"],
-                bio=product_["bio"],
-                specs=product_["specs"],
-                pricing=product_["pricing"],
-                vat=product_["vat"],
-                assets=["{}.{}".format(list(product_["assets"]).index(asset), list(product_["assets"])[
-                        product_["assets"].index(asset)].split('.')[-1]) for asset in product_["assets"]],
-                category=product_["category"],
-                sub_category=int(product_["subCategory"]),
-                colors=product_['colors'],
-                sizes=product_['sizes'],
-                inventory={}
-            )
+            import secrets
+            product_id= secrets.token_hex(12)
+            product: Product = Product({
+                    "id": product_id,
+                    "name": {'EN': product_["enName"], 'AR': product_['arName']},
+                    "bio": {'EN': product_["enBio"], 'AR': product_['arBio']},
+                    "assets": [asset_name.split('-')[1] if 'asset-' in assen_name else asset_name for asset_name in list(dict(files).keys())],
+                    "category": product_["category"],
+                    "specs":  {},
+                    "tags":  product_['tags'],
+                    "alt":  product_['alt'],
+            })
             product = self.products_collection.insert_one(product.to_dict())
             self.refresh_all_products()
             if product.inserted_id is not None:
                 for file_ in files.values():
-                    file_.save(os.path.abspath(os.path.join(os.path.dirname(__file__), '../routers/assets/products/{}-{}.{}'.format(
-                        product.inserted_id, list(files.values()).index(file_), file_.filename.split('.')[-1]))))
+                    file_.save(os.path.abspath(os.path.join(os.path.dirname(__file__), '../assets/products/images/{}-{}.{}'.format(
+                        product_id, list(files.values()).index(file_), file_.filename.split('.')[-1]))))
 
             return product.inserted_id != None
         except Exception as e:
@@ -126,7 +104,7 @@ class ProductsDatabaseHelper:
 
     def delete_product(self, prodId):
         try:
-            self.products_collection.delete_one({'_id': ObjectId(prodId)})
+            self.products_collection.delete_one({'id': prodId})
             return True
         except Exception as e:
             print(e)

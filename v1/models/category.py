@@ -6,6 +6,7 @@ class Category:
 			{'name': 'name', 'type': dict},
 			{'name': 'bio', 'type': dict},
 			{'name': 'tags', 'type': list},
+			{'name': 'alt', 'type': str},
 		]
 
 		for param in self.params:
@@ -24,4 +25,5 @@ class Category:
 			'bio': self.bio,
 			'id': self.id,
 			'tags': self.tags,
+			'alt': self.alt,
 		}

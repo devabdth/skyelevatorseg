@@ -2,6 +2,7 @@
 <html dir="{%if lang == 'AR'%} {{'rtl'}} {%else%} {{'ltr'}}{%endif%}">
 <head>
 	<meta charset="utf-8">
+<meta name="description" content="{{content.global_[lang]['shortDescription']}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{url_for('static', filename='website/installations/styles/computer.css')}}"/>
 	<link rel="stylesheet" href="{{url_for('static', filename='website/installations/styles/mobile.css')}}"/>
@@ -35,10 +36,10 @@
 		<a href="/">{{content.global_[lang]["platformTitle"]}}</a>
 		<div id="nav">
 			<a href="/" class="header-nav-item">{{content.tabs[lang]["home"]}}</a>
+			<a href="/installations" class="header-nav-item active">{{content.tabs[lang]["installations"]}}</a>
+			<a href="/modernization" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
 			<a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
 			<a href="/spareParts/" class="header-nav-item">{{content.tabs[lang]["spareParts"]}}</a>
-			<a href="/modernization" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
-			<a href="/installations" class="header-nav-item active">{{content.tabs[lang]["installations"]}}</a>
 			<a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
 			<a href="/contact/" class="header-nav-item">{{content.tabs[lang]["contact"]}}</a>
 			<a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
@@ -104,6 +105,94 @@
 			</div>
 		</div>
 	</section>
+	<section id="we-serve">
+		<div id="content">
+			<h3>{{content.global_[lang]['installationsWeServe']}}</h3>
+			<p>{{content.global_[lang]['installationsWeServeSubtitle']}}</p>
+		</div>		
+		<div id="cards">
+			<div class="we-serve-card" id="residential-buildings">
+				<img alt="">
+				<div class="content">
+					<h3>{{content.global_[lang]['installationsWeServeResidentialBuildings']}}</h3>
+					<p>{{content.global_[lang]['installationsWeServeResidentialBuildingsDescription']}}</p>
+				</div>
+				<div class="styling-border"></div>
+			</div>
+			<div class="we-serve-card" id="shopping-malls">
+				<img alt="">
+				<div class="content">
+					<h3>{{content.global_[lang]['installationsWeServeShoppingMalls']}}</h3>
+					<p>{{content.global_[lang]['installationsWeServeShoppingMallsDescription']}}</p>
+				</div>
+				<div class="styling-border"></div>
+			</div>
+			<div class="we-serve-card" id="hotels">
+				<img alt="">
+				<div class="content">
+					<h3>{{content.global_[lang]['installationsWeServeHotels']}}</h3>
+					<p>{{content.global_[lang]['installationsWeServeHotelsDescription']}}</p>
+				</div>
+				<div class="styling-border"></div>
+			</div>
+			<div class="we-serve-card" id="office-buildings">
+				<img alt="">
+				<div class="content">
+					<h3>{{content.global_[lang]['installationsWeServeOfficeBuildings']}}</h3>
+					<p>{{content.global_[lang]['installationsWeServeOfficeBuildingsDescription']}}</p>
+				</div>
+				<div class="styling-border"></div>
+			</div>
+		</div>
+	</section>
+	<section id="all-installations">
+		<h3>{{content.global_[lang]['installationsAllTypeOfInstallationsTitle']}}</h3>
+		<p>{{content.global_[lang]['installationsAllTypeOfInstallationsSubtitle']}}</p>
+		<div id="main-section">
+			<img alt="Upgrade Your Building | Sky Elevators">
+			<div id="content">
+				<div class="all-installations-snippet">
+					<div class="title">
+						<div><i class="fa-solid fa-microchip"></i></div>
+						<h4>{{content.global_[lang]['installationsAllTypeOfInstallationsTechnologies']}}</h4>
+					</div>
+					<p>{{content.global_[lang]['installationsAllTypeOfInstallationsTechnologiesBio']}}</p>
+				</div>
+				<div><i class="fa-solid fa-chevron-right"></i></div>
+				<div class="all-installations-snippet">
+					<div class="title">
+						<div><i class="fa-brands fa-sourcetree"></i></div>
+						<h4>{{content.global_[lang]['installationsAllTypeOfInstallationsSourcing']}}</h4>
+					</div>
+					<p>{{content.global_[lang]['installationsAllTypeOfInstallationsSourcingBio']}}</p>
+				</div>
+				<div><i class="fa-solid fa-chevron-right"></i></div>
+				<div class="all-installations-snippet">
+					<div class="title">
+						<div><i class="fa-solid fa-truck-ramp-box"></i></div>
+						<h4>{{content.global_[lang]['installationsAllTypeOfInstallationsLoads']}}</h4>
+					</div>
+					<p>{{content.global_[lang]['installationsAllTypeOfInstallationsLoadsBio']}}</p>
+				</div>
+				<div><i class="fa-solid fa-chevron-right"></i></div>
+				<div class="all-installations-snippet">
+					<div class="title">
+						<div><i class="fa-solid fa-gauge-high"></i></div>
+						<h4>{{content.global_[lang]['installationsAllTypeOfInstallationsSpeeds']}}</h4>
+					</div>
+					<p>{{content.global_[lang]['installationsAllTypeOfInstallationsSpeedsBio']}}</p>
+				</div>
+				<div><i class="fa-solid fa-chevron-right"></i></div>
+				<div class="all-installations-snippet">
+					<div class="title">
+						<div><i class="fa-solid fa-square-up-right"></i></div>
+						<h4>{{content.global_[lang]['installationsAllTypeOfInstallationsHeights']}}</h4>
+					</div>
+					<p>{{content.global_[lang]['installationsAllTypeOfInstallationsHeightsBio']}}</p>
+				</div>
+			</div>
+		</div>
+	</section>
 	{% set packages= ["BLUE", "SILVER", "GOLD"] %}
 	<section class="installations-cards-container" id="geared-elevators">
 		<div class="title"> 
@@ -140,13 +229,13 @@
 						{% for feature in layout.data['PLANS']['GEARED'][package]['FEATURES'][lang] %}
 							<div class="feature-tile">
 								<i class="fa-solid fa-check-circle"></i>
-								<h5>{{feature}}</h5>
+								<h5 {%if feature['highlighted'] %} class="highlighted" {%endif%}>{{feature["text"]}}</h5>
 							</div>
 						{%endfor%}
 					</div>
 					<div class="actions">
 						<button class="shadow-button" id="more-details" onclick="window.open('/contact/', '_blank')">{{content.actions[lang]['moreDetails']}}</button>
-						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('GEARED', package)">{{content.actions[lang]['pickPlan']}}</button>
+						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('GEARED', '{{package | upper}}')">{{content.actions[lang]['requestSiteVisit']}}</button>
 					</div>
 				</div>
 			</div>
@@ -188,13 +277,13 @@
 						{% for feature in layout.data['PLANS']['GEARLESS'][package]['FEATURES'][lang] %}
 							<div class="feature-tile">
 								<i class="fa-solid fa-check-circle"></i>
-								<h5>{{feature}}</h5>
+								<h5 {%if feature['highlighted'] %} class="highlighted" {%endif%}>{{feature["text"]}}</h5>
 							</div>
 						{%endfor%}
 					</div>
 					<div class="actions">
 						<button class="shadow-button" id="more-details" onclick="window.open('/contact/', '_blank')">{{content.actions[lang]['moreDetails']}}</button>
-						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('GEARLESS', 'BLUE')">{{content.actions[lang]['pickPlan']}}</button>
+						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('GEARLESS', '{{package | upper}}')">{{content.actions[lang]['requestSiteVisit']}}</button>
 					</div>
 				</div>
 			</div>
@@ -236,13 +325,13 @@
 						{% for feature in layout.data['PLANS']['HOME_LIFTS'][package]['FEATURES'][lang] %}
 							<div class="feature-tile">
 								<i class="fa-solid fa-check-circle"></i>
-								<h5>{{feature}}</h5>
+								<h5 {%if feature['highlighted'] %} class="highlighted" {%endif%}>{{feature["text"]}}</h5>
 							</div>
 						{%endfor%}
 					</div>
 					<div class="actions">
 						<button class="shadow-button" id="more-details" onclick="window.open('/contact/', '_blank')">{{content.actions[lang]['moreDetails']}}</button>
-						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('HOME_LIFTS', 'BLUE')">{{content.actions[lang]['pickPlan']}}</button>
+						<button class="main-button" id="pick-plan" onclick="openPickPlanForm('HOME_LIFTS', '{{package | upper}}')">{{content.actions[lang]['requestSiteVisit']}}</button>
 					</div>
 				</div>
 			</div>
@@ -251,9 +340,9 @@
 	</section>
 	<footer>
 	<div class="footer-column" id="column-one">
-		<img id="logo"></img>
+		<img id="logo" alt="Sky Elevators {{content.global_[lang]['shortDescription']}}" />
 		<div id="footer-msg">
-			<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+			<h4>{{content.global_[lang]["shortDescription"]}}</h4>
 		</div>
 	</div>
 	<div class="footer-column" id="column-two">
@@ -283,11 +372,21 @@
 				</div>
 			</div>
 			<div id="social-media">
-				<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
-				<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
-				<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
-				<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{% if layout.data['CONTACT']['FACEBOOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['LINKEDIN'] != "" %}
+					<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['INSTAGRAM'] != "" %}
+					<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['TIKTOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['X-TWITTER'] != "" %}
+					<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{%endif%}
 			</div>
 		</div>
 		<div id="copyright">
@@ -300,7 +399,7 @@
 		<div class="rotating-glow" onclick="closePickPlanForm()"></div>
 		<div class="content">
 			<div class="header">
-				<h3>{{content.actions[lang]['pickPlan']}}</h3>
+				<h3>{{content.actions[lang]['requestSiteVisit']}}</h3>
 				<div onclick="closePickPlanForm()"><i class="fa-solid fa-close"></i></div>
 			</div>
 			<div class="body">
@@ -388,7 +487,7 @@
 			</div>
 			<div class="actions">
 						<button class="shadow-button" id="cancel" onclick="closePickPlanForm()">{{content.actions[lang]['cancel']}}</button>
-						<button class="main-button" id="submit">{{content.actions[lang]['submit']}}</button>				<p class="status-msg">This is a Status Message!</p>
+						<button class="main-button" id="submit">{{content.actions[lang]['submit']}}</button>				<p class="status-msg"></p>
 			</div>
 		</div>
 	</div>
@@ -400,10 +499,21 @@
 			<button class="main-button" id="confirmation-dialog-submission" onclick="closeConfirmationDialog()">{{content.actions[lang]['submit']}}</button>
 		</div>
 	</div>
+	<div id="toast" class="active">
+		<div id="toast-icon"><i class="fa-solid fa-message"></i></div>
+		<div id="header">
+			<div onclick="closeToast();"><i class="fa-solid fa-close"></i></div>
+		</div>
+		<div id="content">
+			<h3>{{content.global_[lang]['installationsToastTitle']}}</h3>
+			<button class="main-button" onclick="openPickPlanForm()">{{content.actions[lang]['sendInquery']}}</button>
+		</div>
+	</div>
 	<script type="text/javascript">
 		const init= ()=> {
 			document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}');
 			currentMode= '{{mode}}';
+if (currentMode === 'DARK') document.querySelector('input#theme').checked= true;
 			pageInit({
 				plans: {{dumps(layout.data['PLANS']) | safe}},
 				errorsContent: {{dumps(content.errors) | safe}},

@@ -54,7 +54,10 @@
         "MANAGEMENT_ROUTE": "/webapp/adminstration/admins/",
         "ARTICLES_ROUTE": "/webapp/adminstration/articles/",
         "USERS_ROUTE": "/webapp/adminstration/users/",
-        "TICKETS_ROUTE": "/webapp/adminstration/tickets/"
+        "TICKETS_ROUTE": "/webapp/adminstration/tickets/",
+        "LAYOUT_ROUTE": "/webapp/adminstration/layout/",
+        "CATEGORIES_ROUTE": "/webapp/adminstration/categories/",
+        "SPARE_PARTS_ROUTE": "/webapp/adminstration/spareParts/"
     },
     "GLOBAL_ROUTERS":{
         "CONFIG_HANDLER": "/config/"

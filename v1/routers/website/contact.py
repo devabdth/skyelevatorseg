@@ -37,7 +37,7 @@ class ContactUsRouter:
             try:
                 body= loads(request.data)
                 res= self.helper.tickets.create_global_ticket(body)
-                if not res:
+                if  res:
                     res= self.email_plugin.send_ticket_email(body['email'])
                     if res:
                         return self.app.response_class(status= 201)

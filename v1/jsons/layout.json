@@ -110,8 +110,8 @@
     "FACEBOOK": "https://www.facebook.com/novamindsagency/",
     "INSTAGRAM": "https://www.instagram.com/novamindsagency/",
     "LINKEDIN": "https://www.linkedin.com/novamindsagency/",
-    "TIKTOK": "https://www.tiktok.com/novamindsagency/",
-    "X-TWITTER": "htttps://www.x.com/novamindsagency/",
+    "TIKTOK": "",
+    "X-TWITTER": "",
     "FOUNDER_FACEBOOK": "https://www.facebook.com/novamindsagency/",
     "FOUNDER_X-TWITTER": "https://www.x.com/novamindsagency/",
     "FOUNDER_LINKEDIN": "https://www.linkedin.com/novamindsagency/"
@@ -131,14 +131,14 @@
         "BUILD_DURATION": "50",
         "FEATURES": {
           "EN": [
-            "Sicor Italy geared machine",
-            "Metal press Italy ropes",
-            "Ultima true controller",
-            "Schneider France inverter",
-            "SilcomItalyautomatic car doors",
-            "SilcomItalyautomatic landingdoors",
-            "Marazi Italycarandcw guides",
-            "BFPItalySpeedgovernor"
+            {"text": "Sicor Italy geared machine", "highlighted": true},
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "Ultima true controller", "highlighted": false},
+            {"text": "Schneider France inverter", "highlighted": false},
+            {"text": "SilcomItalyautomatic car doors", "highlighted": true},
+            {"text": "SilcomItalyautomatic landingdoors", "highlighted": false},
+            {"text": "Marazi Italycarandcw guides", "highlighted": false},
+            {"text": "BFPItalySpeedgovernor", "highlighted": false}
           ],
           "AR": []
         }
@@ -156,14 +156,14 @@
         "BUILD_DURATION": "100",
         "FEATURES": {
           "EN": [
-            "Sicor Italy geared machine",
-            "Metal press Italy ropes",
-            "Ultima true controller",
-            "Schneider inverter",
-            "FermatorSpainautomatic cardoors",
-            "FermatorSpainautomatic landingdoorsr",
-            "ChelikrayTurkey carandr cw guidesr",
-            "TTI TurkeySpeedgovernorr"
+            {"text": "Sicor Italy geared machine", "highlighted": true},
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "Ultima true controller", "highlighted": false},
+            {"text": "Schneider inverter", "highlighted": false},
+            {"text": "FermatorSpainautomatic cardoors", "highlighted": true},
+            {"text": "FermatorSpainautomatic landingdoorsr", "highlighted": false},
+            {"text": "ChelikrayTurkey carandr cw guidesr", "highlighted": false},
+            {"text": "TTI TurkeySpeedgovernorr", "highlighted": false}
           ],
           "AR": []
         }
@@ -181,13 +181,13 @@
         "BUILD_DURATION": "150",
         "FEATURES": {
           "EN": [
-            "Sicor geared machine",
-            "Metal press Italy ropes",
-            "KAS2Scontroller",
-            "TTI TurkeySpeed governor",
-            "Door lifefoldingcarr doorr",
-            "Alphmattermanualr landingdoorsr",
-            "ChelikrayTurkey carr andcw guidesr"
+            {"text": "Sicor geared machine", "highlighted": true},
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "KAS2Scontroller", "highlighted": false},
+            {"text": "TTI TurkeySpeed governor", "highlighted": false},
+            {"text": "Door lifefoldingcarr doorr", "highlighted": true},
+            {"text": "Alphmattermanualr landingdoorsr", "highlighted": false},
+            {"text": "ChelikrayTurkey carr andcw guidesr", "highlighted": false}
           ],
           "AR": []
         }
@@ -207,14 +207,14 @@
         "BUILD_DURATION": "50",
         "FEATURES": {
           "EN": [
-            "Sicor ITALY gearless machine",
-            "Metal press Italy ropes",
-            "Ultima true / KAScontroller",
-            "DeltaTAIWAN inverter",
-            "TTI TurkeySpeedgovernor",
-            "Door lifeTurkeyfoldingcar door",
-            "Door lifeTurkeymanual landingdoors",
-            "ChelikrayTurkeycarandcw guides"
+            {"text": "Sicor ITALY gearless machine", "highlighted": false},
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "Ultima true / KAScontroller", "highlighted": false},
+            {"text": "DeltaTAIWAN inverter", "highlighted": true},
+            {"text": "TTI TurkeySpeedgovernor", "highlighted": false},
+            {"text": "Door lifeTurkeyfoldingcar door", "highlighted": false},
+            {"text": "Door lifeTurkeymanual landingdoors", "highlighted": false},
+            {"text": "ChelikrayTurkeycarandcw guides", "highlighted": true}
           ],
           "AR": []
         }
@@ -232,14 +232,14 @@
         "BUILD_DURATION": "100",
         "FEATURES": {
           "EN": [
-            "Sicor ITALY gearless machine",
-            "Metal press Italy ropes",
-            "Ultima true controller",
-            "Schneider inverter",
-            "TTI TurkeySpeedgovernor",
-            "FermatorSpainautomatic cardoors",
-            "FermatorSpainautomatic landingdoors",
-            "ChelikrayTurkey carandcw guides"
+            {"text": "Sicor ITALY gearless machine", "highlighted": false},
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "Ultima true controller", "highlighted": false},
+            {"text": "Schneider inverter", "highlighted": true},
+            {"text": "TTI TurkeySpeedgovernor", "highlighted": false},
+            {"text": "FermatorSpainautomatic cardoors", "highlighted": false},
+            {"text": "FermatorSpainautomatic landingdoors", "highlighted": false},
+            {"text": "ChelikrayTurkey carandcw guides", "highlighted": true}
           ],
           "AR": []
         }
@@ -257,14 +257,14 @@
         "BUILD_DURATION": "150",
         "FEATURES": {
           "EN": [
-            "Sicor ITALY gearless machine",
-            "Metal press Italy ropes",
-            "Ultimatrue controller",
-            "Schneider inverter",
-            "BFPItalySpeedgovernor",
-            "SilcomItalyautomatic car doors",
-            "SilcomItalyautomatic landing doors",
-            "Marazi Italycarandcw guides"
+            {"text": "Sicor ITALY gearless machine", "highlighted": false},
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "Ultimatrue controller", "highlighted": false},
+            {"text": "Schneider inverter", "highlighted": true},
+            {"text": "BFPItalySpeedgovernor", "highlighted": false},
+            {"text": "SilcomItalyautomatic car doors", "highlighted": false},
+            {"text": "SilcomItalyautomatic landing doors", "highlighted": false},
+            {"text": "Marazi Italycarandcw guides", "highlighted": true}
           ],
           "AR": []
         }
@@ -284,15 +284,15 @@
         "BUILD_DURATION": "50",
         "FEATURES": {
           "EN": [
-            "Metal press Italy ropes",
-            "Panoramic car",
-            "Super panorama landing doors",
-            "Turkey windingdrum machine",
-            "KAScontroller",
-            "Enovainverter",
-            "TTI TurkeySpeedgovernor",
-            "Decorativemetal structure",
-            "Squareshape100x100& 80x80"
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "Panoramic car", "highlighted": false},
+            {"text": "Super panorama landing doors", "highlighted": false},
+            {"text": "Turkey windingdrum machine", "highlighted": true},
+            {"text": "KAScontroller", "highlighted": false},
+            {"text": "Enovainverter", "highlighted": false},
+            {"text": "TTI TurkeySpeedgovernor", "highlighted": true},
+            {"text": "Decorativemetal structure", "highlighted": false},
+            {"text": "Squareshape100x100& 80x80", "highlighted": false}
           ],
           "AR": []
         }
@@ -310,15 +310,15 @@
         "BUILD_DURATION": "100",
         "FEATURES": {
           "EN": [
-            "Metal press Italy ropes",
-            "Panoramic car",
-            "Super panorama landing door",
-            "Sicor Italygear-less machine",
-            "Ultimatruecontroller",
-            "Schneider Franceinverter",
-            "BFPItalySpeedgovernor",
-            "Decorativemetal structure",
-            "Circular shape 100cm - 100cm"
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "Panoramic car", "highlighted": false},
+            {"text": "Super panorama landing door", "highlighted": false},
+            {"text": "Sicor Italygear-less machine", "highlighted": true},
+            {"text": "Ultimatruecontroller", "highlighted": false},
+            {"text": "Schneider Franceinverter", "highlighted": false},
+            {"text": "BFPItalySpeedgovernor", "highlighted": true},
+            {"text": "Decorativemetal structure", "highlighted": false},
+            {"text": "Circular shape 100cm - 100cm", "highlighted": false}
           ],
           "AR": []
         }
@@ -336,15 +336,15 @@
         "BUILD_DURATION": "150",
         "FEATURES": {
           "EN": [
-            "Metal press Italy ropes",
-            "Panoramic car",
-            "Super panorama landing door",
-            "Sicor Italy gear-less machine",
-            "Ultima true controller",
-            "Schneider France inverter",
-            "BFP Italy Speed governor",
-            "Decorative metal structure",
-            "Squareshape100x100& 80x80"
+            {"text": "Metal press Italy ropes", "highlighted": false},
+            {"text": "Panoramic car", "highlighted": false},
+            {"text": "Super panorama landing door", "highlighted": false},
+            {"text": "Sicor Italy gear-less machine", "highlighted": true},
+            {"text": "Ultima true controller", "highlighted": false},
+            {"text": "Schneider France inverter", "highlighted": false},
+            {"text": "BFP Italy Speed governor", "highlighted": true},
+            {"text": "Decorative metal structure", "highlighted": false},
+            {"text": "Squareshape100x100& 80x80", "highlighted": false}
           ],
           "AR": []
         }

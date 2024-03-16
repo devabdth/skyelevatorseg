@@ -17,11 +17,20 @@
   <link
   rel="stylesheet"
   type="text/css"
+  href="{{url_for('static', filename='admin/users/styles/computer.css')}}"
+  />
+  <link
+  rel="stylesheet"
+  type="text/css"
   href="{{url_for('static', filename='website/global/styles/computer.css')}}"
   />
   <script
   type="text/javascript"
   src="{{url_for('static', filename='admin/tickets/scripts/main.js')}}"
+  ></script>
+  <script
+  type="text/javascript"
+  src="{{url_for('static', filename='admin/users/scripts/main.js')}}"
   ></script>
   <script
   type="text/javascript"
@@ -83,6 +92,13 @@
   <div class="left-menu-tile-icon"><i class="fa-solid fa-envelope"></i></div>
   <p>Tickets</p>
 </div>
+<div
+  onclick="window.open(`/webapp/adminstration/tickets/archived/`, '_self');"
+  class="left-menu-tile"
+  >
+  <div class="left-menu-tile-icon"><i class="fa-solid fa-envelope"></i></div>
+  <p>Archived Tickets</p>
+</div>
 {%endif%}{% if "4" in admin_data['accesses'] %}
 <div
 onclick="window.open(`/webapp/adminstration/users/`, '_self');"
@@ -91,7 +107,23 @@ class="left-menu-tile"
 <div class="left-menu-tile-icon"><i class="fa-solid fa-user"></i></div>
 <p>Users</p>
 </div>
-{%endif%}{% if "3" in admin_data['accesses'] %}
+{%endif%}{% if "5" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/spareParts/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-gear"></i></div>
+            <p>Spare Parts</p>
+          </div>
+          {%endif%}{% if "6" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/categories/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <p>Categories</p>
+          </div>
+          {%endif%}{% if "3" in admin_data['accesses'] %}
 <div
 onclick="window.open(`/webapp/adminstration/admins/`, '_self');"
 class="left-menu-tile"
@@ -117,63 +149,440 @@ class="left-menu-tile"
   </div>
   <div class="card" id="fragments">
     <div id="fragments-controllers">
-      <div class="fragment-controller active" id="global-fragment" onclick="toggleFragment(this)">Global Tickets</div>
-      <div class="fragment-controller" id="modernization-tickets-fragment" onclick="toggleFragment(this)">Modernization Tickets</div>
-      <div class="fragment-controller" id="installations-tickets-fragment" onclick="toggleFragment(this)">Installations Tickets</div>
-      <div class="fragment-controller" id="maintenance-tickets-fragment" onclick="toggleFragment(this)">Maintenance Tickets</div>
-      <div class="fragment-controller" id="spare-parts-tickets-fragment" onclick="toggleFragment(this)">Spare Parts Tickets</div>
+      <div class="fragment-controller active" id="global-fragment" onclick="toggleFragment(this)">Global Tickets <span style='color: var(--accentColor);'>({{db_helper.tickets.global_tickets |length}})</span></div>
+      <div class="fragment-controller" id="modernization-tickets-fragment" onclick="toggleFragment(this)">Modernization Tickets <span style='color: var(--accentColor);'>({{db_helper.tickets.modernization_tickets |length}})</span></div>
+      <div class="fragment-controller" id="installations-tickets-fragment" onclick="toggleFragment(this)">Installations Tickets <span style='color: var(--accentColor);'>({{db_helper.tickets.installations_tickets |length}})</span></div>
+      <div class="fragment-controller" id="maintenance-tickets-fragment" onclick="toggleFragment(this)">Maintenance Tickets <span style='color: var(--accentColor);'>({{db_helper.tickets.maintenance_tickets |length}})</span></div>
+      <div class="fragment-controller" id="spare-parts-tickets-fragment" onclick="toggleFragment(this)">Spare Parts Tickets <span style='color: var(--accentColor);'>({{db_helper.tickets.spare_parts_tickets |length}})</span></div>
     </div>
     <div id="fragments">
       <div class="fragment active" id="global-fragment">
-              <div class="tickets-rows">
-                <div class="ticket-row" id="header">
-                  <div class="ticket-row-header">
-                    <div class="ticket-row-id">#</div>
-                    <div class="ticket-row-sender">Name</div>
-                    <div class="ticket-row-sender-email">Email</div>
-                    <div class="ticket-row-sender-phone">Phone</div>
-                    <div class="ticket-row-time">Time</div>
+        <div class="tickets-rows">
+          <div class="ticket-row" id="header">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">#</div>
+              <div class="ticket-row-sender">Name</div>
+              <div class="ticket-row-sender-email">Email</div>
+              <div class="ticket-row-sender-phone">Phone</div>
+              <div class="ticket-row-section">Option</div>
+            </div>
+          </div>
+          {% for ticket in db_helper.tickets.global_tickets %}
+          <div class="ticket-row" ondblclick="toggleTicketRow(this)">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">{{ticket.id[:4]}}...{{ticket.id[-4:]}}</div>
+              <div class="ticket-row-sender">{{ticket.name}}</div>
+              <div class="ticket-row-sender-email">{{ticket.email}}</div>
+              <div class="ticket-row-sender-phone">{{ticket.phone}}</div>
+              <div class="ticket-row-section">{{ticket.option[:1] | upper}}{{ticket.option[1:]}}</div>
+            </div>
+            <div class="ticket-row-collapsable">
+              <div class="ticket-row-collapsable-body">
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Name</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.name}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Email</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.email}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Phone Number</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.phone}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Message</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.message}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Requested Option</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.option[:1] | upper}}{{ticket.option[1:]}}</h3>
+                  </div>   
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Message Time</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.time | format_date}}</h3>
+                  </div>                          
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Actions</label>
+                    <div class="actions" style="display: flex; flex-direction: column;">
+                      <button class="shadow-button" onclick="openUserNotificationDialog(undefined, {name: '{{ticket.name}}', email: '{{ticket.email}}', phone_number: '{{ticket.phone}}', id: 'Anonymous'})">Send Message</button>
+                      <button class="shadow-button" onclick="openArchiveTicket('{{ticket.id}}', 'GLOBAL');">Archive Message</button>
+                    </div>
+                  </div>                          
+                </div>
+              </div>                      
+            </div>
+          </div>
+          {%endfor%}
+        </div>                                    
+      </div>                                    
+      <div class="fragment" id="modernization-tickets-fragment">
+        <div class="tickets-rows">
+          <div class="ticket-row" id="header">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">#</div>
+              <div class="ticket-row-sender">Name</div>
+              <div class="ticket-row-sender-email">Email</div>
+              <div class="ticket-row-sender-phone">Phone</div>
+              <div class="ticket-row-sender-time">Time</div>
+            </div>
+          </div>
+          {% for ticket in db_helper.tickets.modernization_tickets %}
+          <div class="ticket-row" ondblclick="toggleTicketRow(this)">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">{{ticket.id[:4]}}...{{ticket.id[-4:]}}</div>
+              <div class="ticket-row-sender">{{ticket.fname}} {{ticket.lname}}</div>
+              <div class="ticket-row-sender-email">{{ticket.email}}</div>
+              <div class="ticket-row-sender-phone">{{ticket.phone}}</div>
+              <div class="ticket-row-sender-phone">{{ticket.time | format_date}}</div>
+            </div>
+            <div class="ticket-row-collapsable">
+              <div class="ticket-row-collapsable-body">
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Name</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.fname}} {{ticket.lname}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Email</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.email}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Phone Number</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.phone}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Address</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.address}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Area</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.area}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Govern</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{content.cities['EN'][(ticket.govern | int)]}}</h3>
                   </div>
                 </div>
-                {% for ticket in db_helper.tickets.global_tickets %}
-                  <div class="ticket-row" ondblclick="toggleTicketRow(this)">
-                    <div class="ticket-row-header">
-                      <div class="ticket-row-id">{{ticket.id[:4]}}...{{ticket.id[-4:]}}</div>
-                      <div class="ticket-row-sender">{{ticket.fname}} {{ticket.lname}}</div>
-                      <div class="ticket-row-sender-email">{{ticket.email}}</div>
-                      <div class="ticket-row-sender-phone">{{ticket.phone}}</div>
-                      <div class="ticket-row-time">{{ticket.time | format_date}}</div>
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Message Time</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.time | format_date}}</h3>
+                  </div>                          
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Actions</label>
+                    <div class="actions" style="display: flex; flex-direction: column;">
+                      <button class="shadow-button" onclick="openUserNotificationDialog(undefined, {name: '{{ticket.fname}} {{ticket.lname}}', email: '{{ticket.email}}', phone_number: '{{ticket.phone}}', id: 'Anonymous'})">Send Message</button>
+                      <button class="shadow-button" onclick="openArchiveTicket('{{ticket.id}}', 'MODERNIZATION');">Archive Message</button>
                     </div>
-                  <div class="ticket-row-collapsable">
-                  <div class="ticket-row-collapsable-body">
-                      <div class="ticket-row-collapsable-column">
-                          <div class="ticket-row-collapsable-column-tile">
-                              <label>Sender Name</label>
-                              <h3 class="ticket-row-collapsable-ticket">{{ticket.fname}} {{ticket.lname}}</h3>
-                          </div>
-                          <div class="ticket-row-collapsable-column-tile">
-                              <label>Sender Email</label>
-                              <h3 class="ticket-row-collapsable-ticket">{{ticket.email}}</h3>
-                          </div>
-                          <div class="ticket-row-collapsable-column-tile">
-                              <label>Sender Phone Number</label>
-                              <h3 class="ticket-row-collapsable-ticket">{{ticket.phone}}</h3>
-                          </div>
-                      </div>                      
-                    </div>
+                  </div>                          
+                </div>
+              </div>                      
+            </div>
+          </div>
+          {%endfor%}
+        </div>                                            
+      </div>
+      <div class="fragment" id="installations-tickets-fragment">
+        <div class="tickets-rows">
+          <div class="ticket-row" id="header">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">#</div>
+              <div class="ticket-row-sender">Name</div>
+              <div class="ticket-row-sender-email">Email</div>
+              <div class="ticket-row-sender-phone">Phone</div>
+              <div class="ticket-row-sender-plan">Plan</div>
+              <div class="ticket-row-sender-model">Model</div>
+            </div>
+          </div>
+          {% for ticket in db_helper.tickets.installations_tickets %}
+          <div class="ticket-row" ondblclick="toggleTicketRow(this)">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">{{ticket.id[:4]}}...{{ticket.id[-4:]}}</div>
+              <div class="ticket-row-sender">{{ticket.fname}} {{ticket.lname}}</div>
+              <div class="ticket-row-sender-email">{{ticket.email}}</div>
+              <div class="ticket-row-sender-phone">{{ticket.phone}}</div>
+              <div class="ticket-row-sender-plan">{{ticket.plan}}</div>
+              <div class="ticket-row-sender-model">{{ticket.model}}</div>
+            </div>
+            <div class="ticket-row-collapsable">
+              <div class="ticket-row-collapsable-body">
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Name</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.fname}} {{ticket.lname}}</h3>
                   </div>
-              </div>                                    
-                {%endfor%}
-              </div>                                    
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Email</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.email}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Phone Number</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.phone}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Address</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.address}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Area</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.area}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Govern</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{content.cities['EN'][(ticket.govern | int)]}}</h3>
+                  </div>
+                </div>
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Model</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.model}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Plan</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.plan}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Message Time</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.time | format_date}}</h3>
+                  </div>                          
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Actions</label>
+                    <div class="actions" style="display: flex; flex-direction: column;">
+                      <button class="shadow-button" onclick="openUserNotificationDialog(undefined, {name: '{{ticket.fname}} {{ticket.lname}}', email: '{{ticket.email}}', phone_number: '{{ticket.phone}}', id: 'Anonymous'})">Send Message</button>
+                      <button class="shadow-button" onclick="openArchiveTicket('{{ticket.id}}', 'INSTALLATIONS');">Archive Message</button>
+                    </div>
+                  </div>                          
+                </div>
+              </div>                      
+            </div>
+          </div>
+          {%endfor%}
+        </div>                                            
       </div>
-      <div class="fragment" id="modernization-tickets-fragment"></div>
-      <div class="fragment" id="installations-tickets-fragment"></div>
-      <div class="fragment" id="maintenance-tickets-fragment"></div>
-      <div class="fragment" id="spare-parts-tickets-fragment"></div>
+      <div class="fragment" id="maintenance-tickets-fragment">
+        <div class="tickets-rows">
+          <div class="ticket-row" id="header">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">#</div>
+              <div class="ticket-row-sender">Name</div>
+              <div class="ticket-row-sender-email">Email</div>
+              <div class="ticket-row-sender-phone">Phone</div>
+              <div class="ticket-row-sender-govern">Govern</div>
+            </div>
+          </div>
+          {% for ticket in db_helper.tickets.maintenance_tickets %}
+          <div class="ticket-row" ondblclick="toggleTicketRow(this)">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">{{ticket.id[:4]}}...{{ticket.id[-4:]}}</div>
+              <div class="ticket-row-sender">{{ticket.fname}} {{ticket.lname}}</div>
+              <div class="ticket-row-sender-email">{{ticket.email}}</div>
+              <div class="ticket-row-sender-phone">{{ticket.phone}}</div>
+              <div class="ticket-row-sender-govern">{{content.cities['EN'][(ticket.govern | int)]}}</div>
+            </div>
+            <div class="ticket-row-collapsable">
+              <div class="ticket-row-collapsable-body">
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Name</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.fname}} {{ticket.lname}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Email</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.email}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Phone Number</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.phone}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Message</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.message}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Address</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.address}}</h3>
+                  </div>   
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Message Time</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.time | format_date}}</h3>
+                  </div>                          
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Actions</label>
+                    <div class="actions" style="display: flex; flex-direction: column;">
+                      <button class="shadow-button" onclick="openUserNotificationDialog(undefined, {name: '{{ticket.fname}} {{ticket.lname}}', email: '{{ticket.email}}', phone_number: '{{ticket.phone}}', id: 'Anonymous'})">Send Message</button>
+                      <button class="shadow-button" onclick="openArchiveTicket('{{ticket.id}}', 'MAINTENANCE');">Archive Message</button>
+                    </div>
+                  </div>                          
+                </div>
+              </div>                      
+            </div>
+          </div>
+          {%endfor%}
+        </div>                                            
       </div>
+      <div class="fragment" id="spare-parts-tickets-fragment">
+        <div class="tickets-rows">
+          <div class="ticket-row" id="header">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">#</div>
+              <div class="ticket-row-sender">Name</div>
+              <div class="ticket-row-sender-spare-part">Spare Part</div>
+              <div class="ticket-row-sender-category">Model</div>
+            </div>
+          </div>
+          {% for ticket in db_helper.tickets.spare_parts_tickets %}
+          {% set product= db_helper.products.get_product_by_id(ticket.sparePart) %}
+          {% set category= db_helper.categories.get_category_by_id(ticket.category) %}
+          <div class="ticket-row" ondblclick="toggleTicketRow(this)">
+            <div class="ticket-row-header">
+              <div class="ticket-row-id">{{ticket.id[:4]}}...{{ticket.id[-4:]}}</div>
+              <div class="ticket-row-sender">{{ticket.fname}} {{ticket.lname}}</div>
+              <div class="ticket-row-sender-spare-part">{{product.name['EN']}}</div>
+              <div class="ticket-row-sender-category">{{category['name']['EN']}}</div>
+            </div>
+            <div class="ticket-row-collapsable">
+              <div class="ticket-row-collapsable-body">
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Name</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.fname}} {{ticket.lname}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Email</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.email}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Sender Phone Number</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.phone}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Address</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.address}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Area</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.area}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Govern</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{content.cities['EN'][(ticket.govern | int)]}}</h3>
+                  </div>
+                </div>
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Category</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{category['name']['EN']}}</h3>
+                  </div>
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Spare Part</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{product.name['EN']}}</h3>
+                  </div>
+                </div>                      
+                <div class="ticket-row-collapsable-column">
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Message Time</label>
+                    <h3 class="ticket-row-collapsable-ticket">{{ticket.time | format_date}}</h3>
+                  </div>                          
+                  <div class="ticket-row-collapsable-column-tile">
+                    <label>Actions</label>
+                    <div class="actions" style="display: flex; flex-direction: column;">
+                      <button class="shadow-button" onclick="openUserNotificationDialog(undefined, {name: '{{ticket.fname}} {{ticket.lname}}', email: '{{ticket.email}}', phone_number: '{{ticket.phone}}', id: 'Anonymous'})">Send Message</button>
+                      <button class="shadow-button" onclick="openArchiveTicket('{{ticket.id}}', 'SPARE_PARTS');">Archive Message</button>
+                    </div>
+                  </div>                          
+                </div>
+              </div>                      
+            </div>
+          </div>
+          {%endfor%}
+        </div>                                            
+      </div>
+    </div>
   </div>
 </div>
 </section>
+<div class="form-dialog-overlay" id="user-notification-dialog"></div>
+<div class="form-dialog" id="user-notification-dialog">
+  <div class="header">
+    <h2>Send Notification</h2>
+    <div onclick="closeUserNotificationDialog()"><i class="fa-solid fa-close"></i></div>
+  </div>
+  <div class="body">
+    <div id="attachments-header" class="header">
+      <label>Notification Body</label>
+    </div>                
+    <label>Objective</label>
+    <input type="name" name="Objective" class="single-line-field" id="objective-field" placeholder="Objective">
+    <label>Message</label>
+    <textarea class="mutli-line-field" id="message-field" placeholder="Type your message..."></textarea>        
+    <div id="attachments-header" class="header">
+      <label>Attachments</label>
+      <button class="main-button" onclick="pickAttachment();">Pick</button>
+    </div>        
+    <label id="attachments-count">Attachments (0)</label>
+    <div id="attachments"></div>
+    <div id="recipients-header" class="header">
+      <label>Recipients</label>
+    </div>                
+    <div class="filter-dropdown select-menu">
+      <button onclick="toggleRecipientsDropdown()" class="filter-dropbtn main-button" id="recipients-dropdown">Recipients</button>
+      <div id="recipients-dropdown" class="filter-dropdown-content">
+        <input type="text" placeholder="Search.." class="single-line-field" onkeyup="recipientsFilterFunction()">
+        {% for user in db_helper.users.all_users %}
+        <button onclick="pickRecipient({name: '{{user.name}}', email: '{{user.email}}', id: '{{user.id}}',  phone_number: '{{user.phone_number}}'})">{{user.name}} <span>({{user.email}}, {{user.phone_number}})</span></button>
+        {%endfor%}
+      </div>
+    </div>
+    <label id="recipients-count">Recipients (0)</label>
+    <div id="recipients"></div>
+    <div class="actions options">
+      <button class="shadow-button" style="color: red" id="clear-reciepeints-data">Clear List</button>
+      <button class="shadow-button" id="select-all-reciepeints">Select All</button>
+    </div>
+  </div>
+  <div class="options">
+    <button class="shadow-button" style="color: red" id="reset" onclick="resetUserNotificationDialog();">Reset</button>
+    <button class="shadow-button" id="close" onclick="closeUserNotificationDialog();">Close</button>
+    |
+    <button class="main-button" onclick="sendNotificationSubmission();">Submit</button> 
+    <p class="status-msg" id="status-msg"></p>
+  </div>
+</div>
+<div class="confirmation-dialog-overlay" id="archive-ticket"></div>
+<div class="confirmation-dialog" id="archive-ticket">
+  <div class="header">
+    <h2>Archive Ticket</h2>
+    <div onclick="closeArchiveTicket();"><i class="fa-solid fa-close"></i></div>
+  </div>
+  <div class="body">
+    <label>Enter Your Password!</label>
+    <input class="single-line-field" id="admin-password" placeholder="Password" type="password">
+  </div>
+  <div class="options">
+    <button class="shadow-button" onclick="closeArchiveTicket();">Close</button>
+    <button class="main-button"onclick="fetchUsersReport()">Submit</button>
+    <p class="status-msg" id="status-msg"></p>
+  </div>
+</div>
+
 <div id="toast"></div>    
 <script type="text/javascript">
   document.firstElementChild.setAttribute('data-theme', 'dark');

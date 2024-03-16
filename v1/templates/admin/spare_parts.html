@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sky Elevators - Spare Parts</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static', filename='website/global/styles/images/symbol-512.ico')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='admin/spareParts/styles/computer.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='website/global/styles/computer.css')}}"
+    />
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='admin/spareParts/scripts/main.js')}}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='website/global/scripts/main.js')}}"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='website/global/styles/images/favicon.ico')}}">    
+  </head>
+  <body>
+    <style type="text/css">
+      :root {
+        --pff: "Montserrat";
+        --sff: "Montserrat";
+      }
+    </style>
+
+    <section class="admin">
+      <div id="left-section">
+        <div id="header">
+          <div id="logo"></div>
+          <p>{{admin_data['name']}}</p>
+        </div>
+        <div id="body">
+          <div
+            onclick="window.open(`/webapp/adminstration/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-home"></i></div>
+            <p>Home</p>
+          </div>
+          {% if "0" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/layout/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+            <p>Layout</p>
+          </div>
+          {%endif%} {% if "1" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/articles/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <p>Articles</p>
+          </div>
+          {%endif%} {% if "2" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/tickets/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-envelope"></i></div>
+            <p>Tickets</p>
+          </div>
+          <div
+            onclick="window.open(`/webapp/adminstration/tickets/archived/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-envelope"></i></div>
+            <p>Archived Tickets</p>
+          </div>
+          {%endif%}{% if "4" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/users/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-user"></i></div>
+            <p>Users</p>
+          </div>
+          {%endif%}{% if "5" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/spareParts/`, '_self');"
+            class="active left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-gear"></i></div>
+            <p>Spare Parts</p>
+          </div>
+          {%endif%}{% if "6" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/categories/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <p>Categories</p>
+          </div>
+          {%endif%}{% if "3" in admin_data['accesses'] %}
+          <div
+            onclick="window.open(`/webapp/adminstration/admins/`, '_self');"
+            class="left-menu-tile"
+          >
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <p>Admins</p>
+          </div>
+          {%endif%}
+        </div>
+        <div id="footer">
+          <div onclick="adminLogout();" class="left-menu-tile">
+            <div class="left-menu-tile-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+            <p>Logout</p>
+          </div>
+        </div>
+      </div>
+      <div id="right-section">
+      <div class="card">
+        <div class="header">
+          <h3>Spare Parts</h3>
+          <p>The Spare Parts you Can Provide!</p>
+          <div class="options">
+            <button class="shadow-button" onclick="openSparePartFormDialog('CREATE')">Create</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="products">
+        {% for product in db_helper.products.all_products%}
+              <div class="product-card">
+                <div class="cover"><img src="/assets/products/name/{{product.id}}-{{product.assets[0]}}/" alt="{{product.bio['EN']}}"></div>
+                <div class="info">
+                    <h4>{{product.name[lang]}}</h4>
+                    <p class="bio">{{(product.bio[lang] |string)[:75]}}</p>
+                    <div class="actions">
+                      <button class="shadow-button" style="color: red" onclick="openDeleteProductDialog('{{product.id}}')">Delete</button>
+                      <button class="main-button" onclick="openSparePartFormDialog('EDIT', {product: {{product.to_dict() | safe}}});">Edit</button>
+                    </div>
+                  </div>
+                </div>
+            {%endfor%}
+      </div>
+      </div>
+    </section>
+    <div class="form-dialog-overlay" id="spare-part-form"></div>
+    <div class="form-dialog" id="spare-part-form">
+      <div class="header">
+        <h2></h2>
+        <div onclick="closeSparePartFormDialog()"><i class="fa-solid fa-close"></i></div>
+      </div>
+      <div class="body">
+        <div class="row-fields">
+          <label>English Title</label>
+          <label>Arabic Title</label>
+        </div>
+        <div class="row-fields">
+          <input type="name" name="en-name" placeholder="English Name" id="en-name" class="single-line-field">
+          <input type="name" name="ar-name" placeholder="Arabic Name" id="ar-name" class="single-line-field">
+        </div>
+        <div class="row-fields">
+          <label>English Bio</label>
+          <label>Arabic Bio</label>
+        </div>
+        <div class="row-fields">
+          <textarea class="mutli-line-field" id="en-bio" name="en-bio" placeholder="English Bio..."></textarea>
+          <textarea class="mutli-line-field" id="ar-bio" name="ar-bio" placeholder="Arabic Bio..."></textarea>
+        </div>
+        <label id="images">Images</label>
+        <div class="images">
+          <div class="header">
+            <label>Images</label>
+            <button class="main-button" onclick="handleImagesPicking();">Pick</button>
+          </div>
+          <div class="body"></div>
+        </div>
+        <label>Category</label>
+        <div class="row-fields" id="category">
+          <div class="select-menu" id="category-option-menu">
+            <div class="select-btn">
+              <span class="sBtn-text">Pick Category</span>
+              <i class="bx bx-chevron-down"></i>
+            </div>
+            <ul class="options">
+              {% for category in db_helper.categories.categories %}
+                <li class="option" id="cat-{{category.id}}">
+                  <span class="option-text">{{category.name['EN']}}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+                <label>Tags / Keywords</label>
+          <div class="tags">
+            <div class="header">
+              <input
+                type="name"
+                name="tag"
+                placeholder="Tag / Keyword"
+                class="single-line-field"
+                id="cat-tags"
+              />
+              <button class="main-button" id="tags-submit">Add</button>
+            </div>
+            <div class="body"></div>
+          </div>
+          <label>Images ALT Messages</label>    
+          <input type="text" name="images-alt" placeholder="Images ALT" id="images-alt" class="single-line-field">
+      </div>
+      <div class="options">
+        <button class="shadow-button" id="reset" onclick="resetSparePartFormDialog()">Reset</button>
+        <button class="shadow-button" id="close" style="color: red" onclick="closeSparePartFormDialog()">Close</button>
+        <button class="main-button">Submit</button>
+        <p class="status-msg" id="status-msg"></p>
+      </div>
+    </div>
+    <div class="confirmation-dialog-overlay" id="delete-product"></div>
+    <div class="confirmation-dialog" id="delete-product">
+      <div class="header">
+        <h2>Delete Product</h2>
+        <div onclick="closeDeleteSparePartDialog();"><i class="fa-solid fa-close"></i></div>
+      </div>
+      <div class="body">
+        <label>Enter Your Password!</label>
+        <input class="single-line-field" id="admin-password" placeholder="Password" type="password">
+      </div>
+      <div class="options">
+        <button class="shadow-button" onclick="closeDeleteSparePartDialog();">Close</button>
+        <button class="main-button">Submit</button>
+        <p class="status-msg" id="status-msg"></p>
+      </div>
+    </div>    
+    <script type="text/javascript">
+      pageInit();
+      document.firstElementChild.setAttribute('data-theme', 'dark');      
+    </script>
+  </body>
+</html>

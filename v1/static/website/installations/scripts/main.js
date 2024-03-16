@@ -6,17 +6,17 @@ const pageInit = (props) => {
     formsContent = props.formsContent;
     actionsContent = props.actionsContent;
     const modelOptionMenu = document.querySelector("#model-option-menu"),
-        modelSelectBtn = modelOptionMenu.querySelector(".select-btn"),
-        modelOptions = modelOptionMenu.querySelectorAll(".option"),
-        modelsBtn_text = modelOptionMenu.querySelector(".sBtn-text"),
-        planOptionMenu = document.querySelector("#plan-option-menu"),
-        planSelectBtn = planOptionMenu.querySelector(".select-btn"),
-        planOptions = planOptionMenu.querySelectorAll(".option"),
-        plansBtn_text = planOptionMenu.querySelector(".sBtn-text");
+    modelSelectBtn = modelOptionMenu.querySelector(".select-btn"),
+    modelOptions = modelOptionMenu.querySelectorAll(".option"),
+    modelsBtn_text = modelOptionMenu.querySelector(".sBtn-text"),
+    planOptionMenu = document.querySelector("#plan-option-menu"),
+    planSelectBtn = planOptionMenu.querySelector(".select-btn"),
+    planOptions = planOptionMenu.querySelectorAll(".option"),
+    plansBtn_text = planOptionMenu.querySelector(".sBtn-text");
 
     modelSelectBtn.addEventListener("click", () => {
         if (planOptionMenu.classList.contains('active')) planOptionMenu.classList.toggle("active")
-        modelOptionMenu.classList.toggle("active")
+            modelOptionMenu.classList.toggle("active")
     });
 
     modelOptions.forEach((modelOption) => {
@@ -50,18 +50,18 @@ const pageInit = (props) => {
 
     planSelectBtn.addEventListener("click", () => {
         if (modelOptionMenu.classList.contains('active')) modelOptionMenu.classList.toggle("active")
-        planOptionMenu.classList.toggle("active")
+            planOptionMenu.classList.toggle("active")
     });
 
 
     const governOptionMenu = document.querySelector("#govern-option-menu"),
-        selectBtn = governOptionMenu.querySelector(".select-btn"),
-        options = governOptionMenu.querySelectorAll(".option"),
-        sBtn_text = governOptionMenu.querySelector(".sBtn-text");
+    selectBtn = governOptionMenu.querySelector(".select-btn"),
+    options = governOptionMenu.querySelectorAll(".option"),
+    sBtn_text = governOptionMenu.querySelector(".sBtn-text");
 
     selectBtn.addEventListener("click", () =>
         governOptionMenu.classList.toggle("active")
-    );
+        );
 
     options.forEach((option) => {
         option.addEventListener("click", () => {
@@ -79,14 +79,14 @@ const openPickPlanForm = (model, plan) => {
     const overlay = document.querySelector('div.overlay#overlay');
     const emailRegEx = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const firstNameField = form.querySelector('input.single-line-field#first-name'),
-        lastNameField = form.querySelector('input.single-line-field#last-name'),
-        emailField = form.querySelector('input.single-line-field#email'),
-        phoneField = form.querySelector('input.single-line-field#phone'),
-        areaField = form.querySelector('input.single-line-field#area'),
-        addressField = form.querySelector('input.single-line-field#address'),
-        cancelBtn = form.querySelector('button.shadow-button'),
-        submitBtn = form.querySelector('button.main-button'),
-        statusMsg = form.querySelector('p.status-msg');
+    lastNameField = form.querySelector('input.single-line-field#last-name'),
+    emailField = form.querySelector('input.single-line-field#email'),
+    phoneField = form.querySelector('input.single-line-field#phone'),
+    areaField = form.querySelector('input.single-line-field#area'),
+    addressField = form.querySelector('input.single-line-field#address'),
+    cancelBtn = form.querySelector('button.shadow-button'),
+    submitBtn = form.querySelector('button.main-button'),
+    statusMsg = form.querySelector('p.status-msg');
 
 
     firstNameField.addEventListener('input', (e) => {
@@ -171,30 +171,30 @@ const openPickPlanForm = (model, plan) => {
             || !(String(emailField.value.trim()).toLowerCase().match(emailRegEx))
             || addressField.value.trim().length < 8
             || areaField.value.trim().length < 4
-        ) {
+            ) {
             submitBtn.onclick = () => { statusMsg.innerHTML = errorsContent[lang]['formNotCompleted'] };
-            submitBtn.style.opacity = '0.25';
-            return;
-        }
-        if (currentSelectedModel === undefined) {
-            statusMsg.innerHTML = errorsContent[lang]['notValidModel'];
-            return;
-        }
+        submitBtn.style.opacity = '0.25';
+        return;
+    }
+    if (currentSelectedModel === undefined) {
+        statusMsg.innerHTML = errorsContent[lang]['notValidModel'];
+        return;
+    }
 
-        statusMsg.innerHTML = '';
-        if (currentSelectedPlan === undefined) {
-            statusMsg.innerHTML = errorsContent[lang]['notValidPlan'];
-            return;
-        }
-        statusMsg.innerHTML = '';
+    statusMsg.innerHTML = '';
+    if (currentSelectedPlan === undefined) {
+        statusMsg.innerHTML = errorsContent[lang]['notValidPlan'];
+        return;
+    }
+    statusMsg.innerHTML = '';
 
-        if (currentSelectedGovern === undefined) {
-            statusMsg.innerHTML = errorsContent[lang]['notValidGovern'];
-            return;
-        }
-        submitBtn.style.opacity = '1';
-        submitBtn.onclick = pickPlanSubmission;
-    }, 5);
+    if (currentSelectedGovern === undefined) {
+        statusMsg.innerHTML = errorsContent[lang]['notValidGovern'];
+        return;
+    }
+    submitBtn.style.opacity = '1';
+    submitBtn.onclick = pickPlanSubmission;
+}, 5);
 
     form.style.display = 'flex';
     overlay.style.display = 'flex';
@@ -212,14 +212,14 @@ const closePickPlanForm = (model, plan) => {
 const pickPlanSubmission = async () => {
     const form = document.querySelector('div.form#pick-plan-form');
     const firstNameField = form.querySelector('input.single-line-field#first-name'),
-        lastNameField = form.querySelector('input.single-line-field#last-name'),
-        emailField = form.querySelector('input.single-line-field#email'),
-        phoneField = form.querySelector('input.single-line-field#phone'),
-        areaField = form.querySelector('input.single-line-field#area'),
-        addressField = form.querySelector('input.single-line-field#address'),
-        cancelBtn = form.querySelector('button.shadow-button'),
-        submitBtn = form.querySelector('button.main-button'),
-        statusMsg = form.querySelector('p.status-msg');
+    lastNameField = form.querySelector('input.single-line-field#last-name'),
+    emailField = form.querySelector('input.single-line-field#email'),
+    phoneField = form.querySelector('input.single-line-field#phone'),
+    areaField = form.querySelector('input.single-line-field#area'),
+    addressField = form.querySelector('input.single-line-field#address'),
+    cancelBtn = form.querySelector('button.shadow-button'),
+    submitBtn = form.querySelector('button.main-button'),
+    statusMsg = form.querySelector('p.status-msg');
 
     const payload = {
         fname: firstNameField.value.trim(),
@@ -289,14 +289,14 @@ const pickPlanSubmission = async () => {
 const clearPickPlanForm = () => {
     const form = document.querySelector('div.form#pick-plan-form');
     const firstNameField = form.querySelector('input.single-line-field#first-name'),
-        lastNameField = form.querySelector('input.single-line-field#last-name'),
-        emailField = form.querySelector('input.single-line-field#email'),
-        phoneField = form.querySelector('input.single-line-field#phone'),
-        areaField = form.querySelector('input.single-line-field#area'),
-        addressField = form.querySelector('input.single-line-field#address'),
-        cancelBtn = form.querySelector('button.shadow-button'),
-        submitBtn = form.querySelector('button.main-button'),
-        statusMsg = form.querySelector('p.status-msg');
+    lastNameField = form.querySelector('input.single-line-field#last-name'),
+    emailField = form.querySelector('input.single-line-field#email'),
+    phoneField = form.querySelector('input.single-line-field#phone'),
+    areaField = form.querySelector('input.single-line-field#area'),
+    addressField = form.querySelector('input.single-line-field#address'),
+    cancelBtn = form.querySelector('button.shadow-button'),
+    submitBtn = form.querySelector('button.main-button'),
+    statusMsg = form.querySelector('p.status-msg');
 
     firstNameField.value = '';
     lastNameField.value = '';
@@ -332,3 +332,31 @@ const closeConfirmationDialog = () => {
     overlay.style.display = 'none';
     dialog.style.display = 'none';
 }
+
+
+const closeToast= ()=> {
+    const header= document.querySelector('#toast #header');
+    const content = document.querySelector('#toast #content');
+    const icon = document.querySelector('#toast #toast-icon');
+    header.style.opactiy= '0';
+    content.style.opacity= '0';
+    setTimeout(()=> {
+        document.querySelector('#toast').classList.remove('active');
+        icon.style.opacity= '1';
+        document.querySelector('#toast').onclick= openToast;
+    }, 550)
+}
+
+const openToast= ()=> {
+    const header= document.querySelector('#toast #header');
+    const content = document.querySelector('#toast #content');
+    const icon = document.querySelector('#toast #toast-icon');
+    document.querySelector('#toast').classList.add('active');
+    document.querySelector('#toast').onclick= undefined;
+    icon.style.opactiy= '0';
+    setTimeout(()=> {
+        header.style.opactiy= '1';
+        content.style.opacity= '1';
+    }, 550)
+}
+

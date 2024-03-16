@@ -2,6 +2,7 @@
 <html dir="{%if lang == 'AR'%} {{'rtl'}} {%else%} {{'ltr'}}{%endif%}">
 <head>
 	<meta charset="utf-8">
+<meta name="description" content="{{content.global_[lang]['shortDescription']}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{url_for('static', filename='website/modernization/styles/computer.css')}}"/>
 	<link rel="stylesheet" href="{{url_for('static', filename='website/modernization/styles/mobile.css')}}"/>
@@ -10,7 +11,7 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/mobile.css')}}"/>
 	<link rel="stylesheet" href="{{url_for('static', filename='website/global/styles/tablet.css')}}"/>
 	<script src="{{url_for('static', filename='website/global/scripts/main.js')}}"></script>
-	<script src="{{url_for('static', filename='website/home/scripts/main.js')}}"></script>
+	<script src="{{url_for('static', filename='website/modernization/scripts/main.js')}}"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='website/global/styles/images/favicon.ico')}}">
 	<title>{{content.global_[lang]["platformTitle"]}}</title>
@@ -35,10 +36,10 @@
 		<a href="/">{{content.global_[lang]["platformTitle"]}}</a>
 		<div id="nav">
 			<a href="/" class="header-nav-item">{{content.tabs[lang]["home"]}}</a>
+			<a href="/installations" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
+			<a href="/modernization" class="header-nav-item active">{{content.tabs[lang]["modernization"]}}</a>
 			<a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
 			<a href="/spareParts/" class="header-nav-item">{{content.tabs[lang]["spareParts"]}}</a>
-			<a href="/modernization" class="header-nav-item active">{{content.tabs[lang]["modernization"]}}</a>
-			<a href="/installations" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
 			<a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
 			<a href="/contact/" class="header-nav-item">{{content.tabs[lang]["contact"]}}</a>
 			<a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
@@ -104,33 +105,45 @@
 			</div>
 		</div>
 </section>
-<section class="component" id="machines">
-	<div class="header">
-		<h3><i class="fa-solid fa-gear"></i> {{content.global_[lang]['modernizationMachinesTitle'] |safe}}</h3>
-		<p>{{content.global_[lang]['modernizationMachinesSubtitle']}}</p>
-	</div>
-		<div class="cards">
-			{% for card in (layout.modernization["MACHINES"].values() | list) %}
-				<div class="machine-card component-card">
-					<div class="content">
-						<img src="/assets/modernization/machines/{{card['id']}}/" alt="{{card['alt']}}">
-						<div class="information">
-							<h4>{{card['title'][lang]}}</h4>
-							<p>{{card['desc'][lang]}}</p>
-						</div>
-					</div>
-					<div class="styling-border"></div>
-				</div>
-			{%endfor%}
+<section id="fragments">
+	<div class="side-section" id="left-section"><i onclick="previousFragment();" class="fa-solid fa-arrow-left"></i></div>
+	<div class="content">
+		<div id="fragments-controllers">
+			<div class="fragment-controller active" id="machines" onclick="toggleFragment(0)">
+				<i class="fa-solid fa-gear"></i>
+				<h3>{{content.global_[lang]['modernizationMachinesTitle'] |safe}}</h3>
 			</div>
-</section>
-<section class="component" id="doors">
-	<div class="header">
-		<h3><i class="fa-solid fa-door-open"></i> {{content.global_[lang]['modernizationDoorsTitle'] |safe}}</h3>
-		<p>{{content.global_[lang]['modernizationDoorsSubtitle']}}</p>
-	</div>
-		<div class="cards">
-			{% for card in (layout.modernization["DOORS"].values() | list) %}
+			<div class="fragment-controller" id="doors" onclick="toggleFragment(1)">
+				<i class="fa-solid fa-door-open"></i>
+				<h3>{{content.global_[lang]['modernizationDoorsTitle'] |safe}}</h3>
+			</div>
+			<div class="fragment-controller" id="controllers" onclick="toggleFragment(2)">
+				<i class="fa-solid fa-elevator"></i>
+				<h3>{{content.global_[lang]['modernizationControllersTitle'] |safe}}</h3>
+			</div>
+		</div>
+		<div class="fragments">
+			<div class="fragment active" id="machines">
+				<p>{{content.global_[lang]['modernizationMachinesSubtitle']}}</p>
+				<div class="cards">
+					{% for card in (layout.modernization["MACHINES"].values() | list) %}
+						<div class="machine-card component-card">
+							<div class="content">
+								<img src="/assets/modernization/machines/{{card['id']}}/" alt="{{card['alt']}}">
+								<div class="information">
+									<h4>{{card['title'][lang]}}</h4>
+									<p>{{card['desc'][lang]}}</p>
+								</div>
+							</div>
+							<div class="styling-border"></div>
+						</div>
+					{%endfor%}
+				</div>
+			</div>
+			<div class="fragment not-active-right" id="doors">
+				<p>{{content.global_[lang]['modernizationDoorsSubtitle']}}</p>
+				<div class="cards">
+					{% for card in (layout.modernization["DOORS"].values() | list) %}
 				<div class="machine-card component-card">
 					<div class="content">
 						<img src="/assets/modernization/doors/{{card['id']}}/" alt="{{card['alt']}}">
@@ -142,15 +155,12 @@
 					<div class="styling-border"></div>
 				</div>
 			{%endfor%}
+				</div>
 			</div>
-</section>
-<section class="component" id="controllers">
-	<div class="header">
-		<h3><i class="fa-solid fa-elevator"></i> {{content.global_[lang]['modernizationControllersTitle'] |safe}}</h3>
-		<p>{{content.global_[lang]['modernizationControllersSubtitle']}}</p>
-	</div>
-		<div class="cards">
-			{% for card in (layout.modernization["CONTROLLERS"].values() | list) %}
+			<div class="fragment not-active-right" id="controllers">
+				<p>{{content.global_[lang]['modernizationControllersSubtitle']}}</p>
+				<div class="cards">
+					{% for card in (layout.modernization["CONTROLLERS"].values() | list) %}
 				<div class="machine-card component-card">
 					<div class="content">
 						<img src="/assets/modernization/controllers/{{card['id']}}/" alt="{{card['alt']}}">
@@ -162,33 +172,27 @@
 					<div class="styling-border"></div>
 				</div>
 			{%endfor%}
-			</div>
-</section>
-<section class="component" id="decorations">
-	<div class="header">
-		<h3><i class="fa-solid fa-elevator"></i> {{content.global_[lang]['modernizationDecorationsTitle'] |safe}}</h3>
-		<p>{{content.global_[lang]['modernizationDecorationsSubtitle']}}</p>
-	</div>
-		<div class="cards">
-			{% for card in (layout.modernization["DECORATIONS"].values() | list) %}
-				<div class="machine-card component-card">
-					<div class="content">
-						<img src="/assets/modernization/decorations/{{card['id']}}/" alt="{{card['alt']}}">
-						<div class="information">
-							<h4>{{card['title'][lang]}}</h4>
-							<p>{{card['desc'][lang]}}</p>
-						</div>
-					</div>
-					<div class="styling-border"></div>
 				</div>
-			{%endfor%}
 			</div>
+		</div>
+	</div>
+	<div class="side-section" id="right-section"><i class="fa-solid fa-arrow-right" onclick="nextFragment();"></i></div>
+</section>
+<section id="decorations-inquery">
+	<div class="left-section">
+		<img {% if lang =='EN' %} id="flipped" {%endif%} src="{{url_for('static', filename='website/modernization/styles/images/artist.png')}}" alt="Elevator Interior Design & Decoration by Sky Elevators">
+	</div>
+	<div class="right-section">
+		<h3>{{content.global_[lang]['modernizationDecorationsTitle']}}</h3>
+		<p>{{content.global_[lang]['modernizationDecorationsSubtitle']}}</p>
+		<button class="main-button" onclick="openModernizationInqueryDialog()">{{content.actions[lang]['sendInquery']}}</button>
+	</div>
 </section>
 <footer>
 	<div class="footer-column" id="column-one">
-		<img id="logo"></img>
+		<img id="logo" alt="Sky Elevators {{content.global_[lang]['shortDescription']}}" />
 		<div id="footer-msg">
-			<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+			<h4>{{content.global_[lang]["shortDescription"]}}</h4>
 		</div>
 	</div>
 	<div class="footer-column" id="column-two">
@@ -218,11 +222,21 @@
 				</div>
 			</div>
 			<div id="social-media">
-				<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
-				<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
-				<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
-				<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{% if layout.data['CONTACT']['FACEBOOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['LINKEDIN'] != "" %}
+					<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['INSTAGRAM'] != "" %}
+					<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['TIKTOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['X-TWITTER'] != "" %}
+					<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{%endif%}
 			</div>
 		</div>
 		<div id="copyright">
@@ -230,10 +244,74 @@
 		</div>
 	</div>
 </footer>
+<div class="form-dialog-overlay" id="inquery-dialog"></div>
+<div class="form-dialog" id="inquery-dialog">
+	<div class="header">
+		<h2>{{content.actions[lang]['bookMaintenance']}}</h2>
+		<div onclick="closeModernizationInqueryDialog();"><i class="fa-solid fa-close"></i></div>
+	</div>
+	<div class="body">
+		<div class="row-fields">
+			<label>{{content.forms[lang]['firstName']}}</label>
+			<label>{{content.forms[lang]['lastName']}}</label>
+		</div>
+		<div class="row-fields">
+			<input class="single-line-field" placeholder="{{content.placeholders[lang]['nameFieldPlaceholder']}}" type="name" name="first-name" id="first-name-field" {% if user_data%} value="{{user_data.name.split(' ')[0]}}" {%endif%}>
+			<input class="single-line-field" placeholder="{{content.placeholders[lang]['nameFieldPlaceholder']}}" type="name" name="last-name" id="last-name-field" {% if user_data%} value="{{user_data.name.split(' ')[1]}}" {%endif%}>
+		</div>
+		<label>{{content.forms[lang]['email']}}</label>
+		<input class="single-line-field" placeholder="{{content.placeholders[lang]['emailFieldPlaceholder']}}" type="email" name="email" id="email-field" {% if user_data%} value="{{user_data.email}}" {%endif%}>
+		<label>{{content.forms[lang]['phone']}}</label>
+		<input class="single-line-field" placeholder="{{content.placeholders[lang]['phoneFieldPlaceholder']}}" type="tel" autocomplete="cc-number" maxlength="19" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" inputmode="numeric" name="phone" id="phone-field" {% if user_data%} value="{{user_data.phone_number}}" {%endif%}>
+		<label>{{content.forms[lang]['address']}}</label>
+		<input class="single-line-field" placeholder="{{content.placeholders[lang]['addressFieldPlaceholder']}}" type="address" name="address" id="address-field">
+		<label>{{content.forms[lang]['govern']}}</label>
+		<div class="row-fields" id="options">
+			<div class="select-menu" id="govern-option-menu">
+				<div class="select-btn">
+					<span class="sBtn-text">{{content.forms[lang]['govern']}}</span>
+					<i class="bx bx-chevron-down"></i>
+				</div>
+				<ul class="options">
+					<div>
+						{%for city in content.cities[lang].keys() %}
+						<li class="option" id="city-{{city}}">
+							<span class="option-text">{{content.cities[lang][city]}}</span>
+						</li>
+						{%endfor%}
+					</div>
+				</ul>
+			</div>
+		</div>			
+	</div>
+	<div class="options">
+		<button class="shadow-button" style="color: red;" onclick="closeModernizationInqueryDialog()">{{content.actions[lang]['cancel']}}</button>
+		<button class="shadow-button" onclick="clearModernizationInqueryDialog()">{{content.actions[lang]['clear']}}</button>
+		<button class="main-button" onclick="createMaintenaceTicket()">{{content.actions[lang]['submit']}}</button>
+		<p class="status-msg" id="status-msg"></p>
+	</div>
+</div>
+<div class="dialog" id="confirmation-dialog">
+	<div class="glowing"></div>
+	<div class="content">
+		<div id="icon"></div>
+		<p></p>
+		<button class="main-button" id="confirmation-dialog-submission" onclick="closeConfirmationDialog()">{{content.actions[lang]['submit']}}</button>
+	</div>
+</div>
 <script type="text/javascript">
 	const init= ()=> {
+				pageInit({
+			errorsContent: {{dumps(content.errors) | safe}},
+			formsContent: {{dumps(content.forms) | safe}},
+			actionsContent: {{dumps(content.actions) | safe}},
+			lang: '{{lang}}'
+		});
+
+		currentFragmentIndex= 0;
 		document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}');
 		currentMode= '{{mode}}';
+if (currentMode === 'DARK') document.querySelector('input#theme').checked= true;
 	}
 
 	if (window.addEventListener) window.addEventListener('load', init);

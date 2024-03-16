@@ -23,7 +23,9 @@ class Consts:
             "1": "Articles",
             "2": "Tickets",
             "3": "Admins",
-            "4": "Users"
+            "4": "Users",
+            "5": "Spare Parts",
+            "6": "Categories"
         }
 
         self.header_fixed_tabs= [
@@ -140,5 +142,8 @@ class Consts:
             self.admin_articles_page = data['ADMIN_ROUTERS']['ARTICLES_ROUTE']
             self.admin_users_page = data['ADMIN_ROUTERS']['USERS_ROUTE']
             self.admin_tickets_page = data['ADMIN_ROUTERS']['TICKETS_ROUTE']
+            self.admin_layout_page = data['ADMIN_ROUTERS']['LAYOUT_ROUTE']
+            self.admin_categories_page = data['ADMIN_ROUTERS']['CATEGORIES_ROUTE']
+            self.admin_spare_parts_page = data['ADMIN_ROUTERS']['SPARE_PARTS_ROUTE']
 
 

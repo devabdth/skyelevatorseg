@@ -2,6 +2,7 @@
 <html dir="{%if lang == 'AR'%} {{'rtl'}} {%else%} {{'ltr'}}{%endif%}">
 <head>
 	<meta charset="utf-8">
+<meta name="description" content="{{content.global_[lang]['shortDescription']}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{url_for('static', filename='website/spareParts/styles/computer.css')}}"/>
 	<link rel="stylesheet" href="{{url_for('static', filename='website/spareParts/styles/mobile.css')}}"/>
@@ -35,10 +36,10 @@
 		<a href="/">{{content.global_[lang]["platformTitle"]}}</a>
 		<div id="nav">
 			<a href="/" class="header-nav-item">{{content.tabs[lang]["home"]}}</a>
+			<a href="/installations/" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
+			<a href="/modernization/" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
 			<a href="/maintenance/" class="header-nav-item">{{content.tabs[lang]["maintenance"]}}</a>
 			<a href="/spareParts/" class="header-nav-item active">{{content.tabs[lang]["spareParts"]}}</a>
-			<a href="/modernization/" class="header-nav-item">{{content.tabs[lang]["modernization"]}}</a>
-			<a href="/installations/" class="header-nav-item">{{content.tabs[lang]["installations"]}}</a>
 			<a href="/blog/" class="header-nav-item">{{content.tabs[lang]["blog"]}}</a>
 			<a href="/contact/" class="header-nav-item">{{content.tabs[lang]["contact"]}}</a>
 			<a href="/aboutUs/" class="header-nav-item">{{content.tabs[lang]["aboutUs"]}}</a>
@@ -104,35 +105,43 @@
 		</div>
 	</div>
 </section>
-{% for category in db_helper.categories.categories%}
-<section class="category-products">
-	<div class="header">
-		<h3>{{category.name[lang]}}</h3>
-		<button class="main-button" onclick="window.open(`/categories/{{category.id}}`, '_self')">{{content.actions[lang]['seeMore']}}</button>
-	</div>
-		<div class="cards">
-			{% for product in db_helper.products.get_products_by_filterization({"category": category.id})[:5]%}
-			<div class="product-card">
-				<div class="cover"><img src="/assets/product/covers/{{product.id}}/" alt="{{product.bio['EN']}}"></div>
-				<div class="info">
-						<h4>{{product.name[lang]}}</h4>
-						<p class="bio">{{(product.bio[lang] |string)[:75]}}</p>
-				</div>
-				<div class="actions">
-					<button class="shadow-button" onclick="window.open('/spareParts/{{product.id}}', '_self')">{{content.actions[lang]['moreInfo']}}</button>
-					<button class="main-button" onclick="openSendInqueryDialog('{{product.id}}')">{{content.actions[lang]['sendInquery']}}</button>
-				</div>
+<section class="spare-parts-fragments">
+	<div class="left-section">
+		{% for category in db_helper.categories.categories%}
+			<div class="spare-part-tab" id="cat-{{category.id[:6]}}{{category.id[-6:]}}">
+				<div class="icon"><img alt="{{category.alt}}" src="/assets/categories/icons/{{category.id}}" ></div>
+				<h3 class="title">{{category.name[lang]}}</h3>
 			</div>
-			{%endfor%}
-		</div>
-
+		{% endfor %}
+	</div>
+	<div class="fragments">
+		{% for category in db_helper.categories.categories%}
+			<div class="spare-part-fragment not-active-right" id="cat-{{category.id[:6]}}{{category.id[-6:]}}">
+				<h2>{{category.name[lang]}}</h2>
+				<div class="cards">
+						{% for product in db_helper.products.get_products_by_filterization({"category": category.id})[:5]%}
+							<div class="product-card">
+								<div class="cover"><img src="/assets/product/covers/{{product.id}}/" alt="{{product.bio['EN']}}"></div>
+								<div class="info">
+										<h4>{{product.name[lang]}}</h4>
+										<p class="bio">{{(product.bio[lang] |string)[:75]}}</p>
+										<div class="actions">
+											<button class="shadow-button" onclick="window.open('/spareParts/{{product.id}}', '_self')">{{content.actions[lang]['moreInfo']}}</button>
+											<button class="main-button" onclick="openSendInqueryForm('{{product.id}}')">{{content.actions[lang]['sendInquery']}}</button>
+										</div>
+									</div>
+								</div>
+						{%endfor%}
+					</div>
+				</div>
+		{% endfor %}
+	</div>
 </section>
-{% endfor %}
 <footer>
 	<div class="footer-column" id="column-one">
-		<img id="logo"></img>
+		<img id="logo" alt="Sky Elevators {{content.global_[lang]['shortDescription']}}" />
 		<div id="footer-msg">
-			<h4>{{content.global_[lang]["footerMsg"]}}</h4>
+			<h4>{{content.global_[lang]["shortDescription"]}}</h4>
 		</div>
 	</div>
 	<div class="footer-column" id="column-two">
@@ -162,11 +171,21 @@
 				</div>
 			</div>
 			<div id="social-media">
-				<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
-				<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
-				<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
-				<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{% if layout.data['CONTACT']['FACEBOOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['FACEBOOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-facebook-f"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['LINKEDIN'] != "" %}
+					<a href="{{layout.data['CONTACT']['LINKEDIN']}}" class="footer-social-media-icon"><i class="fa-brands fa-linkedin"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['INSTAGRAM'] != "" %}
+					<a href="{{layout.data['CONTACT']['INSTAGRAM']}}" class="footer-social-media-icon"><i class="fa-brands fa-instagram"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['TIKTOK'] != "" %}
+					<a href="{{layout.data['CONTACT']['TIKTOK']}}" class="footer-social-media-icon"><i class="fa-brands fa-tiktok"></i></a>
+				{%endif%}
+				{% if layout.data['CONTACT']['X-TWITTER'] != "" %}
+					<a href="{{layout.data['CONTACT']['X-TWITTER']}}" class="footer-social-media-icon"><i class="fa-brands fa-x-twitter"></i></a>
+				{%endif%}
 			</div>
 		</div>
 		<div id="copyright">
@@ -174,53 +193,93 @@
 		</div>
 	</div>
 </footer>
-<div class="form-dialog-overlay" id="book-form-dialog"></div>
-<div class="form-dialog" id="book-form-dialog">
-	<div class="header">
-		<h2>{{content.actions[lang]['bookMaintenance']}}</h2>
-		<div onclick="closeBookMaintenanceDialog();"><i class="fa-solid fa-close"></i></div>
-	</div>
-	<div class="body">
-		<div class="row-fields">
-			<label>{{content.forms[lang]['firstName']}}</label>
-			<label>{{content.forms[lang]['lastName']}}</label>
-		</div>
-		<div class="row-fields">
-			<input class="single-line-field" placeholder="{{content.placeholders[lang]['nameFieldPlaceholder']}}" type="name" name="first-name" id="first-name-field" {% if user_data%} value="{{user_data.name.split(' ')[0]}}" {%endif%}>
-			<input class="single-line-field" placeholder="{{content.placeholders[lang]['nameFieldPlaceholder']}}" type="name" name="last-name" id="last-name-field" {% if user_data%} value="{{user_data.name.split(' ')[1]}}" {%endif%}>
-		</div>
-		<label>{{content.forms[lang]['email']}}</label>
-		<input class="single-line-field" placeholder="{{content.placeholders[lang]['emailFieldPlaceholder']}}" type="email" name="email" id="email-field" {% if user_data%} value="{{user_data.email}}" {%endif%}>
-		<label>{{content.forms[lang]['phone']}}</label>
-		<input class="single-line-field" placeholder="{{content.placeholders[lang]['phoneFieldPlaceholder']}}" type="tel" autocomplete="cc-number" maxlength="19" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" inputmode="numeric" name="phone" id="phone-field" {% if user_data%} value="{{user_data.phone_number}}" {%endif%}>
-		<label>{{content.forms[lang]['address']}}</label>
-		<input class="single-line-field" placeholder="{{content.placeholders[lang]['addressFieldPlaceholder']}}" type="address" name="address" id="address-field">
-		<label>{{content.forms[lang]['govern']}}</label>
-		<div class="row-fields" id="options">
-			<div class="select-menu" id="govern-option-menu">
-				<div class="select-btn">
-					<span class="sBtn-text">{{content.forms[lang]['govern']}}</span>
-					<i class="bx bx-chevron-down"></i>
-				</div>
-				<ul class="options">
-					<div>
-						{%for city in content.cities[lang].keys() %}
-						<li class="option" id="city-{{city}}">
-							<span class="option-text">{{content.cities[lang][city]}}</span>
-						</li>
-						{%endfor%}
-					</div>
-				</ul>
+<div class="form-dialog-overlay overlay" id="send-inquery"></div>
+	<div class="form-dialog form" id="send-inquery">
+		<div class="rotating-glow" onclick="closeSendInqueryForm()"></div>
+		<div class="content">
+			<div class="header">
+				<h3>{{content.actions[lang]['requestSiteVisit']}}</h3>
+				<div onclick="closeSendInqueryForm()"><i class="fa-solid fa-close"></i></div>
 			</div>
-		</div>			
+			<div class="body">
+				<div class="row-fields">
+					<label>{{content.forms[lang]['firstName']}}</label>
+					<label>{{content.forms[lang]['lastName']}}</label>
+				</div>
+				<div class="row-fields">
+					<input type="name" placeholder="{{content.forms[lang]['firstName']}}" class="single-line-field" id="first-name">
+					<input type="name" placeholder="{{content.forms[lang]['lastName']}}" class="single-line-field" id="last-name">
+				</div>
+				<label>{{content.forms[lang]['email']}}</label>
+				<input type="email" placeholder="{{content.forms[lang]['email']}}" class="single-line-field" id="email">
+				<label>{{content.forms[lang]['phone']}}</label>
+				<input type="tel" placeholder="{{content.forms[lang]['phone']}}" class="single-line-field" id="phone" pattern="^01[0-2]\s\d{1,8}$">
+				<label>{{content.forms[lang]['category']}}</label>
+				<div class="row-fields" id="options">
+					<div class="select-menu" id="category-option-menu">
+						<div class="select-btn">
+						<span class="sBtn-text">{{content.forms[lang]['category']}}</span>
+						<i class="bx bx-chevron-down"></i>
+					</div>
+					<ul class="options">
+						<div>
+							{% for category in db_helper.categories.categories%}
+								<li class="option" id="cat-{{category.id[:4]}}">
+									<img alt="{{category.alt}}" src="/assets/categories/icons/{{category.id}}" />
+									<span class="option-text">{{category.name[lang]}}</span>
+								</li>
+							{%endfor%}
+						</div>
+					</ul>
+				</div>
+			</div>
+				<label>{{content.forms[lang]['sparePart']}}</label>
+				<div class="row-fields" id="options">
+					<div class="select-menu" id="spare-part-option-menu">
+						<div class="select-btn">
+						<span class="sBtn-text">{{content.forms[lang]['sparePart']}}</span>
+						<i class="bx bx-chevron-down"></i>
+					</div>
+					<ul class="options">
+						<div><p>{{content.errors[lang]['selectModelFirst']}}</p>
+					</div>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fields">
+				<label>{{content.forms[lang]['address']}}</label>
+				<label>{{content.forms[lang]['area']}}</label>
+			</div>
+			<div class="row-fields" id="address-fields">
+				<input type="address" placeholder="{{content.forms[lang]['address']}}" class="single-line-field" id="address">
+				<input type="govern" placeholder="{{content.forms[lang]['area']}}" class="single-line-field" id="area">
+			</div>
+
+				<label>{{content.forms[lang]['govern']}}</label>
+				<div class="row-fields" id="options">
+					<div class="select-menu" id="govern-option-menu">
+						<div class="select-btn">
+						<span class="sBtn-text">{{content.forms[lang]['govern']}}</span>
+						<i class="bx bx-chevron-down"></i>
+					</div>
+					<ul class="options">
+						<div>
+							{%for city in content.cities[lang].keys() %}
+								<li class="option" id="city-{{city}}">
+									<span class="option-text">{{content.cities[lang][city]}}</span>
+								</li>
+							{%endfor%}
+						</div>
+					</ul>
+				</div>
+				</div>
+			</div>
+			<div class="actions">
+						<button class="shadow-button" id="cancel" onclick="closeSendInqueryForm()">{{content.actions[lang]['cancel']}}</button>
+						<button class="main-button" id="submit">{{content.actions[lang]['submit']}}</button>				<p class="status-msg"></p>
+			</div>
+		</div>
 	</div>
-	<div class="options">
-		<button class="shadow-button" style="color: red;" onclick="closeBookMaintenanceDialog()">{{content.actions[lang]['cancel']}}</button>
-		<button class="shadow-button" onclick="clearBookMaintenanceDialog()">{{content.actions[lang]['clear']}}</button>
-		<button class="main-button" onclick="createMaintenaceTicket()">{{content.actions[lang]['submit']}}</button>
-		<p class="status-msg" id="status-msg"></p>
-	</div>
-</div>
 <div class="dialog" id="confirmation-dialog">
 	<div class="glowing"></div>
 	<div class="content">
@@ -236,10 +295,13 @@
 			errorsContent: {{dumps(content.errors) | safe}},
 			formsContent: {{dumps(content.forms) | safe}},
 			actionsContent: {{dumps(content.actions) | safe}},
+			categories: {{dumps(utils.mutliple_to_dicts(db_helper.categories.categories)) | safe}},
+			products: {{dumps(utils.mutliple_to_dicts(db_helper.products.all_products))  | safe}},
 			lang: '{{lang}}'
 		});
 		document.firstElementChild.setAttribute('data-theme', '{{mode | lower}}');
 		currentMode= '{{mode}}';
+if (currentMode === 'DARK') document.querySelector('input#theme').checked= true;
 	}
 
 	if (window.addEventListener) window.addEventListener('load', init);

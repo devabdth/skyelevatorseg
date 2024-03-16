@@ -1,16 +1,50 @@
+
 let currentMode;
+
+const themeSwitchOnClick= ()=> {
+	const themeSwitch= document.querySelector('input#theme');
+	themeSwitch.addEventListener('change', ()=> {
+		toggleTheme();
+	});
+}
+
+const headerOnScrollListener= () => {
+	window.onscroll = function() {scrollListener()};
+
+	var header = document.querySelector("header");
+
+	var sticky = header.offsetTop;
+
+	function scrollListener() {
+	  if (window.pageYOffset > sticky) {
+	    header.classList.add("sticky");
+	  } else {
+	    header.classList.remove("sticky");
+	  }
+}
+}
+
+const globalInit= ()=> {
+	const header= document.querySelector('header');
+	if (header !== undefined) {
+		themeSwitchOnClick();
+		headerOnScrollListener();
+	}
+}
+
+if (window.addEventListener) window.addEventListener('load', globalInit);
+else if (window.attachEvent) window.attachEvent('onload', globalInit);
+
 const toggleTheme = async () => {
 	switch (currentMode ?? 'DARK') {
 		case 'DARk':
 		default:
         	currentMode= 'LIGHT';
-			console.log(currentMode)
         	document.firstElementChild.setAttribute('data-theme', 'light');
 			await fetch('/config/?MODE=LIGHT', { method: 'PATCH' });
 			break;
 		case 'LIGHT':
         	currentMode= 'DARK';
-			console.log(currentMode)
         	document.firstElementChild.setAttribute('data-theme', 'dark');
 			await fetch('/config/?MODE=DARK', { method: 'PATCH' });
 			break;

@@ -54,74 +54,160 @@
     font-family: var(--sff);
   }
 
-  section.component {
-    background-color: var(--body-bg-color);
+  section#fragments {
     width: 100%;
-    max-height: 60vw;
+    min-height: 20vw;
+    max-height: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 2.5vw 2.5%;
+    background-color: var(--body-bg-color);
+  }
+
+  section#fragments .side-section {
+    width: 5vw;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 2vw 5%;
-    row-gap: 4vw;
   }
 
-  section.component .header {
+  section#fragments .side-section i {
+    font-size: 1.25vw;
+    color: var(--accentColor);
+    cursor: pointer;
+  }
+
+  section#fragments #fragments-controllers {
     width: 100%;
-    max-height: 10vw;
     display: flex;
     align-items: center;
     justify-content: start;
-    flex-direction: column;
     flex-direction: row;
-    column-gap: 2vw;
+    padding: 0 2vw;
   }
 
-  section.component .header h3 {
-    font-weight: 900;
-    font-size: 4vw;
-    color: var(--accentColor);
-    font-family: var(--pff);
-    filter: drop-shadow(0 0 50px var(--accentColor));
-    white-space: nowrap;
-    line-height: 3vw;
-    text-align: justify;
+  section#fragments #fragments-controllers .fragment-controller{
+    padding: 1vw 2vw;
+    border-radius: 48px 12px 0 0 ;
+    background-color: var(--body-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0.5vw;
+    cursor: pointer;
+    transition: 500ms ease;
   }
-  section.component .header h3 span {
+
+  section#fragments #fragments-controllers .fragment-controller h3{
     font-size: 1.5vw;
+    color: var(--primaryColor);
+    font-weight: 300;
+    font-family: var(--pff);
+    transition: 500ms ease;
   }
 
-  section.component .header p {
+  section#fragments #fragments-controllers .fragment-controller i{
+    font-size: 1.5vw;
+    color: var(--primaryColor);
+    transition: 500ms ease;
+  }
+
+  section#fragments #fragments-controllers .fragment-controller.active{
+    background-color: var(--bg-color);
+  }
+
+  section#fragments #fragments-controllers .fragment-controller.active h3{
+    color: var(--accentColor);
+    font-weight: 900;
+    animation: glowing infinite 5s ease;
+  }
+
+  section#fragments #fragments-controllers .fragment-controller.active i{
+    color: var(--accentColor);
+    animation: glowing infinite 5s ease;
+  }
+
+
+  section#fragments > .content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  section#fragments .content .fragments {
+    width: 100%;
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    gap: 2vw;
+    padding: 0.5vw 8vw;
+  }
+
+
+  section#fragments .fragment {
+    width: 100%;
+    min-height: 70%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    position: absolute;
+    top:  50%;
+    left: 50%;
+    gap:  2vw;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    padding: 1vw 2vw;
+    transition: 1s ease;
+  }
+
+  section#fragments .fragment.active {
+    transform: translate(-50%, -50%);
+  }
+
+  section#fragments .fragment.not-active-left {
+    transform: translate(-150%, -50%);
+  }
+
+  section#fragments .fragment.not-active-right {
+    transform: translate(150%, -50%);
+  }
+
+  section#fragments .fragment p {
     font-weight: 500;
     font-size: 1vw;
     font-family: var(--sff);
     color: var(--primaryColor);
   }
 
-  section.component .cards {
+  section#fragments .fragment .cards {
     width: 100%;
     height: 100%;
-    display: grid;
+    display: inline-grid;
     row-gap: 2vw;
     column-gap: 2vw;
     align-items: center;
-  }
-
-  section.component#decorations .cards,
-  section.component#machines .cards {
     grid-template-columns: repeat(3, 1fr);
-  }
+    padding: 0.5vw 2vw;
 
-  section.component#controllers .cards,
-  section.component#doors .cards {
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    align-items: center;
   }
 
   div.component-card {
     width: 100%;
-    height: 20vw;
+    height: 15vw;
     display: flex;
     position: relative;
     border: 12px;
@@ -147,6 +233,7 @@
     left: 50%;
     transform: translate(-55%, -55%);
     transition: 500ms ease;
+    z-index: 500;
   }
   div.component-card:hover .styling-border {
     transform: translate(-50%, -50%);
@@ -216,4 +303,83 @@
     color: #f9fafa;
     max-width: 60vw;
   }
+
+  section#decorations-inquery {
+    width: 100%;
+    height: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: var(--bg-color);
+    padding: 0 5%;
+  }
+
+  section#decorations-inquery .left-section {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  section#decorations-inquery .left-section img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    object-position: top;
+    object-fit: cover;
+    animation: artist-glow 10s ease infinite;
+  }
+
+  section#decorations-inquery .left-section img#flipped {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);    
+  }
+
+  section#decorations-inquery .right-section {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vw;
+  }
+
+  section#decorations-inquery .right-section h3 {
+    font-weight: 900;
+    font-size: 4vw;
+    font-family: var(--pff);
+    color: var(--accentColor);
+    animation: glowing ease 10s infinite;
+  }
+
+  section#decorations-inquery .right-section p {
+    font-weight: 300;
+    font-size: 0.75vw;
+    font-family: var(--sff);
+    color: var(--primaryColor);
+    text-align: justify;
+  }
+
+
+@keyframes glowing {
+    0% { filter: none }
+    50%  { 
+      filter: drop-shadow(0 0 12px var(--accentColor)) ;
+      -webkit-filter: drop-shadow(0 0 12px var(--accentColor)) ;
+    }
+    100%   { filter: none }
+}
+
+@keyframes artist-glow {
+    0% { filter: grayscale(100%); }
+    50%  { 
+      filter: grayscale(100%) drop-shadow(0 0 30px var(--accentColor)) ;
+      -webkit-filter: grayscale(100%) drop-shadow(0 0 30px var(--accentColor)) ;
+    }
+    100%   { filter: grayscale(100%); }
+}
+
 }

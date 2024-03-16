@@ -34,13 +34,30 @@ class AssetsRouter:
 		self.assign_modernization_doors_covers()
 		self.assign_modernization_controllers_covers()
 		self.assign_modernization_decorations_covers()
-		self.assign_product_name()
-	def assign_product_name(self):
+		self.assign_product_image_name()
+
+	def assign_product_image_name(self):
 		@self.app.route('/assets/products/name/<prod_name>/', methods=["GET"])
 		def product_by_name_index(prod_name):
-			path_= abspath(join(dirname(__file__), '../../assets/products/images/{}'.format(prod_name)))
-			return send_file(path_)
+			try:
+				covers_path: str= abspath(join(dirname(__file__), '../../assets/products/images/'))
+				if not exists(covers_path):
+					mkdir(covers_path)
+					return self.app.response_class(status=404)
 
+				for ext in self.consts.covers_supported_extenstions:
+					cover_path= join(covers_path, '{}.{}'.format(prod_name, ext))
+					if exists(cover_path):
+						return send_file(cover_path, mimetype='image/{}'.format(ext))
+
+				return self.app.response_class(status=404)
+
+				
+				return self.app.response_class(status= 500)
+			except Exception as e:
+				print(e)
+				return self.app.response_class(status= 500)
+		
 		
 	def assign_modernization_decorations_covers(self):
 		@self.app.route(self.consts.modernization_decorations_covers_route, methods=["GET"])
