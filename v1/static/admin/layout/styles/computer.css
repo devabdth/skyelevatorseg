@@ -66,4 +66,235 @@
     gap: 2vw;
     margin-top: 2vw;
   }
+
+  div#right-section div.card#fragments {
+    background-color: var(--body-bg-color) !important;
+    gap: 0;
+  }
+
+  div#fragments-controllers {
+    width: 100%;
+    min-height: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    padding:  0 2vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  div#fragments-controllers div.fragment-controller {
+    padding: 0.5vw 1vw;
+    font-weight: 300;
+    font-size: 1vw;
+    font-family: var(--pff);
+    color:  var(--primaryColor);
+    background-color: var(--body-bg-color);
+    border-radius: 12px 12px 0 0;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  div#fragments-controllers div.fragment-controller.active {
+    color:  var(--primaryColor);
+    background-color: var(--bg-color);
+    font-weight: 900;
+  }
+
+  div#fragments {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  div#fragments div.fragment {
+    width: 100%;
+    height: 100%;
+    display: none;
+    overflow: auto;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    padding: 1vw 2vw;
+    gap: 1vw;
+  }
+
+  div#fragments div.fragment.active {
+    display: flex;
+  }
+
+  .collabsable {
+    width: 100%;
+    border-radius: 12px;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    transition: 500ms ease;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: 500ms ease;
+  }
+
+  .collabsable.active {
+    background-color: var(--body-bg-color);
+  }
+
+  .collabsable div.title {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    transition: 500ms ease;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--primaryColor);
+    font-family: var(--sff);
+  }
+
+  .collabsable.active div.title:hover {
+    background-color: transparent;
+  }
+
+  .collabsable div.title:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .collabsable .content {
+    width: 100%;
+    display: none;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    padding: 8px 16px;
+  }
+
+  .collabsable.active .content {
+    display: flex;
+  }
+
+  .collabsable .options {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .fragment  label,
+  #content-fragment .collabsable label {
+    font-weight: 700;
+    font-size: 1vw;
+    font-family: var(--sff);
+    color: var(--primaryColor);
+    margin-top: 2vw;
+    margin-bottom: 1vw;
+  }
+
+  .fragment .row-fields {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1vw;
+    row-gap: 0.5vw;
+    padding: 0 2vw;
+  }
+
+  .fragment .row-fields label {
+    margin: 0;
+    font-weight: 300;
+  }
+
+  #information-fragment input,
+  #information-fragment textarea {
+    background-color: var(--body-bg-color);
+  }
+
+/* Hide the default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  --clr: #0B6E4F;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: 300ms;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: var(--accentColor);
+  border-radius: .5rem;
+  animation: pulse 500ms ease-in-out;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #E0E0E2;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 #0B6E4F90;
+    rotate: 20deg;
+  }
+
+  50% {
+    rotate: -20deg;
+  }
+
+  75% {
+    box-shadow: 0 0 0 10px #0B6E4F60;
+  }
+
+  100% {
+    box-shadow: 0 0 0 13px #0B6E4F30;
+    rotate: 0;
+  }
+}
+
 }

@@ -110,7 +110,8 @@ class Content:
                 "installationsHomeLiftsSectionSpeedLabel":"1 m/sec0.63 m/sec",
                 "installationsHydrolicElevatorsSectionTitle":"Strengthful & Adaptable",
                 "installationsHydrolicElevatorsSectionSubtitle":"Powerful lifting, versatile for any space and load",
-                "installationsToastTitle":"Get the installation for your place finished  with minimum possible preparatory works!",
+                "installationsInqueryTitle":"Few Preparatory Works!",
+                "installationsInquerySubtitle":"Skip the hassle! Get your installation finished with minimal disruption to your space. We'll take care of everything with as little preparatory work as possible.",
                 "installationsWeServeResidentialBuildings": "Residential Buildings",
                 "installationsWeServeShoppingMalls": "Shopping Malls",
                 "installationsWeServeHotels":"Hotels & More",
@@ -688,3 +689,12 @@ class Content:
             }
         }
 
+    def update_content(self, content):
+        return True
+
+
+
+
+
+
+        

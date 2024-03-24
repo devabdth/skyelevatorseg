@@ -121,6 +121,10 @@
 				<i class="fa-solid fa-elevator"></i>
 				<h3>{{content.global_[lang]['modernizationControllersTitle'] |safe}}</h3>
 			</div>
+			<div class="fragment-controller" id="decorations" onclick="toggleFragment(3)">
+				<i class="fa-solid fa-brush"></i>
+				<h3>{{content.global_[lang]['modernizationDecorationsTitle'] |safe}}</h3>
+			</div>
 		</div>
 		<div class="fragments">
 			<div class="fragment active" id="machines">
@@ -172,6 +176,23 @@
 					<div class="styling-border"></div>
 				</div>
 			{%endfor%}
+				</div>
+			</div>
+			<div class="fragment not-active-right" id="decorations">
+				<p>{{content.global_[lang]['modernizationMachinesSubtitle']}}</p>
+				<div class="cards">
+					{% for card in (layout.modernization["DECORATIONS"].values() | list) %}
+						<div class="machine-card component-card">
+							<div class="content">
+								<img src="/assets/modernization/decorations/{{card['id']}}/" alt="{{card['alt']}}">
+								<div class="information">
+									<h4>{{card['title'][lang]}}</h4>
+									<p>{{card['desc'][lang]}}</p>
+								</div>
+							</div>
+							<div class="styling-border"></div>
+						</div>
+					{%endfor%}
 				</div>
 			</div>
 		</div>

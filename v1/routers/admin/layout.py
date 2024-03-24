@@ -26,7 +26,21 @@ class LayoutAdminRouter:
 
 	def setup(self):
 		self.assign_admin_layout_index()
+		self.assign_admin_layout_edit_content()
 
+
+	def assign_admin_layout_edit_content(self):
+		@self.app.route(f'{self.consts.admin_layout_page}/content/', methods=["PATCH"])
+		def admin_layout_edit_content():
+			try:
+				content= loads(request.data)['content']
+				res= self.content.update_content(content)
+				if res:
+					return self.app.response_class(status= 200)
+				return self.app.response_class(status= 500)
+			except Exception as e:
+				print(e)
+				return self.app.response_class(status= 500)
 
 	def assign_admin_layout_index(self):
 		@self.app.route(self.consts.admin_layout_page, methods=["GET"])

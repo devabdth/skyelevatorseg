@@ -138,9 +138,262 @@
           <p>Manage How People See your Website!</p>
         </div>
       </div>        
+  <div class="card" id="fragments">
+    <div id="fragments-controllers">
+      <div class="fragment-controller" id="content-fragment" onclick="toggleFragment(this)">Content</div>
+      <div class="fragment-controller" id="information-fragment" onclick="toggleFragment(this)">Information</div>
+      <div class="fragment-controller active" id="installations-packages-fragment" onclick="toggleFragment(this)">Installations Packages</div>
+    </div>
+      <div id="fragments">
+          <div class="fragment active" id="installations-packages-fragment">
+            {% set packages= ["BLUE", "SILVER", "GOLD"] %}
+            <div class="collabsable" id="geared">
+              <div ondblclick="toggleCollapsable(this)" class="title">
+                <h2 class="title">Geared Elevators Packages Content</h2>
+                <p class="subtitle">Edit packages will be displayed as geared elevators</p>
+              </div>
+              <div class="content">
+                {% for package in packages %}
+                    <label>Package: ({{package}})</label>
+                    <div class="row-fields">
+                      <label>English Title</label>
+                      <label>Arabic Title</label>
+                      <input type="name" name="en-name" class="single-line-field en" value="{{layout.data['PLANS']['GEARED'][package]['TITLE']['EN']}}" placeholder="English Title" id="{{package}} title">
+                      <input type="name" name="ar-name" class="single-line-field ar" value="{{layout.data['PLANS']['GEARED'][package]['TITLE']['AR']}}" placeholder="Arabic Title" id="{{package}} title">
+                    </div>
+                     <div class="row-fields">
+                      <label>English Description</label>
+                      <label>Arabic Description</label>
+                      <textarea type="name" name="en-name" class="mutli-line-field en" placeholder="English Description" id="{{package}} title">{{layout.data['PLANS']['GEARED'][package]['DESC']['EN']}}</textarea>
+                      <textarea type="name" name="ar-name" class="mutli-line-field ar" placeholder="Arabic Description" id="{{package}} title">{{layout.data['PLANS']['GEARED'][package]['DESC']['AR']}}</textarea>
+                    </div>
+                    <label>English Features</label>
+                    <div class="features" style="display: flex; width: 100%; flex-direction: column; row-gap: 0.5vw;">
+                      {% for feature in layout.data['PLANS']['GEARED'][package]['FEATURES']['EN'] %}
+                      <div class="row-fields">
+                        <input type="name" name="featrue" id="en" class="single-line-field" value='{{feature["text"]}}'>
+                        <label class="container">
+                          <input  type="checkbox" {% if feature['highlighted'] %} checked {%endif%}>
+                          <div class="checkmark"></div>
+                        </label>
+                      </div>
+                      {% endfor %}
+                    </div>
+                    <label>Arabic Features</label>
+                    <div class="features" style="display: flex; width: 100%; flex-direction: column; row-gap: 0.5vw;">
+                      {% for feature in layout.data['PLANS']['GEARED'][package]['FEATURES']['AR'] %}
+                      <div class="row-fields">
+                        <input type="name" name="featrue" id="en" class="single-line-field" value='{{feature["text"]}}'>
+                        <label class="container">
+                          <input  type="checkbox" {% if feature['highlighted'] %} checked {%endif%}>
+                          <div class="checkmark"></div>
+                        </label>
+                      </div>
+                      {% endfor %}
+                    </div>
+                      {%endfor%}
+
+                
+              </div>
+              </div>
+            <div class="collabsable" id="gearless">
+              <div ondblclick="toggleCollapsable(this)" class="title">
+                <h2 class="title">Gearless Elevators Packages Content</h2>
+                <p class="subtitle">Edit packages will be displayed as Gearless elevators</p>
+              </div>
+              <div class="content">
+                    {% for package in packages %}
+                    <label>Package: ({{package}})</label>
+                    <div class="row-fields">
+                      <label>English Title</label>
+                      <label>Arabic Title</label>
+                      <input type="name" name="en-name" class="single-line-field en" value="{{layout.data['PLANS']['GEARLESS'][package]['TITLE']['EN']}}" placeholder="English Title" id="{{package}} title">
+                      <input type="name" name="ar-name" class="single-line-field ar" value="{{layout.data['PLANS']['GEARLESS'][package]['TITLE']['AR']}}" placeholder="Arabic Title" id="{{package}} title">
+                    </div>
+                     <div class="row-fields">
+                      <label>English Description</label>
+                      <label>Arabic Description</label>
+                      <textarea type="name" name="en-name" class="mutli-line-field en" placeholder="English Description" id="{{package}} title">{{layout.data['PLANS']['GEARLESS'][package]['DESC']['EN']}}</textarea>
+                      <textarea type="name" name="ar-name" class="mutli-line-field ar" placeholder="Arabic Description" id="{{package}} title">{{layout.data['PLANS']['GEARLESS'][package]['DESC']['AR']}}</textarea>
+                    </div>
+                    <label>English Features</label>
+                    <div class="features" style="display: flex; width: 100%; flex-direction: column; row-gap: 0.5vw;">
+                      {% for feature in layout.data['PLANS']['GEARLESS'][package]['FEATURES']['EN'] %}
+                      <div class="row-fields">
+                        <input type="name" name="featrue" id="en" class="single-line-field" value='{{feature["text"]}}'>
+                        <label class="container">
+                          <input  type="checkbox" {% if feature['highlighted'] %} checked {%endif%}>
+                          <div class="checkmark"></div>
+                        </label>
+                      </div>
+                      {% endfor %}
+                    </div>
+                    <label>Arabic Features</label>
+                    <div class="features" style="display: flex; width: 100%; flex-direction: column; row-gap: 0.5vw;">
+                      {% for feature in layout.data['PLANS']['GEARLESS'][package]['FEATURES']['AR'] %}
+                      <div class="row-fields">
+                        <input type="name" name="featrue" id="en" class="single-line-field" value='{{feature["text"]}}'>
+                        <label class="container">
+                          <input  type="checkbox" {% if feature['highlighted'] %} checked {%endif%}>
+                          <div class="checkmark"></div>
+                        </label>
+                      </div>
+                      {% endfor %}
+                    </div>
+                      {%endfor%}
+
+              </div>
+              </div>
+          <div class="collabsable" id="home-lifts">
+              <div ondblclick="toggleCollapsable(this)" class="title">
+                <h2 class="title">Home Lifts Packages Content</h2>
+                <p class="subtitle">Edit packages will be displayed as Home Lifts</p>
+              </div>
+              <div class="content">
+                {% for package in packages %}
+                    <label>Package: ({{package}})</label>
+                    <div class="row-fields">
+                      <label>English Title</label>
+                      <label>Arabic Title</label>
+                      <input type="name" name="en-name" class="single-line-field en" value="{{layout.data['PLANS']['HOME_LIFTS'][package]['TITLE']['EN']}}" placeholder="English Title" id="{{package}} title">
+                      <input type="name" name="ar-name" class="single-line-field ar" value="{{layout.data['PLANS']['HOME_LIFTS'][package]['TITLE']['AR']}}" placeholder="Arabic Title" id="{{package}} title">
+                    </div>
+                     <div class="row-fields">
+                      <label>English Description</label>
+                      <label>Arabic Description</label>
+                      <textarea type="name" name="en-name" class="mutli-line-field en" placeholder="English Description" id="{{package}} title">{{layout.data['PLANS']['HOME_LIFTS'][package]['DESC']['EN']}}</textarea>
+                      <textarea type="name" name="ar-name" class="mutli-line-field ar" placeholder="Arabic Description" id="{{package}} title">{{layout.data['PLANS']['HOME_LIFTS'][package]['DESC']['AR']}}</textarea>
+                    </div>
+                    <label>English Features</label>
+                    <div class="features" style="display: flex; width: 100%; flex-direction: column; row-gap: 0.5vw;">
+                      {% for feature in layout.data['PLANS']['HOME_LIFTS'][package]['FEATURES']['EN'] %}
+                      <div class="row-fields">
+                        <input type="name" name="featrue" id="en" class="single-line-field" value='{{feature["text"]}}'>
+                        <label class="container">
+                          <input  type="checkbox" {% if feature['highlighted'] %} checked {%endif%}>
+                          <div class="checkmark"></div>
+                        </label>
+                      </div>
+                      {% endfor %}
+                    </div>
+                    <label>Arabic Features</label>
+                    <div class="features" style="display: flex; width: 100%; flex-direction: column; row-gap: 0.5vw;">
+                      {% for feature in layout.data['PLANS']['HOME_LIFTS'][package]['FEATURES']['AR'] %}
+                      <div class="row-fields">
+                        <input type="name" name="featrue" id="en" class="single-line-field" value='{{feature["text"]}}'>
+                        <label class="container">
+                          <input  type="checkbox" {% if feature['highlighted'] %} checked {%endif%}>
+                          <div class="checkmark"></div>
+                        </label>
+                      </div>
+                      {% endfor %}
+                    </div>
+                      {%endfor%}
+
+          </div>
+                
+              </div>
+              </div>
+          <div class="fragment" id="information-fragment">
+            <div class="row-fields">
+              <label>English Short Description</label>
+              <label>Label Short Description</label>
+              <textarea class="mutli-line-field en" id="short-desc"></textarea>
+              <textarea class="mutli-line-field ar" id="short-desc"></textarea>
+            </div>
+            <label>EMAIL</label>
+            <input class="single-line-field" id="email" placeholder="email" />
+            <label>PHONE</label>
+            <input class="single-line-field" id="phone" placeholder="phone" />
+            <label>Facebook</label>
+            <input class="single-line-field" id="facebook" placeholder="facebook" />
+            <label>Instagram</label>
+            <input class="single-line-field" id="instagram" placeholder="instagram" />
+            <label>TikTok</label>
+            <input class="single-line-field" id="tiktok" placeholder="tiktok" />
+            <label>LinkedIn</label>
+            <input class="single-line-field" id="linkedin" placeholder="linkedin" />
+            <label>Twitter</label>
+            <input class="single-line-field" id="twitter" placeholder="twitter" />
+            <label>Founder's Facebook</label>
+            <input class="single-line-field" id="founder-facebook" placeholder="founder-facebook" />
+            <label>Founder's Twitter</label>
+            <input class="single-line-field" id="founder-twitter" placeholder="founder-twitter" />
+            <label>Founder's LinkedIn</label>
+            <input class="single-line-field" id="founder-linkedin" placeholder="founder-linkedin" />
+                <div class="options" style="width: 100%; display: flex; justify-content: end; column-gap: 1vw; align-items: center;">
+      <button class="shadow-button" onclick="window.open('./', '_self');" style="color: red">Reset</button>
+      <button class="main-button" onclick="contentUpdateSubmission()">Submit</button>
+      <p class="status-msg" style="font-family: var(--sff); color: var(--primaryColor);"></p>
+            </div>            
+
+          </div>
+          <div class="fragment" id="content-fragment">
+            <div class="collabsable" id="home-page">
+              <div ondblclick="toggleCollapsable(this)" class="title">
+                <h2 class="title">Home Page Content</h2>
+                <p class="subtitle">Edit all the content displayed in the home page!</p>
+              </div>
+              <div class="content"></div>
+              </div>
+            <div class="collabsable" id="installations-page">
+              <div ondblclick="toggleCollapsable(this)" class="title">
+                <h2 class="title">Installations Page Content</h2>
+                <p class="subtitle">Edit all the content displayed in the installations page!</p>
+              </div>
+              <div class="content"></div>
+              </div>
+              <div class="collabsable" id="modernization-page">
+              <div ondblclick="toggleCollapsable(this)" class="title">
+                <h2 class="title">Modernization Page Content</h2>
+                <p class="subtitle">Edit all the content displayed in the modernization page!</p>
+              </div>
+              <div class="content"></div>
+              </div>
+              <div class="collabsable" id="maintenance-page">
+              <div ondblclick="toggleCollapsable(this)" class="title">
+                <h2 class="title">Maintenance Page Content</h2>
+                <p class="subtitle">Edit all the content displayed in the maintenance page!</p>
+              </div>
+              <div class="content"></div>
+              </div>
+              <div class="collabsable" id="about-page">
+              <div ondblclick="toggleCollapsable(this)" class="title">
+                <h2 class="title">About Page Content</h2>
+                <p class="subtitle">Edit all the content displayed in the about page!</p>
+              </div>
+              <div class="content"></div>
+              </div>
+    <div class="options" style="width: 100%; display: flex; justify-content: end; column-gap: 1vw; align-items: center;">
+      <button class="shadow-button" onclick="window.open('./', '_self');" style="color: red">Reset</button>
+      <button class="main-button" onclick="contentUpdateSubmission()">Submit</button>
+      <p class="status-msg" style="font-family: var(--sff); color: var(--primaryColor);"></p>
+            </div>            
+          </div>
+    </div>
+      </div>
+          </div>
+    </div>
+    <div id="loading-overlay"></div>
+    <div id="loading-dialog">
+      <h3>Loading...</h3>
+      <p>
+        Usually, It takes from a minute to 10 minutes to edit the content of the website!
+      </p>
+    </div>    
+
       </div>
     </section>
     <script type="text/javascript">
+      const init= ()=> {
+        pageInit({
+          globalContent: {{dumps(content.global_) | safe}},
+          layoutData: {{dumps(layout.data) | safe}}
+        });
+      }
+      if (window.addEventListener) window.addEventListener('load', init)
+      else if (window.attachEvent) window.attachEvent('load', init)
+
       document.firstElementChild.setAttribute('data-theme', 'dark');      
     </script>
   </body>

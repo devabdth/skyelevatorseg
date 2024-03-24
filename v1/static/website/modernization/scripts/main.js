@@ -2,21 +2,21 @@ let currentFragmentIndex;
 const fragments= ['machines', 'doors', 'controllers'];
 
 const toggleFragment= (fragmentIndex)=> {
+	const decorationsFragment= document.querySelector('div.fragments .fragment#decorations');
 	const machinesFragment= document.querySelector('div.fragments .fragment#machines');
 	const doorsFragment= document.querySelector('div.fragments .fragment#doors');
 	const controllersFragment= document.querySelector('div.fragments .fragment#controllers');
+	const decorationsFragmentController= document.querySelector('div.content .fragment-controller#decorations');
 	const machinesFragmentController= document.querySelector('div.content .fragment-controller#machines');
-	console.log(machinesFragmentController)
 	const doorsFragmentController= document.querySelector('div.content .fragment-controller#doors');
-	console.log(doorsFragmentController)
 	const controllersFragmentController= document.querySelector('div.content .fragment-controller#controllers');
-	console.log(controllersFragmentController)
 	switch(fragmentIndex) {
 		default:
 		case 0:
 			machinesFragmentController.classList.add('active');
 			doorsFragmentController.classList.remove('active');
 			controllersFragmentController.classList.remove('active');
+			decorationsFragmentController.classList.remove('active');
 
 			machinesFragment.classList.remove(...machinesFragment.classList);
 			machinesFragment.classList.add('fragment');
@@ -29,12 +29,17 @@ const toggleFragment= (fragmentIndex)=> {
 			controllersFragment.classList.remove(...controllersFragment.classList);
 			controllersFragment.classList.add('fragment');
 			controllersFragment.classList.add('not-active-right');
+
+			decorationsFragment.classList.remove(...decorationsFragment.classList);
+			decorationsFragment.classList.add('fragment');
+			decorationsFragment.classList.add('not-active-right');
 			break;
 
 		case 1:
 			machinesFragmentController.classList.remove('active');
 			doorsFragmentController.classList.add('active');
 			controllersFragmentController.classList.remove('active');
+			decorationsFragmentController.classList.remove('active');
 
 			machinesFragment.classList.remove(...machinesFragment.classList);
 			machinesFragment.classList.add('fragment');
@@ -47,11 +52,17 @@ const toggleFragment= (fragmentIndex)=> {
 			controllersFragment.classList.remove(...controllersFragment.classList);
 			controllersFragment.classList.add('fragment');
 			controllersFragment.classList.add('not-active-right');
+
+			decorationsFragment.classList.remove(...decorationsFragment.classList);
+			decorationsFragment.classList.add('fragment');
+			decorationsFragment.classList.add('not-active-right');
+
 			break;
 
 		case 2:
 			machinesFragmentController.classList.remove('active');
 			doorsFragmentController.classList.remove('active');
+			decorationsFragmentController.classList.remove('active');
 			controllersFragmentController.classList.add('active');
 
 			machinesFragment.classList.remove(...machinesFragment.classList);
@@ -65,6 +76,33 @@ const toggleFragment= (fragmentIndex)=> {
 			controllersFragment.classList.remove(...controllersFragment.classList);
 			controllersFragment.classList.add('fragment');
 			controllersFragment.classList.add('active');
+
+			decorationsFragment.classList.remove(...decorationsFragment.classList);
+			decorationsFragment.classList.add('fragment');
+			decorationsFragment.classList.add('not-active-right');
+			break;
+
+		case 3:
+			machinesFragmentController.classList.remove('active');
+			doorsFragmentController.classList.remove('active');
+			controllersFragmentController.classList.remove('active');
+			decorationsFragmentController.classList.add('active');
+
+			machinesFragment.classList.remove(...machinesFragment.classList);
+			machinesFragment.classList.add('fragment');
+			machinesFragment.classList.add('not-active-left');
+
+			doorsFragment.classList.remove(...doorsFragment.classList);
+			doorsFragment.classList.add('fragment');
+			doorsFragment.classList.add('not-active-left');
+
+			controllersFragment.classList.remove(...controllersFragment.classList);
+			controllersFragment.classList.add('fragment');
+			controllersFragment.classList.add('not-active-left');
+
+			decorationsFragment.classList.remove(...decorationsFragment.classList);
+			decorationsFragment.classList.add('fragment');
+			decorationsFragment.classList.add('active');			
 			break;
 	}
 
@@ -72,7 +110,7 @@ const toggleFragment= (fragmentIndex)=> {
 }
 
 const nextFragment= ()=> {
-	if (currentFragmentIndex != 2) {
+	if (currentFragmentIndex != 3) {
 		toggleFragment(currentFragmentIndex + 1);
 		return;
 	}
@@ -84,7 +122,7 @@ const previousFragment= ()=> {
 		toggleFragment(currentFragmentIndex - 1);
 		return;
 	}
-	toggleFragment(2);
+	toggleFragment(3);
 
 }
 

@@ -933,7 +933,7 @@
   }
 
   #toast.active #header div {
-    color:  var(--primaryColor);
+    color:  whitesmoke;
     cursor: pointer;
   }
 
@@ -977,6 +977,75 @@
 
 #toast.active #toast-icon {
   display: none;
+}
+
+
+  section#installations-inquery {
+    width: 100%;
+    height: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: var(--bg-color);
+    padding: 0 5%;
+  }
+
+  section#installations-inquery .left-section {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  section#installations-inquery .left-section img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    object-position: top;
+    object-fit: cover;
+    animation: artist-glow 10s ease infinite;
+  }
+
+  section#installations-inquery .left-section img#flipped {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);    
+  }
+
+  section#installations-inquery .right-section {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vw;
+  }
+
+  section#installations-inquery .right-section h3 {
+    font-weight: 900;
+    font-size: 3vw;
+    font-family: var(--pff);
+    color: var(--accentColor);
+    animation: glowing ease 10s infinite;
+  }
+
+  section#installations-inquery .right-section p {
+    font-weight: 300;
+    font-size: 0.75vw;
+    font-family: var(--sff);
+    color: var(--primaryColor);
+    text-align: justify;
+  }
+
+@keyframes artist-glow {
+    0% { filter: grayscale(100%); }
+    50%  { 
+      filter: grayscale(100%) drop-shadow(0 0 30px var(--accentColor)) ;
+      -webkit-filter: grayscale(100%) drop-shadow(0 0 30px var(--accentColor)) ;
+    }
+    100%   { filter: grayscale(100%); }
 }
 
 @keyframes fadeInAnimation {
