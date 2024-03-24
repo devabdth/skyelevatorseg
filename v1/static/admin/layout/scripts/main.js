@@ -502,8 +502,8 @@ const contentInit= ()=> {
 
 	document.querySelector('#loading-overlay').style.display= 'none';
 	document.querySelector('#loading-dialog').style.display= 'none';
-	// }, 10000);
-	}, 100);
+	}, 100000);
+	// }, 100);
 }
 
 const contentUpdateSubmission= async ()=> {
